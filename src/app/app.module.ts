@@ -26,6 +26,7 @@ import { Api } from '../providers/api';
 import { Settings } from '../providers/settings';
 import { Items } from '../mocks/providers/items';
 import { Recipes } from '../providers/recipes';
+import { RecipeCategories } from '../providers/recipe-categories';
 import { BlendtecApi } from '../providers/blendtec-api';
 
 import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate/ng2-translate';
@@ -93,6 +94,7 @@ export function providers() {
 		BlendtecApi,
 		Items,
 		Recipes,
+		RecipeCategories,
 		{provide: Settings, useFactory: provideSettings, deps: [Storage]},
 		// Keep this to enable Ionic's runtime error handling during development
 		{provide: ErrorHandler, useClass: IonicErrorHandler}

@@ -23,9 +23,9 @@ export class LoginPage {
 	private loginErrorString: string;
 
 	constructor(public navCtrl: NavController,
-	            public user: User,
-	            public toastCtrl: ToastController,
-	            public translateService: TranslateService) {
+				public user: User,
+				public toastCtrl: ToastController,
+				public translateService: TranslateService) {
 
 		this.translateService.get('LOGIN_ERROR').subscribe((value) => {
 			this.loginErrorString = value;
@@ -37,7 +37,9 @@ export class LoginPage {
 		this.user
 			.login(this.account)
 			.subscribe(
-				(resp) => { this.navCtrl.push(MainPage);},
+				(resp) => {
+					this.navCtrl.push(MainPage);
+				},
 				(err) => {
 					this.navCtrl.push(MainPage);
 					// Unable to log in

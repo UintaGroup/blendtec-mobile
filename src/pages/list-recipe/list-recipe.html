@@ -1,24 +1,24 @@
 <ion-header>
 
-	<ion-navbar>
-		<ion-title>Recipes</ion-title>
-	</ion-navbar>
+    <ion-navbar>
+        <ion-title>Recipes</ion-title>
+    </ion-navbar>
 </ion-header>
 
 <ion-content class="page-list-recipe">
-	<ion-list>
-		<ion-card *ngFor="let item of items" (click)="select(item)">
-			<img [src]="item.sidebarImageUrl"/>
-			<div class="card-title">{{item.title}}</div>
-			<div class="card-subtitle">
-				<ion-icon color="bright" name="star"></ion-icon>
-				<ion-icon color="bright" name="star"></ion-icon>
-				<ion-icon color="bright" name="star-half"></ion-icon>
-				<ion-icon color="bright" name="star-outline"></ion-icon>
-			</div>
-		</ion-card>
-	</ion-list>
-	<ion-infinite-scroll (ionInfinite)="loadMore($event)">
-		<ion-infinite-scroll-content>Loading More Recipes...</ion-infinite-scroll-content>
-	</ion-infinite-scroll>
+    <ion-list>
+        <ion-card *ngFor="let item of items" (click)="select(item)">
+            <img [src]="item.sidebarImageUrl"/>
+            <div class="card-title">{{item.title}}</div>
+            <div class="card-subtitle">
+                <ion-icon color="bright" name="star"></ion-icon>
+                <ion-icon color="bright" name="star"></ion-icon>
+                <ion-icon color="bright" name="star-half"></ion-icon>
+                <ion-icon color="bright" name="star-outline"></ion-icon>
+            </div>
+        </ion-card>
+    </ion-list>
+    <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+        <ion-infinite-scroll-content>Loading More Recipes...</ion-infinite-scroll-content>
+    </ion-infinite-scroll>
 </ion-content>

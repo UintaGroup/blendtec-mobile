@@ -59,12 +59,12 @@ export class MyApp {
 		{title: 'Search', component: SearchPage},
 		{title: 'Recipes', component: ListRecipePage},
 		{title: 'Recipe Detail', component: RecipeDetailPage}
-	]
+	];
 
 	constructor(translate: TranslateService, platform: Platform, settings: Settings) {
 		// Set the default language for translation strings, and the current language.
 		translate.setDefaultLang('en');
-		translate.use('en')
+		translate.use('en');
 
 		platform.ready().then(() => {
 			// Okay, so the platform is ready and our plugins are available.

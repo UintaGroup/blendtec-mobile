@@ -1,40 +1,51 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ToastController } from 'ionic-angular';
 
-import { ItemDetailPage } from '../item-detail/item-detail';
-import { Items } from '../../providers/providers';
-import { Item } from '../../models/item';
+import { Recipes } from "../../providers/recipes";
+import { RecipeDetailPage } from "../recipe-detail/recipe-detail";
+import { Recipe } from "../../models/recipe";
 
 @Component({
-  selector: 'page-search',
-  templateUrl: 'search.html'
+	selector: 'page-search',
+	templateUrl: 'search.html'
 })
 export class SearchPage {
-  currentItems: any = [];
+	query: string = '';
+	currentItems: any = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public items: Items) {}
+	constructor(public navCtrl: NavController,
+	            public navParams: NavParams,
+	            public toastCtrl: ToastController,
+	            public recipes: Recipes) {
+		this.recipes
+			.all()
+			.subscribe(recipes => this.currentItems = recipes);
+	}
 
-  /**
-   * Perform a service for the proper items.
-   */
-  getItems(ev) {
-    let val = ev.target.value;
-    if(!val || !val.trim()) {
-      this.currentItems = [];
-      return;
-    }
-    this.currentItems = this.items.query({
-      name: val
-    });
-  }
+	getItems() {
+		if(!this.query) return;
+		this.recipes
+			.all('ingredient=' + this.query)
+			.subscribe(
+				recipes => this.currentItems = recipes,
+				(err) => {
+					let toast = this.toastCtrl.create({
+						message: err,
+						duration: 3000,
+						position: 'top'
+					});
+					toast.present();
+				}
+			);
+	}
 
-  /**
-   * Navigate to the detail page for this item.
-   */
-  openItem(item: Item) {
-    this.navCtrl.push(ItemDetailPage, {
-      item: item
-    });
-  }
+	clearSearch() {
+		this.query = '';
+	}
 
+	openItem(recipe: Recipe) {
+		this.navCtrl.push(RecipeDetailPage, {
+			recipe: recipe.slug
+		});
+	}
 }

@@ -9,8 +9,13 @@ export class BlendtecApi {
 	constructor(private _jsonp: Jsonp) {
 	}
 
-	private buildUrl(endpoint: string): string {
-		return this.url + encodeURIComponent('http://www.blendtec.com/' + endpoint + '.json')
+	//TODO simplfy when json2jsonp isn't necessary
+	private buildUrl(endpoint: string, params?: string): string {
+		let tmpUrl = this.url + encodeURIComponent('http://www.blendtec.com/' + endpoint + '.json');
+		if(params) {
+			tmpUrl = tmpUrl + '?' +  params;
+		}
+		return tmpUrl;
 	}
 
 	get(endpoint: string, params?: any, options?: RequestOptions) {
@@ -18,12 +23,12 @@ export class BlendtecApi {
 			options = new RequestOptions();
 		}
 		let p = new URLSearchParams();
-		p.set('callback', 'JSONP_CALLBACK');
 		for (let k in params) {
 			p.set(k, params[k]);
 		}
+		p.set('callback', 'JSONP_CALLBACK');
 		options.search = !options.search && p || options.search;
 		return this._jsonp
-			.get(this.buildUrl(endpoint), options);
+			.get(this.buildUrl(endpoint, params), options);
 	}
 }
