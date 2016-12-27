@@ -1,9 +1,8 @@
 import { Component }        from '@angular/core';
-import { NavController }    from 'ionic-angular';
+import { NavController, NavParams }    from 'ionic-angular';
 import { Recipes }          from '../../providers/recipes';
 import { Recipe }           from '../../models/recipe';
 import { RecipeDetailPage } from '../recipe-detail/recipe-detail';
-import { RecipeCategories } from "../../providers/recipe-categories";
 
 @Component({
 	selector: 'page-list-recipe',
@@ -12,18 +11,31 @@ import { RecipeCategories } from "../../providers/recipe-categories";
 export class ListRecipePage {
 
 	public items: Recipe[];
-	public page: number = 2;
+	public page: number = 1;
 
-	constructor(public navCtrl: NavController,
-				public recipes: Recipes,
-				public recipeCategories: RecipeCategories
-	) {
-		recipes.all().subscribe((r) => {
-			this.items = r;
-		});
-		recipeCategories.all().subscribe((rC) => {
-			console.log('CATEGORIES', rC);
-		});
+	constructor(public navCtrl: NavController, public params: NavParams, public recipes: Recipes) {
+		let category = params.get('category');
+		console.log('CATEGORY', category);
+		if(category) {
+			this.recipes
+			.category(category)
+			.subscribe(
+				r => this.items = r,
+				(err) => {
+					console.error('ERROR', err);
+					// let toast = this.toastCtrl.create({
+					// 	message: err,
+					// 	duration: 3000,
+					// 	position: 'top'
+					// });
+					// toast.present();
+				}
+			);
+		} else {
+			recipes.all().subscribe((r) => {
+				this.items = r;
+			});
+		}
 	}
 
 	select(item: Recipe) {
@@ -33,7 +45,7 @@ export class ListRecipePage {
 	}
 
 	loadMore(infiniteScroll: any): any {
-		return this.recipes.page(this.page++)
+		return this.recipes.page(++this.page)
 			.subscribe((r) => {
 				this.items = this.items.concat(r);
 				infiniteScroll.complete();

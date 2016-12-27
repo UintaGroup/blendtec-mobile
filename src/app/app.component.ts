@@ -21,6 +21,7 @@ import { SearchPage } from '../pages/search/search';
 import { TranslateService } from 'ng2-translate/ng2-translate';
 import { ListRecipePage } from '../pages/list-recipe/list-recipe';
 import { RecipeDetailPage } from '../pages/recipe-detail/recipe-detail';
+import { ListRecipeCategoryPage } from '../pages/list-recipe-category/list-recipe-category';
 
 @Component({
 	template: `<ion-menu [content]="content">
@@ -40,8 +41,8 @@ import { RecipeDetailPage } from '../pages/recipe-detail/recipe-detail';
 	<ion-nav #content [root]="rootPage"></ion-nav>`
 })
 export class MyApp {
-	rootPage = FirstRunPage;
-
+	// rootPage = FirstRunPage;
+	rootPage = TabsPage;
 	@ViewChild(Nav) nav: Nav;
 
 	pages: any[] = [
@@ -58,7 +59,8 @@ export class MyApp {
 		{title: 'Settings', component: SettingsPage},
 		{title: 'Search', component: SearchPage},
 		{title: 'Recipes', component: ListRecipePage},
-		{title: 'Recipe Detail', component: RecipeDetailPage}
+		{title: 'Recipe Detail', component: RecipeDetailPage},
+		{title: 'Categories', component: ListRecipeCategoryPage}
 	];
 
 	constructor(translate: TranslateService, platform: Platform, settings: Settings) {

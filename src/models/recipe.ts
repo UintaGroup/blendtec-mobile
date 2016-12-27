@@ -1,9 +1,6 @@
-export class Recipe {
+import { BaseModel } from './base-model';
 
-	constructor(private fields: any) {
-		for (let f in fields)
-			this[f] = fields[f];
-	}
+export class Recipe extends BaseModel{
 
 	private _id: number;
 	public get id(): number {
@@ -59,13 +56,13 @@ export class Recipe {
 		this._servings = value;
 	}
 
-	private _servingSize: string;
+	private _serving_size: string;
 	public get servingSize(): string {
-		return this._servingSize;
+		return this._serving_size;
 	}
 
 	public set servingSize(value: string) {
-		this._servingSize = value;
+		this._serving_size = value;
 	}
 
 	private _calories: number;
@@ -86,13 +83,13 @@ export class Recipe {
 		this._fat = value;
 	}
 
-	private _satFat: number;
+	private satfat: number;
 	public get satFat(): number {
-		return this._satFat;
+		return this.satfat;
 	}
 
 	public set satFat(value: number) {
-		this._satFat = value;
+		this.satfat = value;
 	}
 
 	private _sodium: number;
@@ -140,13 +137,13 @@ export class Recipe {
 		this._protein = value;
 	}
 
-	private _youtubeCode: string;
+	private _youtube_code: string;
 	public get youtubeCode(): string {
-		return this._youtubeCode;
+		return this._youtube_code;
 	}
 
 	public set youtubeCode(value: string) {
-		this._youtubeCode = value;
+		this._youtube_code = value;
 	}
 
 	private _active: boolean;
@@ -212,13 +209,13 @@ export class Recipe {
 		this._rating = value;
 	}
 
-	private _ratingCount: number;
+	private _rating_count: number;
 	public get ratingCount(): number {
-		return this._ratingCount;
+		return this._rating_count;
 	}
 
 	public set ratingCount(value: number) {
-		this._ratingCount = value;
+		this._rating_count = value;
 	}
 
 	private _publishDate: string;
@@ -230,13 +227,22 @@ export class Recipe {
 		this._publishDate = value;
 	}
 
-	private _preptimeSeconds: number;
+	private _cooktime_seconds: number;
+	public get cookTimeSeconds(): number {
+		return this._cooktime_seconds;
+	}
+
+	public set cookTimeSeconds(value: number) {
+		this._cooktime_seconds = value;
+	}
+
+	private _preptime_seconds: number;
 	public get preptimeSeconds(): number {
-		return this._preptimeSeconds;
+		return this._preptime_seconds;
 	}
 
 	public set preptimeSeconds(value: number) {
-		this._preptimeSeconds = value;
+		this._preptime_seconds = value;
 	}
 
 	private _blogUrl: string;
@@ -257,13 +263,13 @@ export class Recipe {
 		this._blogTitle = value;
 	}
 
-	private _nutritionInfoSentence: string;
-	public get nutritionInfoSentence(): string {
-		return this._nutritionInfoSentence;
+	private _nutrition_info_sentence: string;
+	public get nutrition_info_sentence(): string {
+		return this._nutrition_info_sentence;
 	}
 
-	public set nutritionInfoSentence(value: string) {
-		this._nutritionInfoSentence = value;
+	public set nutrition_info_sentence(value: string) {
+		this._nutrition_info_sentence = value;
 	}
 
 	private _tags: string;
@@ -275,13 +281,13 @@ export class Recipe {
 		this._tags = value;
 	}
 
-	private _sideBarImageUrl: string;
+	private _sidebarImageUrl: string;
 	public get sideBarImageUrl(): string {
-		return this._sideBarImageUrl;
+		return this._sidebarImageUrl;
 	}
 
 	public set sideBarImageUrl(value: string) {
-		this._sideBarImageUrl = value;
+		this._sidebarImageUrl = value;
 	}
 
 	private _indexImageUrl: string;
@@ -293,12 +299,12 @@ export class Recipe {
 		this._indexImageUrl = value;
 	}
 
-	private _hideNutrition: boolean;
+	private _hide_nutrition: boolean;
 	public get hideNutrition(): boolean {
-		return this._hideNutrition;
+		return this._hide_nutrition;
 	}
 
 	public set hideNutrition(value: boolean) {
-		this._hideNutrition = value;
+		this._hide_nutrition = value;
 	}
 }

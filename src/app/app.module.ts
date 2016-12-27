@@ -31,6 +31,8 @@ import { BlendtecApi } from '../providers/blendtec-api';
 
 import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate/ng2-translate';
 import { RecipeDetailPage } from '../pages/recipe-detail/recipe-detail';
+import { ListRecipeCategoryPage } from '../pages/list-recipe-category/list-recipe-category';
+import { RecipeRatingDirective } from '../directives/recipe-rating';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -58,7 +60,7 @@ export function provideSettings(storage: Storage) {
  * We then take these pages and inject them into our NgModule so Angular
  * can find them. As you add and remove pages, make sure to keep this list up to date.
  */
-let pages = [
+let pages: any[] = [
 	MyApp,
 	CardsPage,
 	ContentPage,
@@ -75,11 +77,16 @@ let pages = [
 	SettingsPage,
 	SearchPage,
 	ListRecipePage,
-	RecipeDetailPage
+	RecipeDetailPage,
+	ListRecipeCategoryPage
+];
+
+let directives: any[] = [
+	RecipeRatingDirective
 ];
 
 export function declarations() {
-	return pages;
+	return pages.concat(directives);
 }
 
 export function entryComponents() {

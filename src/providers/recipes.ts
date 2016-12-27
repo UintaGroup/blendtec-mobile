@@ -13,7 +13,7 @@ export class Recipes {
 	constructor(private _api: BlendtecApi) {
 	}
 
-	all(params?: any): Observable<Recipe[]> {
+	all(params?: any) {
 		return this._api
 			.get(this._resource, params)
 			.map((r: Response) => {
@@ -24,13 +24,24 @@ export class Recipes {
 			.catch(() => Observable.throw("No recipes found."));
 	}
 
-	one(slug: string): Observable<Recipe> {
+	one(slug: string) {
 		return this._api
 			.get(this._resource + '/' + slug)
 			.map((r: Response) => {
 				return new Recipe(r.json().Recipe);
 			})
 			.catch(() => Observable.throw("Unable to find recipe."));
+	}
+
+	category(categorySlug: string) {
+		return this._api
+			.get(this._resource + '/categories/' + categorySlug)
+			.map((r: Response) => {
+				return r.json().recipes.map(x => {
+					return new Recipe(x.Recipe);
+				});
+			})
+			.catch(() => Observable.throw("No recipes found."));
 	}
 
 	page(page: number) {

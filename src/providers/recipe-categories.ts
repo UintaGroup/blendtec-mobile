@@ -19,8 +19,8 @@ export class RecipeCategories {
 	];
 	constructor() {}
 
-	all(): Observable<RecipeCategory>{
-		return Observable.from(this.categories);
+	all(): Observable<RecipeCategory> {
+		return Observable.from<RecipeCategory>(this.categories);
 	}
 
 }

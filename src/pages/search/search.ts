@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ToastController } from 'ionic-angular';
+import { NavController, ToastController } from 'ionic-angular';
 
 import { Recipes } from "../../providers/recipes";
 import { RecipeDetailPage } from "../recipe-detail/recipe-detail";
@@ -13,10 +13,7 @@ export class SearchPage {
 	query: string = '';
 	currentItems: any = [];
 
-	constructor(public navCtrl: NavController,
-	            public navParams: NavParams,
-	            public toastCtrl: ToastController,
-	            public recipes: Recipes) {
+	constructor(public navCtrl: NavController, public toastCtrl: ToastController, public recipes: Recipes) {
 		this.recipes
 			.all()
 			.subscribe(recipes => this.currentItems = recipes);
@@ -45,7 +42,7 @@ export class SearchPage {
 
 	openItem(recipe: Recipe) {
 		this.navCtrl.push(RecipeDetailPage, {
-			recipe: recipe.slug
+			slug: recipe.slug
 		});
 	}
 }
