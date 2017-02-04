@@ -1,5 +1,19 @@
 import { BaseModel } from './base-model';
+
 export class RecipeIngredient extends BaseModel {
+
+	constructor(data: any) {
+		super(data);
+		if(data.RecipeIngredient) {
+			this._name = data.RecipeIngredient.name;
+		}
+	}
+
+	private _name: string;
+	public get name(): string {
+		return this._name;
+	}
+
 	private _id: number;
 	public get id(): number {
 		return this._id;

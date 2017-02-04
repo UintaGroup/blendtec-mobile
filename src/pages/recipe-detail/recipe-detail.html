@@ -1,18 +1,103 @@
 <ion-header>
-
     <ion-navbar>
-        <ion-title>{{ item?.title}}</ion-title>
+        <ion-title>{{ item?.title | uppercase}}</ion-title>
     </ion-navbar>
-
 </ion-header>
 
-
 <ion-content>
-    <div class="item-profile" text-center #profilePic [style.background-image]="'url(' + item?.indexImageUrl + ')'">
-    </div>
-
-    <div class="item-detail" padding>
-        <h2>{{item?.title}}</h2>
-        <p>{{item?.description}}</p>
-    </div>
+    <div class="item-profile" text-center #profilePic
+         [style.background-image]="'url(' + item?.indexImageUrl + ')'"></div>
+    <ion-card>
+        <button ion-button clear icon-left color="blendtec">
+            <ion-icon name='logo-youtube' is-active="true"></ion-icon>
+            Watch
+        </button>
+        <ion-item *ngFor="let img of item?.imageUrls">
+            <img [src]="img">
+        </ion-item>
+    </ion-card>
+    <ion-card>
+        <ion-card-content>
+            <p>{{item?.description}}</p>
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-header color="blendtec">{{ 'HEADER.INGREDIENTS' | translate | uppercase }}</ion-card-header>
+        <ion-card-content>
+            <ion-list>
+                <ion-item *ngFor="let ingredient of item?.ingredients">
+                    <p>{{ingredient?.amount}} {{ingredient?.measurement}} {{ingredient?.name}} </p>
+                </ion-item>
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-header color="blendtec">{{ 'HEADER.INSTRUCTIONS' | translate | uppercase }}</ion-card-header>
+        <ion-card-content><span [innerHTML]="item?.instructions"></span></ion-card-content>
+    </ion-card>
+    <ion-card *ngIf="item?.variations">
+        <ion-card-header color="blendtec">{{ 'HEADER.VARIATIONS' | translate | uppercase}}</ion-card-header>
+        <ion-card-content><span [innerHTML]="item?.variations"></span></ion-card-content>
+    </ion-card>
+    <ion-card *ngIf="!item?.hideNutrition">
+        <ion-card-header color="blendtec">{{ 'HEADER.NUTRITION' | translate | uppercase }}</ion-card-header>
+        <ion-card-content>
+            <ion-row>
+                <ion-col width-50>
+                    <ion-list>
+                        <ion-item>
+                            <p>{{'LABEL.SERVINGS' | translate}} {{item?.servings | nutrient}}</p>
+                        </ion-item>
+                        <ion-item>
+                            <p>{{'LABEL.SERVINGSIZE' | translate}} {{item?.servingSize | nutrient}}</p>
+                        </ion-item>
+                        <ion-item>
+                            <p>{{'LABEL.CALORIES' | translate}} {{item?.calories | nutrient}}</p>
+                        </ion-item>
+                        <ion-item>
+                            <p>{{'LABEL.FAT' | translate}} {{item?.fat | nutrient}}</p>
+                        </ion-item>
+                        <ion-item>
+                            <p>{{'LABEL.SATFAT' | translate}} {{item?.satFat | nutrient}}</p>
+                        </ion-item>
+                        <ion-item>
+                            <p>{{'LABEL.CHOLESTEROL' | translate}} {{item?.cholesterol | nutrient}}</p>
+                        </ion-item>
+                    </ion-list>
+                </ion-col>
+                <ion-col width-50>
+                    <ion-list>
+                        <ion-item>
+                            <p>{{'LABEL.SODIUM' | translate}} {{item?.sodium | nutrient}}</p>
+                        </ion-item>
+                        <ion-item>
+                            <p>{{'LABEL.CARBS' | translate}} {{item?.carbohydrates | nutrient}}</p>
+                        </ion-item>
+                        <ion-item>
+                            <p>{{'LABEL.FIBER' | translate}} {{item?.fiber | nutrient}}</p>
+                        </ion-item>
+                        <ion-item>
+                            <p>{{'LABEL.SUGAR' | translate}} {{item?.sugar | nutrient}}</p>
+                        </ion-item>
+                        <ion-item>
+                            <p>{{'LABEL.PROTEIN' | translate}} {{item?.protein | nutrient}}</p>
+                        </ion-item>
+                    </ion-list>
+                </ion-col>
+            </ion-row>
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-header color="blendtec">{{'HEADER.RELATED_RECIPES' | translate | uppercase}}</ion-card-header>
+        <ion-card-content>
+            <ion-list>
+                <ion-item *ngFor="let related of item?.relatedRecipes" (click)="select(related)">
+                    <ion-avatar item-left>
+                        <img [src]="related.sideBarImageUrl">
+                    </ion-avatar>
+                    <h2>{{related?.title}}</h2>
+                </ion-item>
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
 </ion-content>

@@ -4,7 +4,7 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { Settings } from '../providers/providers';
 
-import { FirstRunPage } from '../pages/pages';
+//import { FirstRunPage } from '../pages/pages';
 import { CardsPage } from '../pages/cards/cards';
 import { ContentPage } from '../pages/content/content';
 import { LoginPage } from '../pages/login/login';

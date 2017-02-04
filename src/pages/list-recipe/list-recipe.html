@@ -1,16 +1,16 @@
 <ion-header>
-
 	<ion-navbar>
-		<ion-title>Recipes</ion-title>
+        <ion-title *ngIf="category">{{ category.name }}</ion-title>
+		<ion-title *ngIf="!category">{{'TITLE.RECIPE_LIST' | translate}}</ion-title>
 	</ion-navbar>
 </ion-header>
 
 <ion-content class="page-list-recipe">
 	<ion-list>
 		<ion-card *ngFor="let item of items" (click)="select(item)">
-			<ion-item>
+			<ion-card-header>
 				<h2>{{item.title}}</h2>
-			</ion-item>
+			</ion-card-header>
 			<img [src]="item.sideBarImageUrl"/>
 			<ion-card-content>
 				<p>{{item.description}}</p>
@@ -20,15 +20,16 @@
 					<recipe-rating rating="{{item.rating}}"></recipe-rating>
 				</ion-col>
 				<ion-col>
-					<button ion-button icon-left clear small>
-						<ion-icon name="text"></ion-icon>
-						<div>{{item.ratingCount}} Ratings</div>
-					</button>
+                    <button ion-button icon-left clear small color="blendtec">
+                        <ion-icon name="stats"></ion-icon>
+                        <div>{{item.calories}} {{'LABEL.CALORIES_ABV' | translate}}</div>
+                    </button>
 				</ion-col>
 				<ion-col center text-center>
-					<ion-note>
-						11h ago
-					</ion-note>
+                    <button ion-button icon-left clear small color="blendtec">
+                        <ion-icon name="time"></ion-icon>
+                        <div>{{item.cookTimeSeconds | cooktime}}</div>
+                    </button>
 				</ion-col>
 			</ion-row>
 		</ion-card>

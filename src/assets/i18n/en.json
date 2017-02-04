@@ -31,5 +31,31 @@
     "ITEM_CREATE_TITLE": "New Item",
     "ITEM_CREATE_CHOOSE_IMAGE": "Add Image",
     "CARDS_TITLE": "Social",
-    "SEARCH_TITLE": "Search"
+    "SEARCH_TITLE": "Search",
+    "HEADER": {
+        "RELATED_RECIPES": "Related Recipes",
+        "INGREDIENTS": "Ingredients",
+        "INSTRUCTIONS": "Instructions",
+        "NUTRITION": "Nutrition Information",
+        "VARIATION": "Variation"
+    },
+    "LABEL": {
+        "RATINGS": "Ratings",
+        "CALORIES": "Calories",
+        "CALORIES_ABV": "Cal",
+        "SERVINGS": "Servings",
+        "SERVINGSIZE": "Serving size",
+        "FAT": "Fat",
+        "SATFAT": "Saturated Fat",
+        "CHOLESTEROL": "Cholesterol",
+        "SODIUM": "Sodium",
+        "SUGAR": "Sugar",
+        "CARBS": "Carbohydrates",
+        "FIBER": "Fiber",
+        "PROTEIN": "Protein"
+    },
+    "TITLE": {
+        "RECIPE_LIST": "Recipes",
+        "RECIPE_CATEGORY_LIST": "Categories"
+    }
 }

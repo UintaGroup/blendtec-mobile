@@ -1,18 +1,14 @@
 <ion-header>
-
     <ion-navbar>
-        <ion-title>Recipes</ion-title>
+        <ion-title>{{'TITLE.RECIPE_CATEGORY_LIST' | translate}}</ion-title>
     </ion-navbar>
 </ion-header>
 
 <ion-content class="page-list-recipe">
     <ion-list>
-        <ion-card *ngFor="let item of items" (click)="select(item)">
-            <!--<img [src]="item.sidebarImageUrl"/>-->
-            <div class="card-title">{{item.name}}</div>
-        </ion-card>
+        <ion-item *ngFor="let item of items" (click)="select(item)">
+            <ion-icon name='{{item.icon}}' item-left color="blendtec"></ion-icon>
+            {{item.name}}
+        </ion-item>
     </ion-list>
-    <ion-infinite-scroll (ionInfinite)="loadMore($event)">
-        <ion-infinite-scroll-content>Loading More Recipes...</ion-infinite-scroll-content>
-    </ion-infinite-scroll>
 </ion-content>

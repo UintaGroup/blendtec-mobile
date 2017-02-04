@@ -1,17 +1,19 @@
 import { Injectable } from '@angular/core';
+import { TranslateService } from 'ng2-translate';
 import 'rxjs/add/operator/map';
 
 import { Recipe } from '../models/recipe';
 import { Observable } from 'rxjs';
 import { BlendtecApi } from './blendtec-api';
 import { Response } from "@angular/http";
+import { BaseRecipe } from "../models/base-recipe";
+import { RecipeIngredient } from "../models/recipe-ingredient";
 
 @Injectable()
 export class Recipes {
 	private _resource: string = 'recipes';
 
-	constructor(private _api: BlendtecApi) {
-	}
+	constructor(private _api: BlendtecApi, protected translate: TranslateService) {}
 
 	all(params?: any) {
 		return this._api
@@ -28,7 +30,8 @@ export class Recipes {
 		return this._api
 			.get(this._resource + '/' + slug)
 			.map((r: Response) => {
-				return new Recipe(r.json().Recipe);
+				let body = r.json();
+				return new Recipe(body.Recipe, body.RelatedRecipe, body.RecipeIngredientsRecipe);
 			})
 			.catch(() => Observable.throw("Unable to find recipe."));
 	}

@@ -1,21 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Observable } from "rxjs";
+import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 
-import { RecipeCategory } from "../models/category";
+import { RecipeCategory } from '../models/category';
 
 @Injectable()
 export class RecipeCategories {
 
 	private categories: RecipeCategory[] = [
-		new RecipeCategory("Breads & Batters", "breads"),
-		new RecipeCategory("Beverages", "beverages"),
-		new RecipeCategory("Desserts", "desserts"),
-		new RecipeCategory("Soups", "soups"),
-		new RecipeCategory("Smoothies", "smoothies"),
-		new RecipeCategory("Meal Ideas", "meal_ideas"),
-		new RecipeCategory("Dressings and Marinades", "dressings_and_marinades"),
-		new RecipeCategory("Dips, Sauces, and Spreads", "dips_sauces_and_spreads")
+		new RecipeCategory('Breads & Batters', 'breads','pizza' ),
+		new RecipeCategory('Beverages', 'beverages', 'beer'),
+		new RecipeCategory('Desserts', 'desserts', 'ice-cream'),
+		new RecipeCategory('Soups', 'soups', 'cafe'),
+		new RecipeCategory('Smoothies', 'smoothies', 'nutrition'),
+		new RecipeCategory('Meal Ideas', 'meal_ideas', 'restaurant'),
+		new RecipeCategory('Dressings and Marinades', 'dressings_and_marinades', 'color-fill'),
+		new RecipeCategory('Dips, Sauces, and Spreads', 'dips_sauces_and_spreads', 'flask')
 	];
 	constructor() {}
 

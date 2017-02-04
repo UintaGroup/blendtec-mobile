@@ -20,11 +20,11 @@ export class Ingredient extends  BaseModel {
 	}
 
 	private _section_header: boolean;
-	public get section_header(): boolean {
+	public get sectionHeader(): boolean {
 		return this._section_header;
 	}
 
-	public set section_header(value: boolean) {
+	public set sectionHeader(value: boolean) {
 		this._section_header = value;
 	}
 }

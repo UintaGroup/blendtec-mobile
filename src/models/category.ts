@@ -1,8 +1,9 @@
 export class RecipeCategory {
 
-	constructor(name: string, slug: string) {
+	constructor(name: string, slug: string, icon: string) {
 		this._name = name;
 		this._slug = slug;
+		this._icon = icon;
 	}
 
 	private _name: string;
@@ -13,5 +14,10 @@ export class RecipeCategory {
 	private _slug: string;
 	public get slug(): string {
 		return this._slug;
+	}
+
+	private _icon: string;
+	public get icon(): string {
+		return this._icon;
 	}
 }

@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Injectable }   from '@angular/core';
+import { Http }         from '@angular/http';
 
-import { Item } from '../../models/item';
+import { Item }         from '../../models/item';
 
 @Injectable()
 export class Items {

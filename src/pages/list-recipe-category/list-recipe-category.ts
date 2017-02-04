@@ -1,8 +1,5 @@
 import { Component }        from '@angular/core';
 import { NavController }    from 'ionic-angular';
-import { Recipes }          from '../../providers/recipes';
-import { Recipe }           from '../../models/recipe';
-import { RecipeDetailPage } from '../recipe-detail/recipe-detail';
 import { RecipeCategories } from "../../providers/recipe-categories";
 import { RecipeCategory } from '../../models/category';
 import { ListRecipePage } from '../list-recipe/list-recipe';
@@ -25,7 +22,7 @@ export class ListRecipeCategoryPage {
 
 	select(item: RecipeCategory) {
 		this.navCtrl.push(ListRecipePage, {
-			category: item.slug
+			category: item
 		});
 	}
 }

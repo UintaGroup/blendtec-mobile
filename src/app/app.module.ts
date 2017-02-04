@@ -32,7 +32,9 @@ import { BlendtecApi } from '../providers/blendtec-api';
 import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate/ng2-translate';
 import { RecipeDetailPage } from '../pages/recipe-detail/recipe-detail';
 import { ListRecipeCategoryPage } from '../pages/list-recipe-category/list-recipe-category';
-import { RecipeRatingDirective } from '../directives/recipe-rating';
+import { LogoDirective, RecipeRatingDirective } from '../directives';
+import { CookTimePipe } from "../pipes/cook-time";
+import { NutrientMeasurementPipe } from "../pipes/nutrient-measurement";
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -82,11 +84,21 @@ let pages: any[] = [
 ];
 
 let directives: any[] = [
-	RecipeRatingDirective
+	RecipeRatingDirective,
+	LogoDirective
+];
+
+let pipes: any[] = [
+	CookTimePipe,
+	NutrientMeasurementPipe
 ];
 
 export function declarations() {
-	return pages.concat(directives);
+	return [
+		pages,
+		directives,
+		pipes
+	];
 }
 
 export function entryComponents() {

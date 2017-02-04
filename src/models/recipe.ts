@@ -1,23 +1,34 @@
-import { BaseModel } from './base-model';
+import { BaseRecipe } from "./base-recipe";
+import { RecipeIngredient } from "./recipe-ingredient";
 
-export class Recipe extends BaseModel{
+export class Recipe extends BaseRecipe {
 
-	private _id: number;
-	public get id(): number {
-		return this._id;
+	constructor(data: any, relatedRecipeData?: any, ingredientData?: any) {
+		super(data);
+		if(relatedRecipeData) {
+			this.relatedRecipes = relatedRecipeData.map(x => new BaseRecipe(x));
+		}
+		if(ingredientData) {
+			this.ingredients = ingredientData.map(x => new RecipeIngredient(x))
+		}
 	}
 
-	public set id(value: number) {
-		this._id = value;
+	private _relatedRecipes: BaseRecipe[] = [];
+	public get relatedRecipes(): BaseRecipe[] {
+		return this._relatedRecipes;
 	}
 
-	private _title: string;
-	public get title(): string {
-		return this._title;
+	public set relatedRecipes(value: BaseRecipe[]) {
+		this._relatedRecipes = value;
 	}
 
-	public set title(value: string) {
-		this._title = value;
+	private _ingredients: RecipeIngredient[];
+	public get ingredients(): RecipeIngredient[] {
+		return this._ingredients;
+	}
+
+	public set ingredients(value: RecipeIngredient[]) {
+		this._ingredients = value;
 	}
 
 	private _description: string;
@@ -83,13 +94,13 @@ export class Recipe extends BaseModel{
 		this._fat = value;
 	}
 
-	private satfat: number;
+	private _satfat: number;
 	public get satFat(): number {
-		return this.satfat;
+		return this._satfat;
 	}
 
 	public set satFat(value: number) {
-		this.satfat = value;
+		this._satfat = value;
 	}
 
 	private _sodium: number;
@@ -102,12 +113,21 @@ export class Recipe extends BaseModel{
 	}
 
 	private _cho: number;
-	public get cho(): number {
+	public get carbohydrates(): number {
 		return this._cho;
 	}
 
-	public set cho(value: number) {
+	public set carbohydrates(value: number) {
 		this._cho = value;
+	}
+
+	private _cholesterol: number;
+	public get cholesterol(): number {
+		return this._cholesterol;
+	}
+
+	public set cholesterol(value: number) {
+		this._cholesterol = value;
 	}
 
 	private _fiber: number;
@@ -153,15 +173,6 @@ export class Recipe extends BaseModel{
 
 	public set active(value: boolean) {
 		this._active = value;
-	}
-
-	private _slug: string;
-	public get slug(): string {
-		return this._slug;
-	}
-
-	public set slug(value: string) {
-		this._slug = value;
 	}
 
 	private _created: string;
@@ -281,15 +292,6 @@ export class Recipe extends BaseModel{
 		this._tags = value;
 	}
 
-	private _sidebarImageUrl: string;
-	public get sideBarImageUrl(): string {
-		return this._sidebarImageUrl;
-	}
-
-	public set sideBarImageUrl(value: string) {
-		this._sidebarImageUrl = value;
-	}
-
 	private _indexImageUrl: string;
 	public get indexImageUrl(): string {
 		return this._indexImageUrl;
@@ -297,6 +299,11 @@ export class Recipe extends BaseModel{
 
 	public set indexImageUrl(value: string) {
 		this._indexImageUrl = value;
+	}
+
+	private _imageUrls: string[];
+	public set imageUrls(value: string[]) {
+		this._imageUrls = value;
 	}
 
 	private _hide_nutrition: boolean;

@@ -9,21 +9,21 @@ import { Component, Input } from '@angular/core';
 				</div>`
 })
 export class RecipeRatingDirective {
+
 	@Input() rating: number;
 	private _possibleStars: number = 5;
-	public stars: number[] = new Array(this._possibleStars);
 
 	constructor(){}
 
-	public get fullStars(): number[] {
+	private get fullStars(): number[] {
 		return new Array(Math.floor(this.rating));
 	}
 
-	public get emptyStars(): number[] {
+	private get emptyStars(): number[] {
 		return new Array(this._possibleStars - Math.ceil(this.rating));
 	}
 
-	public get halfStar(): boolean {
+	private get halfStar(): boolean {
 		return this.rating % 1 > 0;
 	}
 }
