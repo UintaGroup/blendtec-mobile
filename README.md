@@ -1,1 +1,0 @@
-# blendtec-mobile
