@@ -7,16 +7,11 @@ import { Settings } from '../providers';
 //import { FirstRunPage } from '../pages/pages';
 //TODO REMOVE THIS
 import { EntryPage } from '../recipes/pages';
-import { CardsPage } from '../pages/cards/cards';
-import { ContentPage } from '../pages/content/content';
-import { LoginPage } from '../pages/login/login';
-import { MapPage } from '../pages/map/map';
-import { SignupPage } from '../pages/signup/signup';
-import { TutorialPage } from '../pages/tutorial/tutorial';
-import { WelcomePage } from '../pages/welcome/welcome';
-import { ListMasterPage } from '../pages/list-master/list-master';
-import { MenuPage } from '../pages/menu/menu';
-import { SettingsPage } from '../pages/settings/settings';
+import { LoginPage } from '../pages';
+import { SignupPage } from '../pages';
+import { TutorialPage } from '../pages';
+import { WelcomePage } from '../pages';
+import { MenuPage } from '../pages';
 
 import { TranslateService } from 'ng2-translate/ng2-translate';
 
@@ -45,14 +40,9 @@ export class MyApp {
 		{title: 'Tutorial', component: TutorialPage},
 		{title: 'Welcome', component: WelcomePage},
 		{title: 'Recipes', component: EntryPage },
-		{title: 'Cards', component: CardsPage},
-		{title: 'Content', component: ContentPage},
 		{title: 'Login', component: LoginPage},
 		{title: 'Signup', component: SignupPage},
-		{title: 'Map', component: MapPage},
-		{title: 'Master Detail', component: ListMasterPage},
 		{title: 'Menu', component: MenuPage},
-		{title: 'Settings', component: SettingsPage},
 	];
 
 	constructor(translate: TranslateService, platform: Platform, settings: Settings) {

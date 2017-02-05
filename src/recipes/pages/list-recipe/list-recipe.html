@@ -1,6 +1,6 @@
 <ion-header>
 	<ion-navbar>
-        <ion-title *ngIf="category">{{ category.name }}</ion-title>
+		<ion-title *ngIf="category">{{ category.name }}</ion-title>
 		<ion-title *ngIf="!category">{{'TITLE.RECIPE_LIST' | translate}}</ion-title>
 	</ion-navbar>
 </ion-header>
@@ -20,16 +20,16 @@
 					<recipe-rating rating="{{item.rating}}"></recipe-rating>
 				</ion-col>
 				<ion-col>
-                    <button ion-button icon-left clear small color="blendtec">
-                        <ion-icon name="stats"></ion-icon>
-                        <div>{{item.calories}} {{'LABEL.CALORIES_ABV' | translate}}</div>
-                    </button>
+					<button ion-button icon-left clear small color="blendtec">
+						<ion-icon name="stats"></ion-icon>
+						<div>{{item.calories}} {{'LABEL.CALORIES_ABV' | translate}}</div>
+					</button>
 				</ion-col>
 				<ion-col center text-center>
-                    <button ion-button icon-left clear small color="blendtec">
-                        <ion-icon name="time"></ion-icon>
-                        <div>{{item.cookTimeSeconds | cooktime}}</div>
-                    </button>
+					<button ion-button icon-left clear small color="blendtec">
+						<ion-icon name="time"></ion-icon>
+						<div>{{item.cookTimeSeconds | cooktime}}</div>
+					</button>
 				</ion-col>
 			</ion-row>
 		</ion-card>

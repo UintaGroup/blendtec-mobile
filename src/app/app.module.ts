@@ -5,18 +5,11 @@ import { Storage } from '@ionic/storage';
 
 import { MyApp } from './app.component';
 
-import { CardsPage } from '../pages/cards/cards';
-import { ContentPage } from '../pages/content/content';
 import { LoginPage } from '../pages/login/login';
-import { MapPage } from '../pages/map/map';
 import { SignupPage } from '../pages/signup/signup';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { WelcomePage } from '../pages/welcome/welcome';
-import { ListMasterPage } from '../pages/list-master/list-master';
-import { ItemCreatePage } from '../pages/item-create/item-create';
-import { ItemDetailPage } from '../pages/item-detail/item-detail';
 import { MenuPage } from '../pages/menu/menu';
-import { SettingsPage } from '../pages/settings/settings';
 
 import { User } from '../providers/user';
 import { Api } from '../providers/api';
@@ -55,18 +48,11 @@ export function provideSettings(storage: Storage) {
  */
 let pages: any[] = [
 	MyApp,
-	CardsPage,
-	ContentPage,
 	LoginPage,
-	MapPage,
 	SignupPage,
 	TutorialPage,
 	WelcomePage,
-	ListMasterPage,
-	ItemDetailPage,
-	ItemCreatePage,
-	MenuPage,
-	SettingsPage,
+	MenuPage
 ];
 
 export function declarations() {
