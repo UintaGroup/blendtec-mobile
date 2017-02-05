@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-import { Items } from '../../providers/providers';
+import { Items } from '../../providers';
 
 @Component({
 	selector: 'page-item-detail',

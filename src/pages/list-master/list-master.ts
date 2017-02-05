@@ -4,7 +4,7 @@ import { NavController, ModalController } from 'ionic-angular';
 import { ItemDetailPage } from '../item-detail/item-detail';
 import { ItemCreatePage } from '../item-create/item-create';
 
-import { Items } from '../../providers/providers';
+import { Items } from '../../providers';
 import { Item } from '../../models/item';
 
 @Component({

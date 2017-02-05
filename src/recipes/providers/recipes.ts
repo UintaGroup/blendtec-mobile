@@ -6,8 +6,6 @@ import { Recipe } from '../models/recipe';
 import { Observable } from 'rxjs';
 import { BlendtecApi } from './blendtec-api';
 import { Response } from "@angular/http";
-import { BaseRecipe } from "../models/base-recipe";
-import { RecipeIngredient } from "../models/recipe-ingredient";
 
 @Injectable()
 export class Recipes {

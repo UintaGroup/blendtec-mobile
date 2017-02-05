@@ -1,7 +1,9 @@
-import { LogoDirective }            from './logo';
-import { RecipeRatingDirective }    from './recipe-rating';
+import { LogoDirective }    from './logo';
 
 export {
 	LogoDirective,
-	RecipeRatingDirective
 }
+
+export const BLENDTEC_DIRECTIVES = [
+	LogoDirective
+];
