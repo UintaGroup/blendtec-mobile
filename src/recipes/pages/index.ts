@@ -1,27 +1,27 @@
-import { ListRecipePage } from './list-recipe/list-recipe';
-import { ListRecipeCategoryPage } from './list-recipe-category/list-recipe-category';
-import { TabsPage } from './tabs/tabs';
-import { SearchPage } from './search/search';
-import { RecipeDetailPage } from './recipe-detail/recipe-detail';
+import { RecipeListPage } from './recipe-list/recipe-list.page';
+import { RecipeCategoryListPage } from './recipe-category-list/recipe-category-list.page';
+import { RecipeTabsPage } from './recipe-tabs/recipe-tabs.page';
+import { RecipeSearchPage } from './recipe-search/recipe-search.page';
+import { RecipeDetailPage } from './recipe-detail/recipe-detail.page';
 
-export const MainPage = TabsPage;
-export const Tab1Root = ListRecipePage;
-export const Tab2Root = SearchPage;
-export const Tab3Root = ListRecipeCategoryPage;
+export const MainPage = RecipeTabsPage;
+export const Tab1Root = RecipeListPage;
+export const Tab2Root = RecipeSearchPage;
+export const Tab3Root = RecipeCategoryListPage;
 
 export {
-	TabsPage as EntryPage,
-	ListRecipePage,
-	ListRecipeCategoryPage,
-	TabsPage,
-	SearchPage,
+	RecipeTabsPage as EntryPage,
+	RecipeListPage,
+	RecipeCategoryListPage,
+	RecipeTabsPage,
+	RecipeSearchPage,
 	RecipeDetailPage
 }
 export const RECIPE_PAGES = [
-	ListRecipePage,
-	SearchPage,
-	ListRecipeCategoryPage,
-	TabsPage,
+	RecipeListPage,
+	RecipeSearchPage,
+	RecipeCategoryListPage,
+	RecipeTabsPage,
 	RecipeDetailPage
 ];
 

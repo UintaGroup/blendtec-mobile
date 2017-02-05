@@ -8,9 +8,9 @@ import { Tab3Root } from '../index';
 
 @Component({
 	selector: 'page-tabs',
-	templateUrl: 'tabs.html'
+	templateUrl: 'recipe-tabs.page.html'
 })
-export class TabsPage {
+export class RecipeTabsPage {
 	tab1Root: any = Tab1Root;
 	tab2Root: any = Tab2Root;
 	tab3Root: any = Tab3Root;

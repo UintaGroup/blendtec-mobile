@@ -2,14 +2,14 @@ import { Component }        from '@angular/core';
 import { NavController, NavParams, ToastController }    from 'ionic-angular';
 import { Recipes }          from '../../providers/recipes';
 import { Recipe }           from '../../models/recipe';
-import { RecipeDetailPage } from '../recipe-detail/recipe-detail';
+import { RecipeDetailPage } from '../recipe-detail/recipe-detail.page';
 import { RecipeCategory } from "../../models/category";
 
 @Component({
 	selector: 'page-list-recipe',
-	templateUrl: 'list-recipe.html'
+	templateUrl: 'recipe-list.page.html'
 })
-export class ListRecipePage {
+export class RecipeListPage {
 
 	public items: Recipe[];
 	public page: number = 1;

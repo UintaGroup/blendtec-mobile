@@ -2,13 +2,13 @@ import { Component }        from '@angular/core';
 import { NavController }    from 'ionic-angular';
 import { RecipeCategories } from "../../providers/recipe-categories";
 import { RecipeCategory } from '../../models/category';
-import { ListRecipePage } from '../list-recipe/list-recipe';
+import { RecipeListPage } from '../recipe-list/recipe-list.page';
 
 @Component({
 	selector: 'page-list-recipe-category',
-	templateUrl: 'list-recipe-category.html'
+	templateUrl: 'recipe-category-list.page.html'
 })
-export class ListRecipeCategoryPage {
+export class RecipeCategoryListPage {
 
 	public items: RecipeCategory[];
 
@@ -21,7 +21,7 @@ export class ListRecipeCategoryPage {
 	}
 
 	select(item: RecipeCategory) {
-		this.navCtrl.push(ListRecipePage, {
+		this.navCtrl.push(RecipeListPage, {
 			category: item
 		});
 	}

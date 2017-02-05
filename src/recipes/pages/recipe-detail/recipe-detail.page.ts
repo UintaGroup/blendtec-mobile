@@ -7,7 +7,7 @@ import { BaseRecipe } from "../../models/base-recipe";
 
 @Component({
 	selector: 'page-item-detail',
-	templateUrl: 'recipe-detail.html'
+	templateUrl: 'recipe-detail.page.html'
 })
 export class RecipeDetailPage {
 	public item: Recipe;

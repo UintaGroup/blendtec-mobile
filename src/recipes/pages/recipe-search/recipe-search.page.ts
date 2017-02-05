@@ -2,14 +2,14 @@ import { Component } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
 
 import { Recipes } from "../../providers/recipes";
-import { RecipeDetailPage } from "../recipe-detail/recipe-detail";
+import { RecipeDetailPage } from "../recipe-detail/recipe-detail.page";
 import { Recipe } from "../../models/recipe";
 
 @Component({
 	selector: 'page-search',
-	templateUrl: 'search.html'
+	templateUrl: 'recipe-search.page.html'
 })
-export class SearchPage {
+export class RecipeSearchPage {
 	query: string = '';
 	currentItems: any = [];
 
