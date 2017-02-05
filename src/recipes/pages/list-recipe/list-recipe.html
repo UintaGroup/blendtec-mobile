@@ -1,5 +1,8 @@
 <ion-header>
 	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
 		<ion-title *ngIf="category">{{ category.name }}</ion-title>
 		<ion-title *ngIf="!category">{{'TITLE.RECIPE_LIST' | translate}}</ion-title>
 	</ion-navbar>
