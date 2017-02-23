@@ -14,7 +14,7 @@ export {
 	WelcomePage
 }
 
-export const CORE_PAGES = [
+export const COMMON_PAGES = [
 	LoginPage,
 	MenuPage,
 	SignupPage,

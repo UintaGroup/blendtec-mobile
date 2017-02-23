@@ -3,19 +3,18 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 
 @Injectable()
-export class Settings {
+export class SettingsService {
 	private SETTINGS_KEY: string = '_settings';
 
 	settings: any;
 
 	_defaults: any;
-	_readyPromise: Promise<any>;
 
-	constructor(public storage: Storage, defaults: any) {
+	constructor(public storage: Storage, defaults?: any) {
 		this._defaults = defaults;
 	}
 
-	load() {
+	public load(): Promise<any> {
 		return this.storage.get(this.SETTINGS_KEY).then((value) => {
 			if (value) {
 				this.settings = value;
@@ -23,12 +22,12 @@ export class Settings {
 			} else {
 				this.setAll(this._defaults).then((val) => {
 					this.settings = val;
-				})
+				});
 			}
 		});
 	}
 
-	_mergeDefaults(defaults: any) {
+	private _mergeDefaults(defaults: any): Promise<any> {
 		for (let k in defaults) {
 			if (!(k in this.settings)) {
 				this.settings[k] = defaults[k];
@@ -37,31 +36,31 @@ export class Settings {
 		return this.setAll(this.settings);
 	}
 
-	merge(settings: any) {
+	public merge(settings: any): Promise<any> {
 		for (let k in settings) {
 			this.settings[k] = settings[k];
 		}
 		return this.save();
 	}
 
-	setValue(key: string, value: any) {
+	public setValue(key: string, value: any): Promise<any> {
 		this.settings[key] = value;
 		return this.storage.set(this.SETTINGS_KEY, this.settings);
 	}
 
-	setAll(value: any) {
+	public setAll(value: any): Promise<any> {
 		return this.storage.set(this.SETTINGS_KEY, value);
 	}
 
-	getValue(key: string) {
+	public getValue(key: string): Promise<any> {
 		return this.storage.get(key);
 	}
 
-	save() {
+	public save(): Promise<any> {
 		return this.setAll(this.settings);
 	}
 
-	get allSettings() {
+	public get allSettingsService(): any {
 		return this.settings;
 	}
 }
