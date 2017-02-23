@@ -2,16 +2,16 @@ import { Component, ViewChild } from '@angular/core';
 import { Platform, Nav } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
-import { Settings } from '../providers';
+import { SettingsService } from '../common/providers';
 
 //import { FirstRunPage } from '../pages/pages';
 //TODO REMOVE THIS
 import { EntryPage } from '../recipes/pages';
-import { LoginPage } from '../pages';
-import { SignupPage } from '../pages';
-import { TutorialPage } from '../pages';
-import { WelcomePage } from '../pages';
-import { MenuPage } from '../pages';
+import { LoginPage } from '../common/pages';
+import { SignupPage } from '../common/pages';
+import { TutorialPage } from '../common/pages';
+import { WelcomePage } from '../common/pages';
+import { MenuPage } from '../common/pages';
 
 import { TranslateService } from 'ng2-translate/ng2-translate';
 
@@ -19,7 +19,7 @@ import { TranslateService } from 'ng2-translate/ng2-translate';
 	template: `<ion-menu [content]="content">
 	<ion-header>
 		<ion-toolbar>
-			<ion-title>Pages</ion-title>
+			<ion-title>Edited Pages</ion-title>
 				</ion-toolbar>
 	</ion-header>
 	<ion-content>
@@ -45,7 +45,7 @@ export class MyApp {
 		{title: 'Menu', component: MenuPage},
 	];
 
-	constructor(translate: TranslateService, platform: Platform, settings: Settings) {
+	constructor(translate: TranslateService, platform: Platform, settings: SettingsService) {
 		translate.setDefaultLang('en');
 		translate.use('en');
 

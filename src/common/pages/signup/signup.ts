@@ -1,7 +1,7 @@
 import { Component }                        from '@angular/core';
 import { NavController, ToastController }   from 'ionic-angular';
 import { TranslateService }                 from 'ng2-translate/ng2-translate';
-import { MainPage }                         from '../../recipes/pages';
+import { MainPage }                         from '../../../recipes/pages';
 
 import { User } from '../../providers';
 
