@@ -20,7 +20,7 @@
         </div>
     </div>
     <div padding>
-        <button ion-button block (click)="signup()" class="signup" color="blendtec">{{ 'SIGNUP' | translate }}</button>
-        <button ion-button block (click)="login()" class="login">{{ 'LOGIN' | translate }}</button>
+        <bt-button (click)="signup()" class="signup">{{ 'SIGNUP' | translate | uppercase }}</bt-button>
+        <bt-button (click)="login()" class="login">{{ 'LOGIN' | translate | uppercase }}</bt-button>
     </div>
 </ion-content>
