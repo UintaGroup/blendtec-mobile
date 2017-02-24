@@ -6,6 +6,7 @@
   "scripts": {
     "start": "ionic serve",
     "test": "ng test --watch false",
+    "ci": "ng test --watch=false --code-coverage",
     "coverage": "ng test --code-coverage",
     "tdd": "ng test",
     "e2e": "ionic-app-scripts build && protractor",
