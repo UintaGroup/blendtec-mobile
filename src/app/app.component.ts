@@ -4,14 +4,13 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { SettingsService } from '../common/providers';
 
-//import { FirstRunPage } from '../pages/pages';
-//TODO REMOVE THIS
-import { EntryPage } from '../recipes/pages';
+import { FirstRunPage } from '../common/pages';
 import { LoginPage } from '../common/pages';
 import { SignupPage } from '../common/pages';
 import { TutorialPage } from '../common/pages';
 import { WelcomePage } from '../common/pages';
 import { MenuPage } from '../common/pages';
+import { EntryPage } from '../recipes/pages';
 
 import { TranslateService } from 'ng2-translate/ng2-translate';
 
@@ -19,7 +18,7 @@ import { TranslateService } from 'ng2-translate/ng2-translate';
 	template: `<ion-menu [content]="content">
 	<ion-header>
 		<ion-toolbar>
-			<ion-title>Menu</ion-title>
+			<ion-title>Edited Pages</ion-title>
 				</ion-toolbar>
 	</ion-header>
 	<ion-content>
@@ -33,7 +32,7 @@ import { TranslateService } from 'ng2-translate/ng2-translate';
 	<ion-nav #content [root]="rootPage"></ion-nav>`
 })
 export class MyApp {
-	rootPage = EntryPage;
+	rootPage = FirstRunPage;
 	@ViewChild(Nav) nav: Nav;
 
 	pages: any[] = [
