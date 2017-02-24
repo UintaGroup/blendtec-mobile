@@ -1,5 +1,5 @@
-import { BlendtecApi } from "./blendtec-api";
-import { Jsonp } from "@angular/http";
+import { BlendtecApi } from './blendtec-api';
+import { Jsonp } from '@angular/http';
 
 describe('BlendtecApi', () => {
 

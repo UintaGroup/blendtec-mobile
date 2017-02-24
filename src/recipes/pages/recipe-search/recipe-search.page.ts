@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
 
-import { Recipes } from "../../providers/recipes";
-import { RecipeDetailPage } from "../recipe-detail/recipe-detail.page";
-import { Recipe } from "../../models/recipe";
+import { Recipes } from '../../providers/recipes';
+import { RecipeDetailPage } from '../recipe-detail/recipe-detail.page';
+import { Recipe } from '../../models/recipe';
 
 @Component({
 	selector: 'page-search',

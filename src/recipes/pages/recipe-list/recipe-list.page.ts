@@ -3,7 +3,7 @@ import { NavController, NavParams, ToastController }    from 'ionic-angular';
 import { Recipes }          from '../../providers/recipes';
 import { Recipe }           from '../../models/recipe';
 import { RecipeDetailPage } from '../recipe-detail/recipe-detail.page';
-import { RecipeCategory } from "../../models/category";
+import { RecipeCategory } from '../../models/category';
 
 @Component({
 	selector: 'page-list-recipe',

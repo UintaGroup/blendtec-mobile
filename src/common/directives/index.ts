@@ -1,5 +1,5 @@
 import { BlendtecButton }   from './bt-button.component';
-import { Logo }             from "./logo.component";
+import { Logo }             from './logo.component';
 
 export {
 	Logo,

@@ -3,7 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { Recipes } from '../../providers/recipes';
 import { Recipe } from '../../models/recipe';
-import { BaseRecipe } from "../../models/base-recipe";
+import { BaseRecipe } from '../../models/base-recipe';
 
 @Component({
 	selector: 'page-item-detail',

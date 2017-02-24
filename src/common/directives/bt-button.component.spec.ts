@@ -1,6 +1,6 @@
 import { ComponentFixture, async }  from '@angular/core/testing';
 import { TestUtils }                from '../../test';
-import { BlendtecButton }           from "./bt-button.component";
+import { BlendtecButton }           from './bt-button.component';
 
 let fixture: ComponentFixture<BlendtecButton> = null;
 let instance: any = null;

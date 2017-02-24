@@ -1,6 +1,6 @@
 import { Component }        from '@angular/core';
 import { NavController }    from 'ionic-angular';
-import { RecipeCategories } from "../../providers/recipe-categories";
+import { RecipeCategories } from '../../providers/recipe-categories';
 import { RecipeCategory } from '../../models/category';
 import { RecipeListPage } from '../recipe-list/recipe-list.page';
 

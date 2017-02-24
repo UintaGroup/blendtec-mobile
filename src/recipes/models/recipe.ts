@@ -1,5 +1,5 @@
-import { BaseRecipe } from "./base-recipe";
-import { RecipeIngredient } from "./recipe-ingredient";
+import { BaseRecipe } from './base-recipe';
+import { RecipeIngredient } from './recipe-ingredient';
 
 export class Recipe extends BaseRecipe {
 

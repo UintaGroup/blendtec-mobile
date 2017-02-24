@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 import { Recipe } from '../models/recipe';
 import { Observable } from 'rxjs';
 import { BlendtecApi } from './blendtec-api';
-import { Response } from "@angular/http";
+import { Response } from '@angular/http';
 
 @Injectable()
 export class Recipes {
