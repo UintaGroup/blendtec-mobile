@@ -4,6 +4,6 @@ export {
 	LogoDirective,
 }
 
-export const BLENDTEC_DIRECTIVES = [
+export const COMMON_DIRECTIVES = [
 	LogoDirective
 ];
