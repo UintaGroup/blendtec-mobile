@@ -19,7 +19,7 @@ import { TranslateService } from 'ng2-translate/ng2-translate';
 	template: `<ion-menu [content]="content">
 	<ion-header>
 		<ion-toolbar>
-			<ion-title>Edited Pages</ion-title>
+			<ion-title>Menu</ion-title>
 				</ion-toolbar>
 	</ion-header>
 	<ion-content>

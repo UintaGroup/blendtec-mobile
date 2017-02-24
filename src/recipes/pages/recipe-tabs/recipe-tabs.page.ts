@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Component }        from '@angular/core';
+import { NavController }    from 'ionic-angular';
 import { TranslateService } from 'ng2-translate/ng2-translate';
 
-import { Tab1Root } from '../index';
-import { Tab2Root } from '../index';
-import { Tab3Root } from '../index';
+import { Tab1Root }         from '../index';
+import { Tab2Root }         from '../index';
+import { Tab3Root }         from '../index';
 
 @Component({
 	selector: 'page-tabs',

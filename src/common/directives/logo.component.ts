@@ -21,7 +21,7 @@ import { Component, Input } from '@angular/core';
 			</svg>
 	</div>`
 })
-export class LogoDirective {
+export class Logo {
 
 	@Input() url: number;
 	@Input() size: string;

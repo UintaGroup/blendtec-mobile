@@ -1,0 +1,25 @@
+bt-button {
+  .bt-button {
+    border-radius: 8px;
+  }
+
+  .bt-button-text {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background-color: #ED1B2C;
+    color: #fff;
+    float: left;
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 90%;
+    left: 0px;
+    padding-top: .6em;
+  }
+
+  .bt-button-icon {
+    position: absolute;
+    right: 1em;
+    color: #60646B;
+  }
+}

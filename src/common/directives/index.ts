@@ -1,9 +1,12 @@
-import { LogoDirective }    from './logo';
+import { BlendtecButton }   from './bt-button.component';
+import { Logo }             from "./logo.component";
 
 export {
-	LogoDirective,
+	Logo,
+	BlendtecButton
 }
 
 export const COMMON_DIRECTIVES = [
-	LogoDirective
+	Logo,
+	BlendtecButton
 ];

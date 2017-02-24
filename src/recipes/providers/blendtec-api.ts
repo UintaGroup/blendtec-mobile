@@ -10,7 +10,7 @@ export class BlendtecApi {
 	}
 
 	//TODO simplfy when json2jsonp isn't necessary
-	private buildUrl(endpoint: string, params?: string): string {
+	public buildUrl(endpoint: string, params?: string): string {
 		let tmpUrl = this.url + encodeURIComponent('www.blendtec.com/' + endpoint + '.json');
 		if(params) {
 			tmpUrl = tmpUrl + '?' +  params;
