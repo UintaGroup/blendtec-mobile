@@ -9,8 +9,7 @@ import 'rxjs/add/operator/map';
 export class Api {
 	url: string = 'http://example.com';
 
-	constructor(public http: Http) {
-	}
+	constructor(public http: Http) {}
 
 	get(endpoint: string, params?: any, options?: RequestOptions) {
 		if (!options) {

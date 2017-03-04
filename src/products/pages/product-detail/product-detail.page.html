@@ -1,0 +1,20 @@
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>{{ item?.name | uppercase}}</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+	<ion-card>
+		<ion-card-content>
+			<p>{{item?.caption}}</p>
+		</ion-card-content>
+	</ion-card>
+	<ion-card>
+        <ion-card-header>Package Includes</ion-card-header>
+		<ion-card-content><span [innerHTML]="item?.packageIncludes"></span></ion-card-content>
+	</ion-card>
+</ion-content>

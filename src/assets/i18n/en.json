@@ -56,6 +56,7 @@
     },
     "TITLE": {
         "RECIPE_LIST": "Recipes",
-        "RECIPE_CATEGORY_LIST": "Categories"
+        "RECIPE_CATEGORY_LIST": "Categories",
+        "PRODUCT_CATEGORY_LIST": "Categories"
     }
 }

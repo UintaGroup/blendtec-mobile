@@ -12,8 +12,22 @@ import 'zone.js/dist/fake-async-test';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { getTestBed, TestBed } from '@angular/core/testing';
 import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
-import { App, Config, Form, IonicModule, Keyboard, DomController, MenuController, NavController, Platform } from 'ionic-angular';
+import {
+	App,
+	Config,
+	Form,
+	IonicModule,
+	Keyboard,
+	DomController,
+	MenuController,
+	NavController,
+	Platform
+} from 'ionic-angular';
 import { ConfigMock, PlatformMock } from './mocks';
+import { MockBackend } from "@angular/http/testing";
+import { XHRBackend, HttpModule } from "@angular/http";
+import { DropboxApi } from "./common/providers/dropbox-api.service";
+import { CONFIG, APP_CONFIG } from "./app/app.config";
 
 // Unfortunately there's no typing for the `__karma__` variable. Just declare it as any.
 declare var __karma__: any;
@@ -55,14 +69,19 @@ export class TestUtils {
 				...components,
 			],
 			providers: [
+				MockBackend,
 				App, Form, Keyboard, DomController, MenuController, NavController,
 				{provide: Platform, useClass: PlatformMock},
-				{provide: Config, useClass: ConfigMock}
+				{provide: Config, useClass: ConfigMock},
+				DropboxApi,
+				{provide: XHRBackend, useClass: MockBackend},
+				{provide: APP_CONFIG, useValue: CONFIG},
 			],
 			imports: [
+				HttpModule,
 				FormsModule,
 				IonicModule,
-				ReactiveFormsModule,
+				ReactiveFormsModule
 			],
 		});
 	}

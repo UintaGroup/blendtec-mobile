@@ -1,0 +1,20 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{'TITLE.PRODUCT_CATEGORY_LIST' | translate}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="page-list-category">
+    <ion-list>
+        <ion-item>
+            <ion-label>Residential</ion-label>
+            <ion-toggle [(ngModel)]="residential" color="blendtec"></ion-toggle>
+        </ion-item>
+        <ion-item [hidden]="(item.commercial === residential)" *ngFor="let item of items" (click)="select(item)">
+            <span [innerHTML]="item?.name"></span>
+        </ion-item>
+    </ion-list>
+</ion-content>

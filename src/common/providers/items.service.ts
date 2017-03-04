@@ -13,7 +13,7 @@ export class Items {
 	}
 
 	query(params?: any) {
-		return this.api.get('/items', params)
+		return this.api.get('/products', params)
 			.map(resp => resp.json());
 	}
 

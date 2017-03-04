@@ -1,3 +1,4 @@
-import { Item } from './item';
+import { Item }         from './item';
+import { ApiEntity }    from './api-entity';
 
-export {Item}
+export {Item, ApiEntity}

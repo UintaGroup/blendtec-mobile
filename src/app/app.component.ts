@@ -11,8 +11,10 @@ import { TutorialPage } from '../common/pages';
 import { WelcomePage } from '../common/pages';
 import { MenuPage } from '../common/pages';
 import { EntryPage } from '../recipes/pages';
+import { CategoryListPage as ProductCategoriesPage } from '../products/pages';
 
 import { TranslateService } from 'ng2-translate/ng2-translate';
+import { CategoryListPage } from "../products/pages/category-list/category-list.page";
 
 @Component({
 	template: `<ion-menu [content]="content">
@@ -32,7 +34,8 @@ import { TranslateService } from 'ng2-translate/ng2-translate';
 	<ion-nav #content [root]="rootPage"></ion-nav>`
 })
 export class MyApp {
-	rootPage = FirstRunPage;
+	// rootPage = FirstRunPage;
+	rootPage = CategoryListPage;
 	@ViewChild(Nav) nav: Nav;
 
 	pages: any[] = [
@@ -42,6 +45,7 @@ export class MyApp {
 		{title: 'Login', component: LoginPage},
 		{title: 'Signup', component: SignupPage},
 		{title: 'Menu', component: MenuPage},
+		{title: 'Product Categories', component: ProductCategoriesPage },
 	];
 
 	constructor(translate: TranslateService, platform: Platform, settings: SettingsService) {
