@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
 	selector: 'swirl',
@@ -11,4 +11,4 @@ import { Component, Input } from '@angular/core';
 			</svg>
 	</div>`
 })
-export class Swirl{}
+export class Swirl {}

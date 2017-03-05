@@ -1,6 +1,6 @@
-import { BaseModel } from './base-model';
+import { BaseModel } from './base.model';
 
-export class BaseRecipe extends BaseModel{
+export class BaseRecipe extends BaseModel {
 
 	private _id: number;
 	public get id(): number {

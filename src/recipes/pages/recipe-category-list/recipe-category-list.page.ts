@@ -1,7 +1,7 @@
 import { Component }        from '@angular/core';
 import { NavController }    from 'ionic-angular';
-import { RecipeCategories } from '../../providers/recipe-categories';
-import { RecipeCategory } from '../../models/category';
+import { RecipeCategoryService } from '../../providers/recipe-category.service';
+import { RecipeCategory } from '../../models/category.model';
 import { RecipeListPage } from '../recipe-list/recipe-list.page';
 
 @Component({
@@ -10,17 +10,13 @@ import { RecipeListPage } from '../recipe-list/recipe-list.page';
 })
 export class RecipeCategoryListPage {
 
-	public items: RecipeCategory[];
+	public items: RecipeCategory[] = [];
 
-	constructor(public navCtrl: NavController, public categories: RecipeCategories) {
-		this.items = [];
-		categories.all().subscribe((r) => {
-			this.items.push(r);
-			console.log('ITEMS', this.items);
-		});
+	constructor(public navCtrl: NavController, public categories: RecipeCategoryService) {
+		categories.all().subscribe(r => this.items.push(r));
 	}
 
-	select(item: RecipeCategory) {
+	public select(item: RecipeCategory): void {
 		this.navCtrl.push(RecipeListPage, {
 			category: item
 		});

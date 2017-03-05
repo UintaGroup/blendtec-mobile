@@ -1,4 +1,4 @@
-import { BaseRecipe } from './base-recipe';
+import { BaseRecipe } from './base-recipe.model';
 import { RecipeIngredient } from './recipe-ingredient';
 
 export class Recipe extends BaseRecipe {
@@ -6,20 +6,20 @@ export class Recipe extends BaseRecipe {
 	constructor(data: any, relatedRecipeData?: any, ingredientData?: any) {
 		super(data);
 		if(relatedRecipeData) {
-			this.relatedRecipes = relatedRecipeData.map(x => new BaseRecipe(x));
+			this.relatedRecipeService = relatedRecipeData.map(x => new BaseRecipe(x));
 		}
 		if(ingredientData) {
-			this.ingredients = ingredientData.map(x => new RecipeIngredient(x))
+			this.ingredients = ingredientData.map(x => new RecipeIngredient(x));
 		}
 	}
 
-	private _relatedRecipes: BaseRecipe[] = [];
-	public get relatedRecipes(): BaseRecipe[] {
-		return this._relatedRecipes;
+	private _relatedRecipeService: BaseRecipe[] = [];
+	public get relatedRecipeService(): BaseRecipe[] {
+		return this._relatedRecipeService;
 	}
 
-	public set relatedRecipes(value: BaseRecipe[]) {
-		this._relatedRecipes = value;
+	public set relatedRecipeService(value: BaseRecipe[]) {
+		this._relatedRecipeService = value;
 	}
 
 	private _ingredients: RecipeIngredient[];
@@ -67,7 +67,9 @@ export class Recipe extends BaseRecipe {
 		this._servings = value;
 	}
 
+	/* tslint:disable */
 	private _serving_size: string;
+	/* tslint:enable */
 	public get servingSize(): string {
 		return this._serving_size;
 	}
@@ -157,7 +159,9 @@ export class Recipe extends BaseRecipe {
 		this._protein = value;
 	}
 
+	/* tslint:disable */
 	private _youtube_code: string;
+	/* tslint:enable */
 	public get youtubeCode(): string {
 		return this._youtube_code;
 	}
@@ -220,7 +224,9 @@ export class Recipe extends BaseRecipe {
 		this._rating = value;
 	}
 
+	/* tslint:disable */
 	private _rating_count: number;
+	/* tslint:enable */
 	public get ratingCount(): number {
 		return this._rating_count;
 	}
@@ -238,7 +244,9 @@ export class Recipe extends BaseRecipe {
 		this._publishDate = value;
 	}
 
+	/* tslint:disable */
 	private _cooktime_seconds: number;
+	/* tslint:enable */
 	public get cookTimeSeconds(): number {
 		return this._cooktime_seconds;
 	}
@@ -247,7 +255,9 @@ export class Recipe extends BaseRecipe {
 		this._cooktime_seconds = value;
 	}
 
+	/* tslint:disable */
 	private _preptime_seconds: number;
+	/* tslint:enable */
 	public get preptimeSeconds(): number {
 		return this._preptime_seconds;
 	}
@@ -274,7 +284,9 @@ export class Recipe extends BaseRecipe {
 		this._blogTitle = value;
 	}
 
+	/* tslint:disable */
 	private _nutrition_info_sentence: string;
+	/* tslint:enable */
 	public get nutrition_info_sentence(): string {
 		return this._nutrition_info_sentence;
 	}
@@ -306,7 +318,9 @@ export class Recipe extends BaseRecipe {
 		this._imageUrls = value;
 	}
 
+	/* tslint:disable */
 	private _hide_nutrition: boolean;
+	/* tslint:enable */
 	public get hideNutrition(): boolean {
 		return this._hide_nutrition;
 	}

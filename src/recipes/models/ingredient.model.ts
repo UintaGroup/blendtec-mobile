@@ -1,4 +1,4 @@
-import { BaseModel } from './base-model';
+import { BaseModel } from './base.model';
 
 export class Ingredient extends  BaseModel {
 	private _id: number;
@@ -19,7 +19,9 @@ export class Ingredient extends  BaseModel {
 		this._name = value;
 	}
 
+	/* tslint:disable */
 	private _section_header: boolean;
+	/* tslint:enable */
 	public get sectionHeader(): boolean {
 		return this._section_header;
 	}

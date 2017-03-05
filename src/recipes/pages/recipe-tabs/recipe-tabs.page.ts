@@ -11,13 +11,13 @@ import { Tab3Root }         from '../index';
 	templateUrl: 'recipe-tabs.page.html'
 })
 export class RecipeTabsPage {
-	tab1Root: any = Tab1Root;
-	tab2Root: any = Tab2Root;
-	tab3Root: any = Tab3Root;
+	public tab1Root: any = Tab1Root;
+	public tab2Root: any = Tab2Root;
+	public tab3Root: any = Tab3Root;
 
-	tab1Title = ' ';
-	tab2Title = ' ';
-	tab3Title = ' ';
+	public tab1Title: string = ' ';
+	public tab2Title: string = ' ';
+	public tab3Title: string = ' ';
 
 	constructor(public navCtrl: NavController, public translateService: TranslateService) {
 		translateService.get(['TAB1_TITLE', 'TAB2_TITLE', 'TAB3_TITLE'])

@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
-import { TranslateService } from 'ng2-translate';
-import 'rxjs/add/operator/map';
-
-import { Recipe } from '../models/recipe';
-import { Observable } from 'rxjs';
-import { BlendtecApi } from './blendtec-api';
 import { Response } from '@angular/http';
+import { Observable } from 'rxjs';
+import 'rxjs/add/operator/map';
+import { TranslateService } from 'ng2-translate';
+
+import { Recipe } from '../models/recipe.model';
+import { BlendtecApi } from './blendtec-api';
 
 @Injectable()
-export class Recipes {
+export class RecipeService {
 	private _resource: string = 'recipes';
 
 	constructor(private _api: BlendtecApi, protected translate: TranslateService) {}
 
-	all(params?: any) {
+	public all(params?: any): Observable<Recipe[]> {
 		return this._api
 			.get(this._resource, params)
 			.map((r: Response) => {
@@ -21,20 +21,20 @@ export class Recipes {
 					return new Recipe(x.Recipe);
 				});
 			})
-			.catch(() => Observable.throw("No recipes found."));
+			.catch(() => Observable.throw('No recipes found.'));
 	}
 
-	one(slug: string) {
+	public one(slug: string): Observable<Recipe> {
 		return this._api
 			.get(this._resource + '/' + slug)
 			.map((r: Response) => {
 				let body = r.json();
 				return new Recipe(body.Recipe, body.RelatedRecipe, body.RecipeIngredientsRecipe);
 			})
-			.catch(() => Observable.throw("Unable to find recipe."));
+			.catch(() => Observable.throw('Unable to find recipe.'));
 	}
 
-	category(categorySlug: string) {
+	public category(categorySlug: string): Observable<Recipe[]> {
 		return this._api
 			.get(this._resource + '/categories/' + categorySlug)
 			.map((r: Response) => {
@@ -42,10 +42,10 @@ export class Recipes {
 					return new Recipe(x.Recipe);
 				});
 			})
-			.catch(() => Observable.throw("No recipes found."));
+			.catch(() => Observable.throw('No recipes found.'));
 	}
 
-	page(page: number) {
+	public page(page: number): Observable<Recipe[]> {
 		return this._api
 			.get(this._resource + '/index/page:' + page)
 			.map((r: Response) => {
@@ -53,6 +53,6 @@ export class Recipes {
 					return new Recipe(x.Recipe);
 				});
 			})
-			.catch(() => Observable.throw("No recipes found."));
+			.catch(() => Observable.throw('No recipes found.'));
 	}
 }

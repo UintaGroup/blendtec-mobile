@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
-
 import { TranslateService } from 'ng2-translate/ng2-translate';
-
 import { MainPage } from '../../../recipes/pages';
 import { User } from '../../providers';
 
@@ -24,19 +22,17 @@ export class LoginPage {
 				public toastCtrl: ToastController,
 				public translateService: TranslateService) {
 
-		this.translateService.get('LOGIN_ERROR').subscribe((value) => {
-			this.loginErrorString = value;
-		})
+		this.translateService
+			.get('LOGIN_ERROR')
+			.subscribe(value => this.loginErrorString = value);
 	}
 
-	doLogin() {
+	doLogin(): void {
 		this.user
 			.login(this.account)
 			.subscribe(
-				(resp) => {
-					this.navCtrl.push(MainPage);
-				},
-				(err) => {
+				() => this.navCtrl.push(MainPage),
+				() => {
 					this.navCtrl.push(MainPage);
 					let toast = this.toastCtrl.create({
 						message: this.loginErrorString,

@@ -1,8 +1,8 @@
 import { Component }        from '@angular/core';
 import { NavController }    from 'ionic-angular';
-import { CategoryService }  from "../../providers";
-import { Category }         from "../../models";
-import { CategoryDetailPage } from "../category-detail/category-detail.page";
+import { CategoryService }  from '../../providers';
+import { Category }         from '../../models';
+import { CategoryDetailPage } from '../category-detail/category-detail.page';
 
 @Component({
 	selector: 'product-category-list',
@@ -20,7 +20,7 @@ export class CategoryListPage {
 		});
 	}
 
-	select(item: Category) {
+	select(item: Category): void {
 		this.navCtrl.push(CategoryDetailPage, {
 			category: item
 		});

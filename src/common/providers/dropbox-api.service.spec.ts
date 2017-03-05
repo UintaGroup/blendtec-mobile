@@ -1,9 +1,9 @@
-import { DropboxApi } from "./dropbox-api.service";
-import { Response, ResponseOptions } from "@angular/http";
-import { inject, async } from "@angular/core/testing";
-import { MockBackend } from "@angular/http/testing";
-import { TestUtils } from "../../test";
-import { APP_CONFIG, CONFIG } from "../../app/app.config";
+import { DropboxApi } from './dropbox-api.service';
+import { Response, ResponseOptions } from '@angular/http';
+import { inject, async } from '@angular/core/testing';
+import { MockBackend } from '@angular/http/testing';
+import { TestUtils } from '../../test';
+import { APP_CONFIG, CONFIG } from '../../app/app.config';
 
 describe('DropboxApi', () => {
 

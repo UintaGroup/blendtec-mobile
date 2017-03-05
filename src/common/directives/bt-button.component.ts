@@ -1,6 +1,4 @@
-import { Component, Input } from '@angular/core';
-
-
+import { Component } from '@angular/core';
 
 @Component({
 	selector: 'bt-button',
@@ -13,7 +11,4 @@ import { Component, Input } from '@angular/core';
 					</div>
 				</button>`,
 })
-export class BlendtecButton {
-
-	constructor() {}
-}
+export class BlendtecButton {}

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { DropboxApi } from "../../common/providers/dropbox-api.service";
-import { Observable } from "rxjs";
-import { Category } from "../models/category.model";
-import { Response } from "@angular/http";
+import { Response } from '@angular/http';
+import { Observable } from 'rxjs';
+import { DropboxApi } from '../../common/providers/dropbox-api.service';
+import { Category } from '../models/category.model';
 
 @Injectable()
 export class CategoryService {
@@ -14,7 +14,7 @@ export class CategoryService {
 			.map((r: Response) => {
 				return r.json().map(x => new Category(x));
 			})
-			.catch(() => Observable.throw("No Categories found."));
+			.catch(() => Observable.throw('No Categories found.'));
 	}
 
 }

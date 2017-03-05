@@ -1,11 +1,7 @@
 import { Component } from '@angular/core';
-
 import { MenuController, NavController } from 'ionic-angular';
-
 import { WelcomePage } from '../welcome/welcome';
-
 import { TranslateService } from 'ng2-translate/ng2-translate';
-
 
 export interface Slide {
 	title: string;
@@ -19,15 +15,15 @@ export interface Slide {
 })
 export class TutorialPage {
 	slides: Slide[];
-	showSkip = true;
+	showSkip: boolean = true;
 
 	constructor(public navCtrl: NavController, public menu: MenuController, translate: TranslateService) {
-		translate.get(["TUTORIAL_SLIDE1_TITLE",
-			"TUTORIAL_SLIDE1_DESCRIPTION",
-			"TUTORIAL_SLIDE2_TITLE",
-			"TUTORIAL_SLIDE2_DESCRIPTION",
-			"TUTORIAL_SLIDE3_TITLE",
-			"TUTORIAL_SLIDE3_DESCRIPTION"])
+		translate.get(['TUTORIAL_SLIDE1_TITLE',
+			'TUTORIAL_SLIDE1_DESCRIPTION',
+			'TUTORIAL_SLIDE2_TITLE',
+			'TUTORIAL_SLIDE2_DESCRIPTION',
+			'TUTORIAL_SLIDE3_TITLE',
+			'TUTORIAL_SLIDE3_DESCRIPTION'])
 			.subscribe((values) => {
 				this.slides = [
 					{
@@ -49,24 +45,22 @@ export class TutorialPage {
 			});
 	}
 
-	startApp() {
+	startApp(): void {
 		this.navCtrl.setRoot(WelcomePage, {}, {
 			animate: true,
 			direction: 'forward'
 		});
 	}
 
-	onSlideChangeStart(slider) {
+	onSlideChangeStart(slider): void {
 		this.showSkip = !slider.isEnd;
 	}
 
-	ionViewDidEnter() {
-		// the root left menu should be disabled on the tutorial page
+	ionViewDidEnter(): void {
 		this.menu.enable(false);
 	}
 
-	ionViewWillLeave() {
-		// enable the root left menu when leaving the tutorial page
+	ionViewWillLeave(): void {
 		this.menu.enable(true);
 	}
 

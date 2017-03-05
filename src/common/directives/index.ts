@@ -1,6 +1,6 @@
 import { BlendtecButton }   from './bt-button.component';
 import { Logo }             from './logo.component';
-import { Swirl }            from "./swirl.component";
+import { Swirl }            from './swirl.component';
 
 export {
 	Logo,

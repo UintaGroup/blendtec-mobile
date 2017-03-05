@@ -13,8 +13,6 @@ export class RecipeRatingDirective {
 	@Input() rating: number;
 	private _possibleStars: number = 5;
 
-	constructor(){}
-
 	private get fullStars(): number[] {
 		return new Array(Math.floor(this.rating));
 	}

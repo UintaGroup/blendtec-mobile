@@ -1,9 +1,10 @@
 import { Component }        from '@angular/core';
 import { NavController, NavParams, ToastController }    from 'ionic-angular';
-import { Recipes }          from '../../providers/recipes';
-import { Recipe }           from '../../models/recipe';
+import { RecipeService }          from '../../providers/recipe.service';
+import { Recipe }           from '../../models/recipe.model';
 import { RecipeDetailPage } from '../recipe-detail/recipe-detail.page';
-import { RecipeCategory } from '../../models/category';
+import { RecipeCategory } from '../../models/category.model';
+import { Subscription } from 'rxjs';
 
 @Component({
 	selector: 'page-list-recipe',
@@ -18,7 +19,7 @@ export class RecipeListPage {
 	constructor(public navCtrl: NavController,
 				public params: NavParams,
 				public toastCtrl: ToastController,
-				public recipes: Recipes) {
+				public recipes: RecipeService) {
 
 		this.category = params.get('category');
 
@@ -43,13 +44,13 @@ export class RecipeListPage {
 		}
 	}
 
-	select(item: Recipe) {
+	public select(item: Recipe): void {
 		this.navCtrl.push(RecipeDetailPage, {
 			slug: item.slug
 		});
 	}
 
-	loadMore(infiniteScroll: any): any {
+	public loadMore(infiniteScroll: any): Subscription {
 		return this.recipes.page(++this.page)
 			.subscribe((r) => {
 				this.items = this.items.concat(r);

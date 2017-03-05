@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 
-import { RecipeCategory } from '../models/category';
+import { RecipeCategory } from '../models/category.model';
 
 @Injectable()
-export class RecipeCategories {
+export class RecipeCategoryService {
 
-	private categories: RecipeCategory[] = [
+	private _categories: RecipeCategory[] = [
 		new RecipeCategory('Breads & Batters', 'breads','pizza' ),
 		new RecipeCategory('Beverages', 'beverages', 'beer'),
 		new RecipeCategory('Desserts', 'desserts', 'ice-cream'),
@@ -17,10 +17,9 @@ export class RecipeCategories {
 		new RecipeCategory('Dressings and Marinades', 'dressings_and_marinades', 'color-fill'),
 		new RecipeCategory('Dips, Sauces, and Spreads', 'dips_sauces_and_spreads', 'flask')
 	];
-	constructor() {}
 
-	all(): Observable<RecipeCategory> {
-		return Observable.from<RecipeCategory>(this.categories);
+	public all(): Observable<RecipeCategory> {
+		return Observable.from<RecipeCategory>(this._categories);
 	}
 
 }

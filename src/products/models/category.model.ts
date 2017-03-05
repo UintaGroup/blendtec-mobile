@@ -1,4 +1,4 @@
-import { ApiEntity } from "../../common/models";
+import { ApiEntity } from '../../common/models';
 
 export class Category extends ApiEntity {
 

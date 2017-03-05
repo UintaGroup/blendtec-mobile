@@ -1,5 +1,5 @@
-import { CategoryService } from "./category.service";
-import { ProductService } from "./product.service";
+import { CategoryService } from './category.service';
+import { ProductService } from './product.service';
 
 export {
 	CategoryService,
@@ -9,4 +9,4 @@ export {
 export const PRODUCT_PROVIDERS = [
 	CategoryService,
 	ProductService
-]
+];

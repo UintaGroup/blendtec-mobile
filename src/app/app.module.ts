@@ -5,16 +5,18 @@ import { Storage } from '@ionic/storage';
 import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate/ng2-translate';
 
 import { MyApp } from './app.component';
-import { RecipesModule } from '../recipes/recipes.module';
-import { ProductsModule } from "../products/products.module";
+import { RecipeServiceModule } from '../recipes/recipes.module';
+import { ProductsModule } from '../products/products.module';
 import { CommonModule } from '../common/common.module';
-import { APP_CONFIG, CONFIG } from "./app.config";
+import { APP_CONFIG, CONFIG } from './app.config';
 
-export function createTranslateLoader(http: Http) {
+export function createTranslateLoader(http: Http): TranslateStaticLoader {
+	'use strict';
 	return new TranslateStaticLoader(http, './assets/i18n', '.json');
 }
 
-export function providers() {
+export function providers(): any[] {
+	'use strict';
 	return [
 		Storage,
 		{provide: APP_CONFIG, useValue: CONFIG},
@@ -28,7 +30,7 @@ export function providers() {
 		HttpModule,
 		JsonpModule,
 		CommonModule,
-		RecipesModule,
+		RecipeServiceModule,
 		ProductsModule,
 		IonicModule.forRoot(MyApp),
 		TranslateModule.forRoot({

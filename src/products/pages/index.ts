@@ -1,6 +1,6 @@
-import { CategoryListPage } from "./category-list/category-list.page";
-import { CategoryDetailPage } from "./category-detail/category-detail.page";
-import { ProductDetailPage } from "./product-detail/product-detail.page";
+import { CategoryListPage } from './category-list/category-list.page';
+import { CategoryDetailPage } from './category-detail/category-detail.page';
+import { ProductDetailPage } from './product-detail/product-detail.page';
 
 export {
 	CategoryDetailPage,
@@ -12,4 +12,4 @@ export const PRODUCT_PAGES = [
 	CategoryDetailPage,
 	CategoryListPage,
 	ProductDetailPage
-]
+];

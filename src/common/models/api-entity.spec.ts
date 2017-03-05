@@ -1,4 +1,5 @@
-import { ApiEntity } from "./api-entity";
+import { ApiEntity } from './api-entity';
+
 export class TestApiEntity extends ApiEntity {
 
 	private _propOne: string;
@@ -18,12 +19,12 @@ export class TestApiEntity extends ApiEntity {
 }
 describe('ApiEntity', () => {
 
-	let _apiData: object;
+	let _apiData: Object;
 	let _classUnderTest: TestApiEntity;
 
 	beforeEach(() => {
 		_apiData = {
-			propOne: "value1",
+			propOne: 'value1',
 			propTwo: 5,
 			propThree: true
 		};

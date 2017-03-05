@@ -1,8 +1,8 @@
 import { Injectable, Inject } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { Observable } from "rxjs";
-import { APP_CONFIG, AppConfig } from "../../app/app.config";
+import { Observable } from 'rxjs';
+import { APP_CONFIG, AppConfig } from '../../app/app.config';
 
 /**
  * Api is a generic REST Api handler. Set your API url first.

@@ -1,9 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { Platform, Nav } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
-
-import { SettingsService } from '../common/providers';
-
 import { FirstRunPage } from '../common/pages';
 import { LoginPage } from '../common/pages';
 import { SignupPage } from '../common/pages';
@@ -14,7 +11,7 @@ import { EntryPage } from '../recipes/pages';
 import { CategoryListPage as ProductCategoriesPage } from '../products/pages';
 
 import { TranslateService } from 'ng2-translate/ng2-translate';
-import { CategoryListPage } from "../products/pages/category-list/category-list.page";
+// import { CategoryListPage } from '../products/pages/category-list/category-list.page';
 
 @Component({
 	template: `<ion-menu [content]="content">
@@ -34,21 +31,21 @@ import { CategoryListPage } from "../products/pages/category-list/category-list.
 	<ion-nav #content [root]="rootPage"></ion-nav>`
 })
 export class MyApp {
-	// rootPage = FirstRunPage;
-	rootPage = CategoryListPage;
+	rootPage: any = FirstRunPage;
+	// rootPage = CategoryListPage;
 	@ViewChild(Nav) nav: Nav;
 
 	pages: any[] = [
 		{title: 'Tutorial', component: TutorialPage},
 		{title: 'Welcome', component: WelcomePage},
-		{title: 'Recipes', component: EntryPage },
+		{title: 'RecipeService', component: EntryPage },
 		{title: 'Login', component: LoginPage},
 		{title: 'Signup', component: SignupPage},
 		{title: 'Menu', component: MenuPage},
 		{title: 'Product Categories', component: ProductCategoriesPage },
 	];
 
-	constructor(translate: TranslateService, platform: Platform, settings: SettingsService) {
+	constructor(translate: TranslateService, platform: Platform) {
 		translate.setDefaultLang('en');
 		translate.use('en');
 
@@ -58,7 +55,7 @@ export class MyApp {
 		});
 	}
 
-	openPage(page) {
+	openPage(page): void {
 		this.nav.setRoot(page.component);
 	}
 }

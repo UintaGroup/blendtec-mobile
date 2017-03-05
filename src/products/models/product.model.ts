@@ -1,4 +1,4 @@
-import { ApiEntity } from "../../common/models/api-entity";
+import { ApiEntity } from '../../common/models/api-entity';
 export class Product extends ApiEntity {
 
 	private _itemCode: string;
@@ -36,7 +36,9 @@ export class Product extends ApiEntity {
 		return this._productID;
 	}
 
+	/* tslint:disable */
 	private _category_id: number;
+	/* tslint:enable */
 	public get categoryId(): number {
 		return this._category_id;
 	}
@@ -76,7 +78,9 @@ export class Product extends ApiEntity {
 		return this._color;
 	}
 
+	/* tslint:disable */
 	private _package_includes: string;
+	/* tslint:enable */
 	public get packageIncludes(): string {
 		return this._package_includes;
 	}

@@ -1,13 +1,11 @@
 import { NgModule }                 from '@angular/core';
 import { HttpModule, JsonpModule }  from '@angular/http';
 import { IonicModule }    from 'ionic-angular';
-
-
-import { TranslateModule} from 'ng2-translate/ng2-translate';
+import { TranslateModule } from 'ng2-translate/ng2-translate';
 import { RECIPE_PROVIDERS } from './providers';
 import { RECIPE_DIRECTIVES } from './directives';
 import { RECIPE_PIPES } from './pipes';
-import { RECIPE_PAGES} from './pages';
+import { RECIPE_PAGES } from './pages';
 
 @NgModule({
 	imports: [
@@ -20,4 +18,5 @@ import { RECIPE_PAGES} from './pages';
 	entryComponents: RECIPE_PAGES,
 	providers: RECIPE_PROVIDERS
 })
-export class RecipesModule {}
+export class RecipeServiceModule {
+}

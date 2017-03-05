@@ -3,53 +3,43 @@ import { Http } from '@angular/http';
 import { Api } from './api.service';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
+import { Subscription } from 'rxjs';
 
 @Injectable()
 export class User {
 	_user: any;
 
-	constructor(public http: Http, public api: Api) {
-	}
+	constructor(public http: Http, public api: Api) {}
 
-	login(accountInfo: any) {
-		let seq = this.api.post('login', accountInfo).share();
-
-		seq
+	public login(accountInfo: any): Subscription {
+		return this.api.post('login', accountInfo).share()
 			.map(res => res.json())
 			.subscribe(res => {
-				// If the API returned a successful response, mark the user as logged in
-				if (res.status == 'success') {
-					this._loggedIn(res);
-				} else {
+				if (res.status === 'success') {
+					this.setUser(res);
 				}
 			}, err => {
 				console.error('ERROR', err);
 			});
-
-		return seq;
 	}
 
-	signup(accountInfo: any) {
-		let seq = this.api.post('signup', accountInfo).share();
-
-		seq
+	public signup(accountInfo: any): Subscription {
+		return this.api.post('signup', accountInfo).share()
 			.map(res => res.json())
 			.subscribe(res => {
-				if (res.status == 'success') {
-					this._loggedIn(res);
+				if (res.status === 'success') {
+					this.setUser(res);
 				}
 			}, err => {
 				console.error('ERROR', err);
 			});
-
-		return seq;
 	}
 
-	logout() {
+	public logout(): void {
 		this._user = null;
 	}
 
-	_loggedIn(resp) {
+	private setUser(resp): void {
 		this._user = resp.user;
 	}
 }

@@ -1,4 +1,4 @@
-import { BaseModel } from './base-model';
+import { BaseModel } from './base.model';
 
 export class RecipeIngredient extends BaseModel {
 
@@ -50,7 +50,9 @@ export class RecipeIngredient extends BaseModel {
 		this._description = value;
 	}
 
+	/* tslint:disable */
 	private _recipe_id: number;
+	/* tslint:enable */
 	public get recipeId(): number {
 		return this._recipe_id;
 	}

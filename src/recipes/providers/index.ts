@@ -1,15 +1,15 @@
 import { BlendtecApi }      from './blendtec-api';
-import { RecipeCategories } from './recipe-categories';
-import { Recipes }          from './recipes';
+import { RecipeCategoryService } from './recipe-category.service';
+import { RecipeService }          from './recipe.service';
 
 export {
 	BlendtecApi,
-	RecipeCategories,
-	Recipes
+	RecipeCategoryService,
+	RecipeService
 }
 
 export const RECIPE_PROVIDERS = [
 	BlendtecApi,
-	RecipeCategories,
-	Recipes
+	RecipeCategoryService,
+	RecipeService
 ];
