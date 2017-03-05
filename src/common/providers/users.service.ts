@@ -3,7 +3,6 @@ import { Http } from '@angular/http';
 import { Api } from './api.service';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
-import { Subscription } from 'rxjs';
 
 @Injectable()
 export class User {
@@ -11,7 +10,7 @@ export class User {
 
 	constructor(public http: Http, public api: Api) {}
 
-	public login(accountInfo: any): Subscription {
+	public login(accountInfo: any): any {
 		return this.api.post('login', accountInfo).share()
 			.map(res => res.json())
 			.subscribe(res => {
@@ -23,7 +22,7 @@ export class User {
 			});
 	}
 
-	public signup(accountInfo: any): Subscription {
+	public signup(accountInfo: any): any {
 		return this.api.post('signup', accountInfo).share()
 			.map(res => res.json())
 			.subscribe(res => {
