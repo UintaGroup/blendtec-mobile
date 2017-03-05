@@ -42,7 +42,6 @@ before_script:
 script:
   - npm run ci
   - npm run e2e
-  - npm run posttest
 
 after_script:
   - cat ./coverage/*/lcov.info | ./node_modules/coveralls/bin/coveralls.js
