@@ -6,6 +6,7 @@
   "scripts": {
     "start": "ionic serve",
     "test": "ng test --watch false",
+    "posttest": "codecov -f coverage/*.lcov",
     "ci": "ng test --watch=false --code-coverage",
     "coverage": "ng test --code-coverage",
     "tdd": "ng test",
@@ -54,7 +55,6 @@
     "karma-mocha-reporter": "^2.2.2",
     "karma-phantomjs-launcher": "^1.0.2",
     "karma-remap-istanbul": "^0.6.0",
-    "nyc": "^10.1.2",
     "protractor": "^5.1.1",
     "protractor-jasmine2-screenshot-reporter": "^0.3.3",
     "ts-node": "^2.1.0",
