@@ -1,4 +1,4 @@
-import { ApiEntity } from "../../common/models/api-entity";
+import { ApiEntity } from '../../common/models/api-entity';
 
 export class BaseRecipe extends ApiEntity {
 

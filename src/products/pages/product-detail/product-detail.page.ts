@@ -20,4 +20,3 @@ export class ProductDetailPage {
 		console.log('REDIRECTING TO', slug);
 	}
 }
-

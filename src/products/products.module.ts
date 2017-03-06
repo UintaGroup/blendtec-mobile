@@ -4,7 +4,7 @@ import { PRODUCT_PAGES } from './pages/index';
 import { HttpModule } from '@angular/http';
 import { IonicModule } from 'ionic-angular';
 import { TranslateModule } from 'ng2-translate';
-import { CommonModule } from "../common/common.module";
+import { CommonModule } from '../common/common.module';
 
 @NgModule({
 	imports: [IonicModule, HttpModule, TranslateModule, CommonModule],

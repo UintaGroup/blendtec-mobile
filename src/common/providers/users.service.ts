@@ -3,7 +3,7 @@ import { Http } from '@angular/http';
 import { Api } from './api.service';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
-import { Observable } from "rxjs";
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class UserService {
@@ -41,7 +41,7 @@ export class UserService {
 		this._user = null;
 	}
 
-	private setUser(resp): void {
-		this._user = resp.user;
-	}
+	// private setUser(resp): void {
+	// 	this._user = resp.user;
+	// }
 }

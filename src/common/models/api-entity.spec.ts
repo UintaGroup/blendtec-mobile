@@ -17,7 +17,9 @@ export class TestApiEntity extends ApiEntity {
 		return this._propThree;
 	}
 
+	/* tslint:disable */
 	private _bad_name: string;
+	/* tslint:enable */
 	public get badName(): string {
 		return this._bad_name;
 	}
@@ -32,7 +34,9 @@ describe('ApiEntity', () => {
 			propOne: 'value1',
 			propTwo: 5,
 			propThree: true,
+			/* tslint:disable */
 			bad_name: 'good value'
+			/* tslint:enable */
 		};
 	});
 

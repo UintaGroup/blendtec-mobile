@@ -6,8 +6,7 @@ import { LoginPage } from '../common/pages';
 import { SignupPage } from '../common/pages';
 import { TutorialPage } from '../common/pages';
 import { WelcomePage } from '../common/pages';
-import { MenuPage } from '../common/pages';
-import { EntryPage, CategoryListPage } from '../recipes/pages';
+import { EntryPage } from '../recipes/pages';
 import { CategoryListPage as ProductCategoriesPage } from '../products/pages';
 
 import { TranslateService } from 'ng2-translate/ng2-translate';
@@ -30,8 +29,8 @@ import { TranslateService } from 'ng2-translate/ng2-translate';
 	<ion-nav #content [root]="rootPage"></ion-nav>`
 })
 export class MyApp {
-//	rootPage: any = FirstRunPage;
-	 rootPage = CategoryListPage;
+	rootPage: any = FirstRunPage;
+	// rootPage = CategoryListPage;
 	@ViewChild(Nav) nav: Nav;
 
 	pages: any[] = [
