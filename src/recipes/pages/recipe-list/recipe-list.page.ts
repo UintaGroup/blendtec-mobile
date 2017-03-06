@@ -3,7 +3,7 @@ import { NavController, NavParams, ToastController }    from 'ionic-angular';
 import { RecipeService }          from '../../providers/recipe.service';
 import { Recipe }           from '../../models/recipe.model';
 import { RecipeDetailPage } from '../recipe-detail/recipe-detail.page';
-import { RecipeCategory } from '../../models/category.model';
+import { Category } from '../../models/category.model';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -14,7 +14,7 @@ export class RecipeListPage {
 
 	public items: Recipe[];
 	public page: number = 1;
-	public category: RecipeCategory;
+	public category: Category;
 
 	constructor(public navCtrl: NavController,
 				public params: NavParams,

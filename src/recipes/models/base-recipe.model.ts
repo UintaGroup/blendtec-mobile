@@ -1,15 +1,6 @@
-import { BaseModel } from './base.model';
+import { ApiEntity } from "../../common/models/api-entity";
 
-export class BaseRecipe extends BaseModel {
-
-	private _id: number;
-	public get id(): number {
-		return this._id;
-	}
-
-	public set id(value: number) {
-		this._id = value;
-	}
+export class BaseRecipe extends ApiEntity {
 
 	private _title: string;
 	public get title(): string {

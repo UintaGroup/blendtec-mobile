@@ -6,20 +6,20 @@ export class Recipe extends BaseRecipe {
 	constructor(data: any, relatedRecipeData?: any, ingredientData?: any) {
 		super(data);
 		if(relatedRecipeData) {
-			this.relatedRecipeService = relatedRecipeData.map(x => new BaseRecipe(x));
+			this.relatedRecipes = relatedRecipeData.map(x => new BaseRecipe(x));
 		}
 		if(ingredientData) {
 			this.ingredients = ingredientData.map(x => new RecipeIngredient(x));
 		}
 	}
 
-	private _relatedRecipeService: BaseRecipe[] = [];
-	public get relatedRecipeService(): BaseRecipe[] {
-		return this._relatedRecipeService;
+	private _relatedRecipes: BaseRecipe[] = [];
+	public get relatedRecipes(): BaseRecipe[] {
+		return this._relatedRecipes;
 	}
 
-	public set relatedRecipeService(value: BaseRecipe[]) {
-		this._relatedRecipeService = value;
+	public set relatedRecipes (value: BaseRecipe[]) {
+		this._relatedRecipes = value;
 	}
 
 	private _ingredients: RecipeIngredient[];
@@ -177,24 +177,6 @@ export class Recipe extends BaseRecipe {
 
 	public set active(value: boolean) {
 		this._active = value;
-	}
-
-	private _created: string;
-	public get created(): string {
-		return this._created;
-	}
-
-	public set created(value: string) {
-		this._created = value;
-	}
-
-	private _modified: string;
-	public get modified(): string {
-		return this._modified;
-	}
-
-	public set modified(value: string) {
-		this._modified = value;
 	}
 
 	private _recipeOfTheWeek: boolean;
