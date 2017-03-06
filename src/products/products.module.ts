@@ -4,9 +4,10 @@ import { PRODUCT_PAGES } from './pages/index';
 import { HttpModule } from '@angular/http';
 import { IonicModule } from 'ionic-angular';
 import { TranslateModule } from 'ng2-translate';
+import { CommonModule } from "../common/common.module";
 
 @NgModule({
-	imports: [IonicModule, HttpModule, TranslateModule],
+	imports: [IonicModule, HttpModule, TranslateModule, CommonModule],
 	exports: [],
 	declarations: PRODUCT_PAGES,
 	providers: PRODUCT_PROVIDERS,

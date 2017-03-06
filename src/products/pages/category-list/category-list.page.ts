@@ -10,14 +10,11 @@ import { CategoryDetailPage } from '../category-detail/category-detail.page';
 })
 export class CategoryListPage {
 
-	public items: Category[];
+	public items: Category[] = [];
 	public residential: boolean = true;
 
 	constructor(public navCtrl: NavController, public categories: CategoryService) {
-		this.items = [];
-		categories.all().subscribe((r: Category[]) => {
-			this.items = r;
-		});
+		categories.all().subscribe(r => this.items = r);
 	}
 
 	select(item: Category): void {

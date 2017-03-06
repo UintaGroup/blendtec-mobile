@@ -23,10 +23,9 @@ export class ProductService {
 	public one(category: string, slug: string): Observable<Product> {
 		return this.all(category)
 			.map((products: Product[]) => {
-				let p = products.find((i: Product) => {
+				return products.find((i: Product) => {
 					return i.slug === slug;
 				});
-				return new Product(p);
 			});
 	}
 

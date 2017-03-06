@@ -13,9 +13,11 @@ export class ProductDetailPage {
 
 	constructor(public navCtrl: NavController, navParams: NavParams, productSrvc: ProductService) {
 		productSrvc.one(navParams.get('category'), navParams.get('slug'))
-			.subscribe(r => {
-				console.log('PRODUCT', r);
-				this.item = r;});
+			.subscribe(r => this.item = r);
+	}
 
+	public buyNow(slug: string): void {
+		console.log('REDIRECTING TO', slug);
 	}
 }
+

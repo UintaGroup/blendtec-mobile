@@ -1,14 +1,14 @@
 import { ApiEntity } from '../../common/models/api-entity';
 export class Product extends ApiEntity {
 
-	private _itemCode: string;
+	private _item_code: string;
 	public get itemCode(): string {
-		return this._itemCode;
+		return this._item_code;
 	}
 
-	private _captionShort: string;
+	private _caption_short: string;
 	public get captionShort(): string {
-		return this._captionShort;
+		return this._caption_short;
 	}
 
 	private _name: string;
@@ -21,9 +21,9 @@ export class Product extends ApiEntity {
 		return this._features;
 	}
 
-	private _techSpecs: string;
+	private _tech_specs: string;
 	public get techSpecs(): string {
-		return this._techSpecs;
+		return this._tech_specs;
 	}
 
 	private _caption: string;
@@ -31,9 +31,9 @@ export class Product extends ApiEntity {
 		return this._caption;
 	}
 
-	private _productID: number;
+	private _product_id: number;
 	public get productID(): number {
-		return this._productID;
+		return this._product_id;
 	}
 
 	/* tslint:disable */
@@ -48,9 +48,9 @@ export class Product extends ApiEntity {
 		return this._price;
 	}
 
-	private _columnOrder: number;
+	private _column_order: number;
 	public get columnOrder(): number {
-		return this._columnOrder;
+		return this._column_order;
 	}
 
 	private _active: boolean;
@@ -58,9 +58,9 @@ export class Product extends ApiEntity {
 		return this._active;
 	}
 
-	private _youtubeCode: string;
+	private _youtube_code: string;
 	public get youtubeCode(): string {
-		return this._youtubeCode;
+		return this._youtube_code;
 	}
 
 	private _slug: string;
@@ -68,9 +68,9 @@ export class Product extends ApiEntity {
 		return this._slug;
 	}
 
-	private _isJar: boolean;
+	private _is_jar: boolean;
 	public get isJar(): boolean {
-		return this._isJar;
+		return this._is_jar;
 	}
 
 	private _color: string;
@@ -95,9 +95,9 @@ export class Product extends ApiEntity {
 		return this._map;
 	}
 
-	private _showMap: boolean;
+	private _show_map: boolean;
 	public get showMap(): boolean {
-		return this._showMap;
+		return this._show_map;
 	}
 
 	private _listed: number;
@@ -105,9 +105,9 @@ export class Product extends ApiEntity {
 		return this._listed;
 	}
 
-	private _productStockStatusId: string;
+	private _product_stock_status_id: string;
 	public get productStockStatusId(): string {
-		return this._productStockStatusId;
+		return this._product_stock_status_id;
 	}
 
 	private _featured: boolean;
@@ -115,23 +115,23 @@ export class Product extends ApiEntity {
 		return this._featured;
 	}
 
-	private _colorId: string;
+	private _color_id: string;
 	public get colorId(): string {
-		return this._colorId;
+		return this._color_id;
 	}
 
-	private _jarId: string;
+	private _jar_id: string;
 	public get jarId(): string {
-		return this._jarId;
+		return this._jar_id;
 	}
 
-	private _additionalNotes: string;
+	private _additional_notes: string;
 	public get additionalNotes(): string {
-		return this._additionalNotes;
+		return this._additional_notes;
 	}
 
-	private _warrantyLength: number;
+	private _warranty_length: number;
 	public get warrantyLength(): number {
-		return this._warrantyLength;
+		return this._warranty_length;
 	}
 }
