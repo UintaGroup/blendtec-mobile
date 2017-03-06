@@ -7,18 +7,17 @@ import { SignupPage } from '../common/pages';
 import { TutorialPage } from '../common/pages';
 import { WelcomePage } from '../common/pages';
 import { MenuPage } from '../common/pages';
-import { EntryPage } from '../recipes/pages';
+import { EntryPage, CategoryListPage } from '../recipes/pages';
 import { CategoryListPage as ProductCategoriesPage } from '../products/pages';
 
 import { TranslateService } from 'ng2-translate/ng2-translate';
-// import { CategoryListPage } from '../products/pages/category-list/category-list.page';
 
 @Component({
 	template: `<ion-menu [content]="content">
 	<ion-header>
-		<ion-toolbar>
-			<ion-title>Edited Pages</ion-title>
-				</ion-toolbar>
+		<ion-toolbar padding-left>
+			<logo></logo>
+		</ion-toolbar>
 	</ion-header>
 	<ion-content>
 		<ion-list>
@@ -31,18 +30,17 @@ import { TranslateService } from 'ng2-translate/ng2-translate';
 	<ion-nav #content [root]="rootPage"></ion-nav>`
 })
 export class MyApp {
-	rootPage: any = FirstRunPage;
-	// rootPage = CategoryListPage;
+//	rootPage: any = FirstRunPage;
+	 rootPage = CategoryListPage;
 	@ViewChild(Nav) nav: Nav;
 
 	pages: any[] = [
+		{title: 'Products', component: ProductCategoriesPage },
+		{title: 'Recipes', component: EntryPage },
 		{title: 'Tutorial', component: TutorialPage},
 		{title: 'Welcome', component: WelcomePage},
-		{title: 'RecipeService', component: EntryPage },
 		{title: 'Login', component: LoginPage},
-		{title: 'Signup', component: SignupPage},
-		{title: 'Menu', component: MenuPage},
-		{title: 'Product Categories', component: ProductCategoriesPage },
+		{title: 'Signup', component: SignupPage}
 	];
 
 	constructor(translate: TranslateService, platform: Platform) {

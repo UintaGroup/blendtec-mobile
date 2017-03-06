@@ -16,6 +16,11 @@ export class TestApiEntity extends ApiEntity {
 	public get propThree(): boolean {
 		return this._propThree;
 	}
+
+	private _bad_name: string;
+	public get badName(): string {
+		return this._bad_name;
+	}
 }
 describe('ApiEntity', () => {
 
@@ -26,16 +31,18 @@ describe('ApiEntity', () => {
 		_apiData = {
 			propOne: 'value1',
 			propTwo: 5,
-			propThree: true
+			propThree: true,
+			bad_name: 'good value'
 		};
-
 	});
 
 	it('should map api data to properties', () => {
 		_classUnderTest = new TestApiEntity(_apiData);
 
-		//expect(_classUnderTest.propOne).toBe('value1');
-		//expect(_classUnderTest.propTwo).toBe(5);
-		//expect(_classUnderTest.propThree).toBe(true);
+		expect(_classUnderTest.propOne).toBe('value1');
+		expect(_classUnderTest.propTwo).toBe(5);
+		expect(_classUnderTest.propThree).toBe(true);
+		expect(_classUnderTest.badName).toBe('good value');
+
 	});
 });

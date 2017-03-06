@@ -2,7 +2,7 @@ import { Component }                        from '@angular/core';
 import { NavController, ToastController }   from 'ionic-angular';
 import { TranslateService }                 from 'ng2-translate/ng2-translate';
 import { MainPage }                         from '../../../recipes/pages';
-import { User } from '../../providers';
+import { UserService } from '../../providers';
 
 @Component({
 	selector: 'page-signup',
@@ -18,7 +18,7 @@ export class SignupPage {
 	private _signupErrorMsg: string;
 
 	constructor(public navCtrl: NavController,
-				public user: User,
+				public user: UserService,
 				public toastCtrl: ToastController,
 				public translateService: TranslateService) {
 

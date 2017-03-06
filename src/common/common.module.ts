@@ -36,6 +36,7 @@ export function providers(): Provider[] {
 		IonicModule,
 		TranslateModule,
 	],
+	exports: [COMMON_DIRECTIVES],
 	declarations: [COMMON_PAGES, COMMON_DIRECTIVES],
 	entryComponents: [COMMON_PAGES, COMMON_DIRECTIVES],
 	providers: providers(),

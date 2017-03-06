@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
 import { TranslateService } from 'ng2-translate/ng2-translate';
 import { MainPage } from '../../../recipes/pages';
-import { User } from '../../providers';
+import { UserService } from '../../providers';
 
 @Component({
 	selector: 'page-login',
@@ -18,17 +18,17 @@ export class LoginPage {
 	private loginErrorString: string;
 
 	constructor(public navCtrl: NavController,
-				public user: User,
+				public userSrvc: UserService,
 				public toastCtrl: ToastController,
-				public translateService: TranslateService) {
+				public translateSrvc: TranslateService) {
 
-		this.translateService
+		this.translateSrvc
 			.get('LOGIN_ERROR')
 			.subscribe(value => this.loginErrorString = value);
 	}
 
-	doLogin(): void {
-		this.user
+	public doLogin(): any {
+		this.userSrvc
 			.login(this.account)
 			.subscribe(
 				() => this.navCtrl.push(MainPage),
