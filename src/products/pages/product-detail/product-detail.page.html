@@ -8,6 +8,8 @@
 </ion-header>
 
 <ion-content>
+    <div class="item-profile" text-center #profilePic
+         [style.background-image]="'url(http://cdn.blendtec.com/' + item?.primaryImage + ')'"></div>
 	<ion-card>
 		<ion-card-content>
 			<p>{{item?.caption}}</p>

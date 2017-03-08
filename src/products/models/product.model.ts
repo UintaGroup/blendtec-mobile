@@ -160,4 +160,11 @@ export class Product extends ApiEntity {
 	public get warrantyLength(): number {
 		return this._warranty_length;
 	}
+
+	/* tslint:disable */
+	private _primary_image: string;
+	/* tslint:enable */
+	public get primaryImage(): string {
+		return this._primary_image;
+	}
 }
