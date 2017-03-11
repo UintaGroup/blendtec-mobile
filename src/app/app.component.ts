@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, Nav } from 'ionic-angular';
+import { Platform, Nav, Loading, LoadingController } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 import { FirstRunPage } from '../common/pages';
 import { LoginPage } from '../common/pages';
@@ -10,6 +10,8 @@ import { EntryPage } from '../recipes/pages';
 import { CategoryListPage as ProductCategoriesPage } from '../products/pages';
 
 import { TranslateService } from 'ng2-translate/ng2-translate';
+import { Events } from 'ionic-angular';
+import { LoadingEvents } from '../common/models/loading-events';
 
 @Component({
 	template: `<ion-menu [content]="content">
@@ -29,8 +31,9 @@ import { TranslateService } from 'ng2-translate/ng2-translate';
 	<ion-nav #content [root]="rootPage"></ion-nav>`
 })
 export class MyApp {
+	private _loading: Loading;
 	rootPage: any = FirstRunPage;
-	// rootPage = CategoryListPage;
+	// rootPage: any = ProductCategoriesPage;
 	@ViewChild(Nav) nav: Nav;
 
 	pages: any[] = [
@@ -42,9 +45,13 @@ export class MyApp {
 		{title: 'Signup', component: SignupPage}
 	];
 
-	constructor(translate: TranslateService, platform: Platform) {
+	constructor(translate: TranslateService, platform: Platform, events: Events, private _loadingCtrl: LoadingController) {
 		translate.setDefaultLang('en');
 		translate.use('en');
+
+		events.subscribe(LoadingEvents.START, (user) => this.onLoadingStart(user));
+
+		events.subscribe(LoadingEvents.END, () => this.onLoadingEnd());
 
 		platform.ready().then(() => {
 			StatusBar.styleDefault();
@@ -54,5 +61,19 @@ export class MyApp {
 
 	openPage(page): void {
 		this.nav.setRoot(page.component);
+	}
+
+	private onLoadingStart(message: any): void {
+		this._loading = this._loadingCtrl.create({
+			content: message || 'Loading Please Wait...'
+		});
+		this._loading.onDidDismiss(() => this._loading = undefined);
+		this._loading.present();
+	}
+
+	private onLoadingEnd(): void {
+		if(this._loading !== undefined) {
+			this._loading.dismiss();
+		}
 	}
 }

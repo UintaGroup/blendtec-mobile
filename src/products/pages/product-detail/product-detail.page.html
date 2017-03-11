@@ -1,30 +1,33 @@
 <ion-header>
-	<ion-navbar>
-		<button ion-button menuToggle>
-			<ion-icon name="menu"></ion-icon>
-		</button>
-		<ion-title>{{ item?.name | uppercase}}</ion-title>
-	</ion-navbar>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{ item?.name | uppercase}}</ion-title>
+    </ion-navbar>
 </ion-header>
 
 <ion-content>
-    <div class="item-profile" text-center #profilePic
-         [style.background-image]="'url(http://cdn.blendtec.com/' + item?.primaryImage + ')'"></div>
-	<ion-card>
-		<ion-card-content>
-			<p>{{item?.caption}}</p>
-		</ion-card-content>
-	</ion-card>
-	<ion-card>
-        <ion-card-header>Features</ion-card-header>
-		<ion-card-content><span [innerHTML]="item?.features"></span></ion-card-content>
-	</ion-card>
-	<ion-card>
-		<ion-card-header>Package Includes</ion-card-header>
-		<ion-card-content><span [innerHTML]="item?.packageIncludes"></span></ion-card-content>
-	</ion-card>
-	<ion-card>
+    <ion-item>
+        <img [src]="primaryImage"/>
+    </ion-item>
+    <ion-card>
+        <ion-card-content>
+            <p>{{item?.caption}}</p>
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
         <ion-card-header>{{item?.price | currency:'USD':true:'1.2-2'}}</ion-card-header>
-        <bt-button (click)="buyNow(item.slug)">Buy Now</bt-button>
-	</ion-card>
+        <ion-card-content>
+            <bt-button (click)="buyNow(item.slug)">Buy Now</bt-button>
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-header>Features</ion-card-header>
+        <ion-card-content><span [innerHTML]="features"></span></ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-header>Package Includes</ion-card-header>
+        <ion-card-content><span [innerHTML]="item?.packageIncludes"></span></ion-card-content>
+    </ion-card>
 </ion-content>

@@ -2,12 +2,14 @@ import { Injectable }                               from '@angular/core';
 import { Jsonp, RequestOptions, URLSearchParams }   from '@angular/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
+import { Events } from 'ionic-angular';
+import { LoadingEvents } from '../../common/models/loading-events';
 
 @Injectable()
 export class BlendtecApi {
 	url: string = 'https://json2jsonp.com/?url=';
 
-	constructor(private _jsonp: Jsonp) {}
+	constructor(private _jsonp: Jsonp, private _events: Events) {}
 
 	//TODO simplfy when json2jsonp isn't necessary
 	public buildUrl(endpoint: string, params?: string): string {
@@ -30,5 +32,10 @@ export class BlendtecApi {
 		options.search = !options.search && p || options.search;
 		return this._jsonp
 			.get(this.buildUrl(endpoint, params), options);
+	}
+
+	public handleError(message: string): Observable<any> {
+		this._events.publish(LoadingEvents.END);
+		return Observable.throw('No recipes found.');
 	}
 }
