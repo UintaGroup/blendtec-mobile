@@ -5,9 +5,11 @@ export let APP_CONFIG = new OpaqueToken('app.config');
 export interface AppConfig {
 	appSetting: string;
 	staticApiUrl: string;
+	imageRoot: string;
 }
 
 export const CONFIG: AppConfig = {
 	appSetting: 'my application nsetting',
-	staticApiUrl: 'https://dl.dropboxusercontent.com/u/29534952/api/'
+	staticApiUrl: 'https://dl.dropboxusercontent.com/u/29534952/api/',
+	imageRoot: 'http://cdn.blendtec.com/images/'
 };

@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component }                from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-import { Category, Product } from '../../models';
-import { ProductService } from '../../providers/product.service';
-import { ProductDetailPage } from '../product-detail/product-detail.page';
+import { Category, Product }        from '../../models';
+import { ProductService }           from '../../providers';
+import { ProductDetailPage }        from '../product-detail/product-detail.page';
 
 @Component({
 	selector: 'page-item-detail',
@@ -25,5 +25,5 @@ export class CategoryDetailPage {
 			slug: item.slug
 		});
 	}
-
 }
+

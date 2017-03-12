@@ -61,6 +61,13 @@ export class Category extends ApiEntity {
 		return this._commercial;
 	}
 
+	/* tslint:disable */
+	private _primary_image: string;
+	/* tslint:enable */
+	public get primaryImage(): string {
+		return this._primary_image;
+	}
+
 	public set commercial(value: boolean) {
 		this._commercial = value;
 	}

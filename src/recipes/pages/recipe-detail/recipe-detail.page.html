@@ -36,11 +36,11 @@
 	</ion-card>
 	<ion-card>
 		<ion-card-header color="blendtec">{{ 'HEADER.INSTRUCTIONS' | translate | uppercase }}</ion-card-header>
-		<ion-card-content><span [innerHTML]="item?.instructions"></span></ion-card-content>
+		<ion-card-content><span [innerHTML]="item?.instructions | dbMarkup"></span></ion-card-content>
 	</ion-card>
 	<ion-card *ngIf="item?.variations">
 		<ion-card-header color="blendtec">{{ 'HEADER.VARIATIONS' | translate | uppercase}}</ion-card-header>
-		<ion-card-content><span [innerHTML]="item?.variations"></span></ion-card-content>
+		<ion-card-content><span [innerHTML]="item?.variations | dbMarkup"></span></ion-card-content>
 	</ion-card>
 	<ion-card *ngIf="!item?.hideNutrition">
 		<ion-card-header color="blendtec">{{ 'HEADER.NUTRITION' | translate | uppercase }}</ion-card-header>

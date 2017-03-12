@@ -1,16 +1,21 @@
 <ion-header>
-	<ion-navbar>
-		<button ion-button menuToggle>
-			<ion-icon name="menu"></ion-icon>
-		</button>
-		<ion-title>{{ category?.name| uppercase}}</ion-title>
-	</ion-navbar>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{ category?.name| uppercase}}</ion-title>
+    </ion-navbar>
 </ion-header>
 
 <ion-content>
-	<ion-list>
-		<ion-item *ngFor="let item of products" (click)="select(item)">
-			<span [innerHTML]="item?.name"></span>
-		</ion-item>
-	</ion-list>
+    <ion-list>
+        <ion-item text-wrap *ngFor="let item of products" (click)="select(item)">
+            <ion-thumbnail item-left>
+                <img [src]="item?.colors[0].image | btImg"/>
+            </ion-thumbnail>
+            <h2><span [innerHTML]="item?.name"></span></h2>
+            <p [innerHTML]="item?.captionShort"></p>
+            <bt-button-sm item-right></bt-button-sm>
+        </ion-item>
+    </ion-list>
 </ion-content>

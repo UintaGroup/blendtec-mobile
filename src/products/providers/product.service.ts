@@ -22,7 +22,7 @@ export class ProductService {
 				this._events.publish(LoadingEvents.END);
 				return data;
 			})
-			.catch(() => {
+			.catch((err) => {
 				this._events.publish(LoadingEvents.END);
 				return Observable.throw('No Products found.');
 			});

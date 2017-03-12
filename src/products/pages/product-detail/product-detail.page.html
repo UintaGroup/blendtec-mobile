@@ -9,10 +9,18 @@
 
 <ion-content>
     <ion-item class="product-img">
-        <ion-spinner *ngIf="primaryImage === undefined"></ion-spinner>
-        <img *ngIf="primaryImage !== undefined" [src]="primaryImage"/>
+        <ion-spinner *ngIf="activeColor === undefined"></ion-spinner>
+        <img *ngIf="activeColor !== undefined" [src]="activeColor?.primaryImage | btImg"/>
+        <p>{{activeColor?.name}}</p>
     </ion-item>
     <ion-card>
+        <ion-row>
+            <ion-col col-1 *ngFor="let color of item?.colors">
+                <div (click)="selectColor(color)" class="product-color-swatch" [class.selected]="color.color === activeColor.color" >
+                   <div class="swatch" [style.background]="color.color"></div>
+                </div>
+            </ion-col>
+        </ion-row>
         <ion-card-header color="blendtec">
             {{ item?.name | uppercase}}
         </ion-card-header>
@@ -28,10 +36,10 @@
     </ion-card>
     <ion-card>
         <ion-card-header color="blendtec">Features</ion-card-header>
-        <ion-card-content><span [innerHTML]="features"></span></ion-card-content>
+        <ion-card-content><span [innerHTML]="item?.features | dbMarkup"></span></ion-card-content>
     </ion-card>
     <ion-card>
         <ion-card-header color="blendtec">Package Includes</ion-card-header>
-        <ion-card-content><span [innerHTML]="packageIncludes"></span></ion-card-content>
+        <ion-card-content><span [innerHTML]="item?.packageIncludes | dbMarkup:'<strong>Package includes:</strong>'"></span></ion-card-content>
     </ion-card>
 </ion-content>

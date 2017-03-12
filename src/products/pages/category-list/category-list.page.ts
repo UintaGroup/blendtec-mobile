@@ -1,8 +1,9 @@
-import { Component }        from '@angular/core';
-import { NavController }    from 'ionic-angular';
-import { CategoryService }  from '../../providers';
-import { Category }         from '../../models';
-import { CategoryDetailPage } from '../category-detail/category-detail.page';
+import { Component }            from '@angular/core';
+import { NavController }        from 'ionic-angular';
+
+import { CategoryService }      from '../../providers';
+import { Category }             from '../../models';
+import { CategoryDetailPage }   from '../category-detail/category-detail.page';
 
 @Component({
 	selector: 'product-category-list',

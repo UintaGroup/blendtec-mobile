@@ -1,5 +1,14 @@
 import { ApiEntity } from '../../common/models/api-entity';
+import { ProductColor } from './product-color.model';
+import { IProductColor } from './iproduct-color.model';
 export class Product extends ApiEntity {
+
+	constructor(data: any) {
+		super(data);
+		this._colors = data.colors.map((c) => {
+			return new ProductColor(c);
+		});
+	}
 
 	/* tslint:disable */
 	private _item_code: string;
@@ -166,5 +175,10 @@ export class Product extends ApiEntity {
 	/* tslint:enable */
 	public get primaryImage(): string {
 		return this._primary_image;
+	}
+
+	private _colors: IProductColor[] = [];
+	public get colors(): IProductColor[] {
+		return this._colors;
 	}
 }
