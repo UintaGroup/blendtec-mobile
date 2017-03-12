@@ -64,6 +64,7 @@ export class MyApp {
 	}
 
 	private onLoadingStart(message: any): void {
+		if(this._loading !== undefined) return;
 		this._loading = this._loadingCtrl.create({
 			content: message || 'Loading Please Wait...'
 		});

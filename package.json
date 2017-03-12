@@ -15,7 +15,8 @@
     "build": "ionic-app-scripts build",
     "ionic:build": "ionic-app-scripts build",
     "ionic:serve": "ionic-app-scripts serve",
-    "ionic:transpile": "ionic-app-scripts transpile"
+    "ionic:transpile": "ionic-app-scripts transpile",
+    "postinstall": "webdriver-manager update"
   },
   "dependencies": {
     "@angular/common": "2.2.1",

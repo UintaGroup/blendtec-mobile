@@ -1,14 +1,23 @@
-page-item-detail {
-    .item-profile {
+page-product-detail {
+    .product-profile {
         width: 100%;
         background-position: center center;
         background-size: cover;
         height: 250px;
     }
 
-    .item-detail {
+    .product-detail {
         width: 100%;
         background: white;
         position: absolute;
+    }
+
+   .product-img {
+       min-height: 20em;
+   }
+
+    ion-spinner {
+      left: 50%;
+      margin-left: -1em;
     }
 }

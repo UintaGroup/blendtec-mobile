@@ -8,10 +8,14 @@
 </ion-header>
 
 <ion-content>
-    <ion-item>
-        <img [src]="primaryImage"/>
+    <ion-item class="product-img">
+        <ion-spinner *ngIf="primaryImage === undefined"></ion-spinner>
+        <img *ngIf="primaryImage !== undefined" [src]="primaryImage"/>
     </ion-item>
     <ion-card>
+        <ion-card-header color="blendtec">
+            {{ item?.name | uppercase}}
+        </ion-card-header>
         <ion-card-content>
             <p>{{item?.caption}}</p>
         </ion-card-content>
@@ -23,11 +27,11 @@
         </ion-card-content>
     </ion-card>
     <ion-card>
-        <ion-card-header>Features</ion-card-header>
+        <ion-card-header color="blendtec">Features</ion-card-header>
         <ion-card-content><span [innerHTML]="features"></span></ion-card-content>
     </ion-card>
     <ion-card>
-        <ion-card-header>Package Includes</ion-card-header>
-        <ion-card-content><span [innerHTML]="item?.packageIncludes"></span></ion-card-content>
+        <ion-card-header color="blendtec">Package Includes</ion-card-header>
+        <ion-card-content><span [innerHTML]="packageIncludes"></span></ion-card-content>
     </ion-card>
 </ion-content>
