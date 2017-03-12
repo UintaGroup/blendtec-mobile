@@ -32,8 +32,8 @@ import { LoadingEvents } from '../common/models/loading-events';
 })
 export class MyApp {
 	private _loading: Loading;
-	// rootPage: any = FirstRunPage;
-	rootPage: any = ProductCategoriesPage;
+	rootPage: any = FirstRunPage;
+	// rootPage: any = ProductCategoriesPage;
 	@ViewChild(Nav) nav: Nav;
 
 	pages: any[] = [
