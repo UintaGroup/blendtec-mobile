@@ -4,7 +4,7 @@ machine:
   node:
     version: 6.9.5
 
-  dependencies:
-    pre:
-      - npm install -g ionic cordova angular-cli
-      - ionic state clear
+dependencies:
+  pre:
+    - npm install -g ionic cordova angular-cli
+    - ionic state clear
