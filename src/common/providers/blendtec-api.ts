@@ -1,19 +1,24 @@
-import { Injectable }                               from '@angular/core';
+import { Injectable, Inject }                               from '@angular/core';
 import { Jsonp, RequestOptions, URLSearchParams }   from '@angular/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import { Events } from 'ionic-angular';
-import { LoadingEvents } from '../../common/models/loading-events';
+import { LoadingEvents } from '../models/loading-events';
+import { AppConfig, APP_CONFIG } from '../../app/app.config';
 
 @Injectable()
 export class BlendtecApi {
-	url: string = 'https://json2jsonp.com/?url=';
+	private _apiUrl: string;
+	private _url: string;
 
-	constructor(private _jsonp: Jsonp, private _events: Events) {}
+	constructor(private _jsonp: Jsonp, private _events: Events, @Inject(APP_CONFIG) config: AppConfig) {
+		this._apiUrl = config.blendtecApiUrl;
+		this._url = config.jsonPConverterUrl;
+	}
 
 	//TODO simplfy when json2jsonp isn't necessary
 	public buildUrl(endpoint: string, params?: string): string {
-		let tmpUrl = this.url + encodeURIComponent('www.blendtec.com/' + endpoint + '.json');
+		let tmpUrl = this._url + '?url=' + encodeURIComponent(this._apiUrl + endpoint + '.json');
 		if(params) {
 			tmpUrl = tmpUrl + '?' +  params;
 		}

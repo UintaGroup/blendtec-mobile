@@ -1,6 +1,7 @@
 bt-button {
   .bt-button {
     border-radius: 8px;
+    height: 4.5rem;
   }
 
   .bt-button-text {
@@ -15,11 +16,17 @@ bt-button {
     width: 90%;
     left: 0px;
     padding-top: .6em;
+    font-size: 2rem;
   }
 
   .bt-button-icon {
     position: absolute;
-    right: 1em;
+    right: .7em;
     color: #60646B;
+
+    ion-icon {
+      font-size: 3rem;
+      font-weight: 600;
+    }
   }
 }

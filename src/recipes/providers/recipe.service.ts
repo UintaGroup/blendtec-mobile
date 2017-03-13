@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Response } from '@angular/http';
+import { Events } from 'ionic-angular';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import { TranslateService } from 'ng2-translate';
 
 import { Recipe } from '../models/recipe.model';
-import { BlendtecApi } from './blendtec-api';
-import { Events } from 'ionic-angular';
+import { BlendtecApi } from '../../common/providers';
 import { LoadingEvents } from '../../common/models/loading-events';
 
 @Injectable()
@@ -51,9 +51,11 @@ export class RecipeService {
 		return this._api
 			.get(this._resource + '/categories/' + categorySlug)
 			.map((r: Response) => {
-				return r.json().recipes.map(x => {
+				let data = r.json().recipes.map(x => {
 					return new Recipe(x.Recipe);
 				});
+				this._events.publish(LoadingEvents.END);
+				return data;
 			})
 			.catch(() => this._api.handleError('No recipes found.'));
 	}
