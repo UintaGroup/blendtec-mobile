@@ -1,9 +1,12 @@
-import { RecipeRatingDirective }    from './recipe-rating';
+import { RecipeRating } from './recipe-rating.component';
+import { MainMenu }     from './main-menu.component';
 
 export {
-	RecipeRatingDirective
+	RecipeRating,
+	MainMenu
 }
 
 export const RECIPE_DIRECTIVES = [
-	RecipeRatingDirective
+	RecipeRating,
+	MainMenu
 ];

@@ -17,8 +17,9 @@ import { RECIPE_PAGES } from './pages';
 		TranslateModule,
 		CommonModule
 	],
+	exports: [RECIPE_DIRECTIVES],
 	declarations: [RECIPE_PAGES, RECIPE_DIRECTIVES, RECIPE_PIPES],
-	entryComponents: RECIPE_PAGES,
+	entryComponents: [RECIPE_PAGES],
 	providers: RECIPE_PROVIDERS
 })
 export class RecipeServiceModule {

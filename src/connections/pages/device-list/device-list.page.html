@@ -1,0 +1,28 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{'TITLE.DEVICE_LIST' | translate}}</ion-title>
+        <ion-buttons *ngIf="btEnabled" end>
+            <button ion-button clear (click)="settings()">
+                <ion-icon name="settings"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="page-list-device">
+    <ion-list>
+        <ion-list-header>{{'LABEL.BLUETOOTH_DEVICES' | translate }}</ion-list-header>
+        <ion-item *ngFor="let item of btItems">
+            <pre>{{item | json}}</pre>
+        </ion-item>
+    </ion-list>
+    <ion-list>
+        <ion-list-header>{{'LABEL.WIFI_CONNECTION' | translate }}</ion-list-header>
+        <ion-item>
+             <h2>{{connectionType }}</h2>
+        </ion-item>
+    </ion-list>
+</ion-content>

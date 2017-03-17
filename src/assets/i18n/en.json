@@ -52,11 +52,25 @@
         "SUGAR": "Sugar",
         "CARBS": "Carbohydrates",
         "FIBER": "Fiber",
-        "PROTEIN": "Protein"
+        "BLUETOOTH_DEVICES": "Bluetooth Devices",
+        "WIFI_CONNECTION": "Network Connection",
+        "PROTEIN": "Protein",
+        "BLUETOOTH_DISABLED": "Bluetooth Disabled",
+        "NETWORK_DISABLED": "Network Disabled"
     },
     "TITLE": {
         "RECIPE_LIST": "Recipes",
         "RECIPE_CATEGORY_LIST": "Categories",
-        "PRODUCT_CATEGORY_LIST": "Categories"
+        "PRODUCT_CATEGORY_LIST": "Categories",
+        "DEVICE_LIST": "Devices"
+    },
+    "MENU": {
+      "RECIPE_LIST": "Recipes",
+      "PRODUCT_HEADER": "Products",
+      "BLENDERS": "Blenders",
+      "JARS": "Jars",
+      "PRODUCT_LIST": "Products",
+      "MY_BLENDTEC": "My Blendtec",
+      "DEVICES": "Connected Blenders"
     }
 }

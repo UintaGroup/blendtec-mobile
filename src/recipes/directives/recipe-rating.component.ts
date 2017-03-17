@@ -8,7 +8,7 @@ import { Component, Input } from '@angular/core';
 					<ion-icon *ngFor="let i of emptyStars" color="blendtec" name="star-outline"></ion-icon>
 				</div>`
 })
-export class RecipeRatingDirective {
+export class RecipeRating {
 
 	@Input() rating: number;
 	private _possibleStars: number = 5;

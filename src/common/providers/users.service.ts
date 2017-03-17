@@ -22,7 +22,7 @@ export class UserService {
 		}, 2000);
 		return Observable.of(accountInfo)
 			.share()
-			.delay(new Date(Date.now() + 1500));
+			.delay(new Date(Date.now() + 1000));
 		// return this.api.post('login', accountInfo).share()
 		// 	.map(res => res.json())
 		// 	.subscribe(res => {

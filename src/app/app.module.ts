@@ -9,6 +9,7 @@ import { RecipeServiceModule } from '../recipes/recipes.module';
 import { ProductsModule } from '../products/products.module';
 import { CommonModule } from '../common/common.module';
 import { APP_CONFIG, CONFIG } from './app.config';
+import { ConnectionsModule } from '../connections/connections.module';
 
 export function createTranslateLoader(http: Http): TranslateStaticLoader {
 	'use strict';
@@ -32,6 +33,7 @@ export function providers(): any[] {
 		CommonModule,
 		RecipeServiceModule,
 		ProductsModule,
+		ConnectionsModule,
 		IonicModule.forRoot(MyApp),
 		TranslateModule.forRoot({
 			provide: TranslateLoader,
