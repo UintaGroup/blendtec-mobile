@@ -1,14 +1,12 @@
-import { Component, ViewChild } from '@angular/core';
-import { Platform, Nav, Loading, LoadingController } from 'ionic-angular';
-import { StatusBar, Splashscreen } from 'ionic-native';
-import { WelcomePage } from '../common/pages';
-import { CategoryListPage as ProductCategoriesPage } from '../products/pages';
+import { Component, ViewChild }                         from '@angular/core';
+import { Platform, Nav, Loading, LoadingController, Events }    from 'ionic-angular';
+import { StatusBar, Splashscreen }                      from 'ionic-native';
+import { TranslateService }                             from 'ng2-translate/ng2-translate';
 
-import { TranslateService } from 'ng2-translate/ng2-translate';
-import { Events } from 'ionic-angular';
-import { LoadingEvents } from '../common/models/loading-events';
-import { NavItem } from '../common/models/nav-item';
-import { UserService } from '../common/providers/users.service';
+import { WelcomePage }                                  from '../common/pages';
+import { LoadingEvents, NavItem }                       from '../common/models';
+import { UserService }                                  from '../common/providers';
+import { CategoryListPage as ProductCategoriesPage }    from '../products/pages';
 
 @Component({
 	template: `<ion-menu [content]="content">
