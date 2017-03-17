@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { LoginPage } from '../login/login';
-import { SignupPage } from '../signup/signup';
+import { LoginPage, SignupPage } from '../../../auth/pages';
 
 @Component({
 	selector: 'page-welcome',

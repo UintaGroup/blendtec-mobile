@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
 import { TranslateService } from 'ng2-translate/ng2-translate';
-import { MainPage } from '../../../recipes/pages';
-import { UserService } from '../../providers';
+
+import { Credentials } from '../../models';
+import { AuthService } from '../../providers';
 
 @Component({
 	selector: 'page-login',
@@ -10,15 +11,15 @@ import { UserService } from '../../providers';
 })
 export class LoginPage {
 
-	account: {email: string, password: string} = {
-		email: 'test@example.com',
-		password: 'test'
+	public credentials: Credentials = {
+		username: '',
+		password: ''
 	};
 
 	private loginErrorString: string;
 
 	constructor(public navCtrl: NavController,
-				public userSrvc: UserService,
+				public userSrvc: AuthService,
 				public toastCtrl: ToastController,
 				public translateSrvc: TranslateService) {
 
@@ -29,11 +30,12 @@ export class LoginPage {
 
 	public doLogin(): any {
 		this.userSrvc
-			.login(this.account)
+			.login(this.credentials)
 			.subscribe(
-				() => this.navCtrl.push(MainPage),
 				() => {
-					this.navCtrl.push(MainPage);
+					console.log();
+				},
+				(err) => {
 					let toast = this.toastCtrl.create({
 						message: this.loginErrorString,
 						duration: 3000,

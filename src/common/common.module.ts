@@ -3,12 +3,12 @@ import { HttpModule, JsonpModule }  from '@angular/http';
 import { IonicModule }              from 'ionic-angular';
 import { Storage }                  from '@ionic/storage';
 import { TranslateModule }          from 'ng2-translate/ng2-translate';
+import { AuthModule }               from '../auth/auth.module';
 
-import { COMMON_PROVIDERS }         from './providers';
-import { SettingsService }          from './providers';
+import { COMMON_PROVIDERS, SettingsService }         from './providers';
 import { COMMON_PAGES }             from './pages/index';
-import { COMMON_DIRECTIVES }        from './directives/index';
 import { COMMON_PIPES }             from './pipes';
+import { BlendtecModule } from '../blendtec/blendtec.module';
 
 export function provideSettingsService(storage: Storage): SettingsService {
 	'use strict';
@@ -36,10 +36,12 @@ export function providers(): Provider[] {
 		JsonpModule,
 		IonicModule,
 		TranslateModule,
+		AuthModule,
+		BlendtecModule
 	],
-	exports: [COMMON_DIRECTIVES, COMMON_PIPES],
-	declarations: [COMMON_PAGES, COMMON_DIRECTIVES, COMMON_PIPES],
-	entryComponents: [COMMON_PAGES, COMMON_DIRECTIVES],
+	exports: COMMON_PIPES,
+	declarations: [COMMON_PAGES, COMMON_PIPES],
+	entryComponents: [COMMON_PAGES],
 	providers: providers(),
 })
 export class CommonModule {

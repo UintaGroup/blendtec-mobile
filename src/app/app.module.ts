@@ -10,6 +10,8 @@ import { ProductsModule } from '../products/products.module';
 import { CommonModule } from '../common/common.module';
 import { APP_CONFIG, CONFIG } from './app.config';
 import { ConnectionsModule } from '../connections/connections.module';
+import { AuthModule } from '../auth/auth.module';
+import { BlendtecModule } from '../blendtec/blendtec.module';
 
 export function createTranslateLoader(http: Http): TranslateStaticLoader {
 	'use strict';
@@ -28,6 +30,8 @@ export function providers(): any[] {
 @NgModule({
 	declarations: [MyApp],
 	imports: [
+		AuthModule,
+		BlendtecModule,
 		HttpModule,
 		JsonpModule,
 		CommonModule,
