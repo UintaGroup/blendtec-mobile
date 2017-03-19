@@ -1,0 +1,18 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{'TITLE.FAQ_LIST' | translate}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="page-list-category">
+    <ion-searchbar [(ngModel)]="query" (ionCancel)="clearSearch()"></ion-searchbar>
+    <ion-list>
+        <ion-item text-wrap *ngFor="let item of items | async | filterBy: {question: query}" (click)="select(item)">
+            <h2>{{item?.question}}</h2>
+            <bt-button-sm item-right></bt-button-sm>
+        </ion-item>
+    </ion-list>
+</ion-content>

@@ -1,0 +1,14 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{'TITLE.FAQ_DETAIL' | translate}}</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-card>
+        <ion-card-header color="blendtec"><h2>{{(item | async)?.question}}</h2></ion-card-header>
+        <ion-card-content>{{(item | async)?.answer}}</ion-card-content>
+    </ion-card>
+</ion-content>

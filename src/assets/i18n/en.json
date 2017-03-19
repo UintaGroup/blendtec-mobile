@@ -61,6 +61,8 @@
     "TITLE": {
         "RECIPE_LIST": "Recipes",
         "RECIPE_CATEGORY_LIST": "Categories",
+        "FAQ_LIST": "FAQs",
+        "FAQ_DETAIL": "FAQ",
         "PRODUCT_CATEGORY_LIST": "Categories",
         "DEVICE_LIST": "Devices"
     },
@@ -69,6 +71,7 @@
       "PRODUCT_HEADER": "Products",
       "BLENDERS": "Blenders",
       "JARS": "Jars",
+      "FAQS": "FAQs",
       "PRODUCT_LIST": "Products",
       "MY_BLENDTEC": "My Blendtec",
       "DEVICES": "Connected Blenders"

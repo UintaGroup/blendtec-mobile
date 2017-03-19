@@ -1,6 +1,3 @@
-/**
- * Created by stone on 3/17/17.
- */
 import { Injectable }         from '@angular/core';
 import { SqlStore }           from '../models/sql-store';
 import { LoggerService }      from './logger.service';

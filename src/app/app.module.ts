@@ -12,6 +12,7 @@ import { APP_CONFIG, CONFIG } from './app.config';
 import { ConnectionsModule } from '../connections/connections.module';
 import { AuthModule } from '../auth/auth.module';
 import { BlendtecModule } from '../blendtec/blendtec.module';
+import { FaqModule } from '../faqs/faq.module';
 
 export function createTranslateLoader(http: Http): TranslateStaticLoader {
 	'use strict';
@@ -30,11 +31,12 @@ export function providers(): any[] {
 @NgModule({
 	declarations: [MyApp],
 	imports: [
-		AuthModule,
-		BlendtecModule,
 		HttpModule,
 		JsonpModule,
+		AuthModule,
+		BlendtecModule,
 		CommonModule,
+		FaqModule,
 		RecipeServiceModule,
 		ProductsModule,
 		ConnectionsModule,

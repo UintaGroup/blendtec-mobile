@@ -22,6 +22,7 @@ import { AuthService }                                          from '../auth/pr
 		<ion-list>	
 			<product-menu (nav)="openPage($event)"></product-menu>
 			<recipe-menu (nav)="openPage($event)"></recipe-menu>
+			<faq-menu (nav)="openPage($event)"></faq-menu>
 			<button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
 				{{p.title}}
 			</button>
