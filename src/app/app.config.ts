@@ -8,6 +8,7 @@ export interface AppConfig {
 	blendtecApiUrl: string;
 	imageRoot: string;
 	jsonPConverterUrl: string;
+	customerSupportPhone: string;
 }
 
 export const CONFIG: AppConfig = {
@@ -15,5 +16,6 @@ export const CONFIG: AppConfig = {
 	staticApiUrl: 'https://dl.dropboxusercontent.com/u/29534952/api/',
 	imageRoot: 'http://cdn.blendtec.com/images/',
 	blendtecApiUrl: 'http://www.blendtec.com/',
-	jsonPConverterUrl: 'https://json2jsonp.com/'
+	jsonPConverterUrl: 'https://json2jsonp.com/',
+	customerSupportPhone: '+1-1800-748-5400'
 };

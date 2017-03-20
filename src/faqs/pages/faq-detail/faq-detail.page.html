@@ -8,7 +8,12 @@
 </ion-header>
 <ion-content>
     <ion-card>
-        <ion-card-header color="blendtec"><h2>{{(item | async)?.question}}</h2></ion-card-header>
-        <ion-card-content>{{(item | async)?.answer}}</ion-card-content>
+        <ion-card-header class="faq-header" color="blendtec">{{(item | async)?.question | uppercase}}</ion-card-header>
+        <ion-card-content>
+            <span [innerHTML]="(item | async)?.answer | dbMarkup"></span>
+        </ion-card-content>
+        <ion-card-content>
+            <faq-category-badges [faq]="(item | async)"></faq-category-badges>
+        </ion-card-content>
     </ion-card>
 </ion-content>

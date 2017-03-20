@@ -7,12 +7,15 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content class="page-list-category">
-    <ion-searchbar [(ngModel)]="query" (ionCancel)="clearSearch()"></ion-searchbar>
+<ion-content class="page-faq-list">
+   <ion-row>
+       <ion-searchbar [(ngModel)]="query" (ionCancel)="clearSearch()"></ion-searchbar>
+   </ion-row>
     <ion-list>
-        <ion-item text-wrap *ngFor="let item of items | async | filterBy: {question: query}" (click)="select(item)">
+        <ion-item text-wrap *ngFor="let item of items | async | filterBy: {question: query, type: query, category: query}" (click)="select(item)">
             <h2>{{item?.question}}</h2>
             <bt-button-sm item-right></bt-button-sm>
+            <faq-category-badges [faq]="item"></faq-category-badges>
         </ion-item>
     </ion-list>
 </ion-content>

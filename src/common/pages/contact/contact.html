@@ -1,0 +1,49 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{'TITLE.CONTACT_US' | translate}}</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <form (ngSubmit)="onSubmit(contact)" [formGroup]="contact" novalidate>
+        <ion-list>
+            <ion-item>
+                <ion-label floating>{{ 'LABEL.FIRSTNAME' | translate }}</ion-label>
+                <ion-input type="text" formControlName="firstName"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>{{ 'LABEL.LASTNAME' | translate }}</ion-label>
+                <ion-input type="text" formControlName="lastName"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>{{ 'LABEL.EMAIL' | translate }}</ion-label>
+                <ion-input type="email" formControlName="email"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>{{ 'LABEL.PHONE' | translate }}</ion-label>
+                <ion-input type="phone" formControlName="phone"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label>{{ 'LABEL.TEXT_PREFERRED' | translate }}</ion-label>
+                <ion-toggle type="checkbox" color="primary" formControlName="textPreferred"></ion-toggle>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>{{ 'LABEL.MESSAGE' | translate }}</ion-label>
+                <ion-textarea rows="6"
+                              type="textarea"
+                              formControlName="message"></ion-textarea>
+            </ion-item>
+            <div padding>
+                <bt-button type="submit">{{'SUBMIT' | translate}}</bt-button>
+            </div>
+        </ion-list>
+    </form>
+    <ion-list>
+        <ion-list-header><h2 color="blendtec">{{'HEADER.RATHER_CALL' | translate}}</h2></ion-list-header>
+        <ion-item>
+            <bt-button (click)="call(customerSupport)">{{'BUTTON.CALL_SUPPORT' | translate}}</bt-button>
+        </ion-item>
+    </ion-list>
+</ion-content>

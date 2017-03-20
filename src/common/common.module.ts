@@ -1,14 +1,16 @@
 import { NgModule, Provider }       from '@angular/core';
+import { ReactiveFormsModule }      from '@angular/forms';
 import { HttpModule, JsonpModule }  from '@angular/http';
 import { IonicModule }              from 'ionic-angular';
 import { Storage }                  from '@ionic/storage';
 import { TranslateModule }          from 'ng2-translate/ng2-translate';
 import { AuthModule }               from '../auth/auth.module';
 
-import { COMMON_PROVIDERS, SettingsService }         from './providers';
+import { COMMON_DIRECTIVES }        from './directives/index';
+import { COMMON_PROVIDERS, SettingsService } from './providers';
 import { COMMON_PAGES }             from './pages/index';
 import { COMMON_PIPES }             from './pipes';
-import { BlendtecModule } from '../blendtec/blendtec.module';
+import { BlendtecModule }           from '../blendtec/blendtec.module';
 
 export function provideSettingsService(storage: Storage): SettingsService {
 	'use strict';
@@ -31,6 +33,7 @@ export function providers(): Provider[] {
 
 @NgModule({
 	imports: [
+		ReactiveFormsModule,
 		IonicModule,
 		HttpModule,
 		JsonpModule,
@@ -39,9 +42,9 @@ export function providers(): Provider[] {
 		AuthModule,
 		BlendtecModule
 	],
-	exports: COMMON_PIPES,
-	declarations: [COMMON_PAGES, COMMON_PIPES],
-	entryComponents: [COMMON_PAGES],
+	exports: [COMMON_PIPES, COMMON_DIRECTIVES],
+	declarations: [COMMON_PAGES, COMMON_PIPES, COMMON_DIRECTIVES],
+	entryComponents: [COMMON_PAGES, COMMON_DIRECTIVES],
 	providers: providers(),
 })
 export class CommonModule {

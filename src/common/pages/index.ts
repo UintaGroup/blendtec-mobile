@@ -1,5 +1,6 @@
 import { TutorialPage } from './tutorial/tutorial';
 import { WelcomePage }  from './welcome/welcome';
+import { ContactPage } from './contact/contact';
 
 /* tslint:disable */
 export const FirstRunPage = TutorialPage;
@@ -7,10 +8,12 @@ export const FirstRunPage = TutorialPage;
 
 export {
 	TutorialPage,
-	WelcomePage
+	WelcomePage,
+	ContactPage
 }
 
 export const COMMON_PAGES = [
 	TutorialPage,
-	WelcomePage
+	WelcomePage,
+	ContactPage
 ];

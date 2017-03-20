@@ -1,10 +1,11 @@
 import { Api }              from './api.service';
-import { SettingsService }  from './settings.service';
-import { DropboxApi }       from './dropbox-api.service';
 import { BlendtecApi }      from './blendtec-api';
+import { ContactService }   from './contact.service';
+import { DbConfig }         from './db.config';
+import { DropboxApi }       from './dropbox-api.service';
 import { LocalDbService }   from './local-db.service';
 import { LoggerService }    from './logger.service';
-import { DbConfig }         from './db.config';
+import { SettingsService }  from './settings.service';
 
 export {
 	Api,
@@ -13,7 +14,8 @@ export {
 	SettingsService,
 	DbConfig,
 	LocalDbService,
-	LoggerService
+	LoggerService,
+	ContactService
 };
 
 export const COMMON_PROVIDERS = [
@@ -22,5 +24,6 @@ export const COMMON_PROVIDERS = [
 	DropboxApi,
 	DbConfig,
 	LocalDbService,
-	LoggerService
+	LoggerService,
+	ContactService
 ];

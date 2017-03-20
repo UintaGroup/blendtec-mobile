@@ -37,7 +37,11 @@
         "INGREDIENTS": "Ingredients",
         "INSTRUCTIONS": "Instructions",
         "NUTRITION": "Nutrition Information",
-        "VARIATION": "Variation"
+        "VARIATION": "Variation",
+        "RATHER_CALL": "Rather Call Us?"
+    },
+    "BUTTON": {
+        "CALL_SUPPORT": "CALL US"
     },
     "LABEL": {
         "RATINGS": "Ratings",
@@ -56,7 +60,13 @@
         "WIFI_CONNECTION": "Network Connection",
         "PROTEIN": "Protein",
         "BLUETOOTH_DISABLED": "Bluetooth Disabled",
-        "NETWORK_DISABLED": "Network Disabled"
+        "NETWORK_DISABLED": "Network Disabled",
+        "FIRSTNAME": "First Name",
+        "LASTNAME": "Last Name",
+        "EMAIL": "Email Address",
+        "PHONE": "Phone",
+        "TEXT_PREFERRED": "Should we send you an SMS?",
+        "MESSAGE": "Message"
     },
     "TITLE": {
         "RECIPE_LIST": "Recipes",
@@ -64,7 +74,8 @@
         "FAQ_LIST": "FAQs",
         "FAQ_DETAIL": "FAQ",
         "PRODUCT_CATEGORY_LIST": "Categories",
-        "DEVICE_LIST": "Devices"
+        "DEVICE_LIST": "Devices",
+        "CONTACT_US": "Contact"
     },
     "MENU": {
       "RECIPE_LIST": "Recipes",
@@ -74,6 +85,8 @@
       "FAQS": "FAQs",
       "PRODUCT_LIST": "Products",
       "MY_BLENDTEC": "My Blendtec",
-      "DEVICES": "Connected Blenders"
+      "DEVICES": "Connected Blenders",
+      "CONTACT_US": "Contact",
+      "HELP_SUPPORT": "Help & Support"
     }
 }

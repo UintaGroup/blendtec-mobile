@@ -22,10 +22,14 @@ import { AuthService }                                          from '../auth/pr
 		<ion-list>	
 			<product-menu (nav)="openPage($event)"></product-menu>
 			<recipe-menu (nav)="openPage($event)"></recipe-menu>
-			<faq-menu (nav)="openPage($event)"></faq-menu>
 			<button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
 				{{p.title}}
 			</button>
+			<ion-item-divider color="light">
+				{{'MENU.HELP_SUPPORT' | translate}}
+			</ion-item-divider>
+			<faq-menu (nav)="openPage($event)"></faq-menu>
+			<contact-menu (nav)="openPage($event)"></contact-menu>
 			<ion-item-divider color="light">
 				{{'MENU.MY_BLENDTEC' | translate}}
 			</ion-item-divider>

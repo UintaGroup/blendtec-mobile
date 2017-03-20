@@ -1,5 +1,5 @@
 import { NgModule, ErrorHandler } from '@angular/core';
-import { Http, HttpModule, JsonpModule } from '@angular/http';
+import { Http } from '@angular/http';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate/ng2-translate';
@@ -31,8 +31,6 @@ export function providers(): any[] {
 @NgModule({
 	declarations: [MyApp],
 	imports: [
-		HttpModule,
-		JsonpModule,
 		AuthModule,
 		BlendtecModule,
 		CommonModule,
