@@ -13,6 +13,7 @@ import { ConnectionsModule } from '../connections/connections.module';
 import { AuthModule } from '../auth/auth.module';
 import { BlendtecModule } from '../blendtec/blendtec.module';
 import { FaqModule } from '../faqs/faq.module';
+import { CloudModule, CloudSettings } from '@ionic/cloud-angular';
 
 export function createTranslateLoader(http: Http): TranslateStaticLoader {
 	'use strict';
@@ -28,25 +29,36 @@ export function providers(): any[] {
 	];
 }
 
+const cloudSettings: CloudSettings = {
+	'core': {
+		'app_id': 'f86b7e7d'
+	}
+};
+
+const translateSettings: any = {
+	provide: TranslateLoader,
+	useFactory: (createTranslateLoader),
+	deps: [Http]
+};
+
+
 @NgModule({
 	declarations: [MyApp],
 	imports: [
 		AuthModule,
 		BlendtecModule,
 		CommonModule,
+		CloudModule.forRoot(cloudSettings),
 		FaqModule,
 		RecipeServiceModule,
 		ProductsModule,
 		ConnectionsModule,
 		IonicModule.forRoot(MyApp),
-		TranslateModule.forRoot({
-			provide: TranslateLoader,
-			useFactory: (createTranslateLoader),
-			deps: [Http]
-		}),
+		TranslateModule.forRoot(translateSettings),
 	],
 	bootstrap: [IonicApp],
 	entryComponents: [MyApp],
 	providers: providers()
 })
-export class AppModule {}
+export class AppModule {
+}
