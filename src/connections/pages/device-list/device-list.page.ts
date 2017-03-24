@@ -14,6 +14,9 @@ export class DeviceListPage {
 	private _networkEnabled: boolean = false;
 
 	constructor(private _btSrvc: BluetoothService, private _networkSrvc: NetworkService) {
+	}
+
+	ionViewDidEnter(): any {
 		this.loadBlueTooth();
 		this.loadNetwork();
 	}

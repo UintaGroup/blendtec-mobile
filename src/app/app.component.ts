@@ -14,7 +14,7 @@ import { AuthService }                                          from '../auth/pr
 	<ion-header>
 		<ion-toolbar padding-left>
 			<div class="menu-logo">
-				<img src="../assets/img/logo.svg" />
+				<img src="assets/img/logo.svg" />
 			</div>
 		</ion-toolbar>
 	</ion-header>
