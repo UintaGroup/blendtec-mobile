@@ -1,7 +1,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { Http } from '@angular/http';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
+import { IonicStorageModule}  from '@ionic/storage';
 import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate/ng2-translate';
 
 import { MyApp } from './app.component';
@@ -14,6 +14,7 @@ import { AuthModule } from '../auth/auth.module';
 import { BlendtecModule } from '../blendtec/blendtec.module';
 import { FaqModule } from '../faqs/faq.module';
 import { CloudModule, CloudSettings } from '@ionic/cloud-angular';
+import { BrowserModule } from '@angular/platform-browser';
 
 export function createTranslateLoader(http: Http): TranslateStaticLoader {
 	'use strict';
@@ -23,7 +24,6 @@ export function createTranslateLoader(http: Http): TranslateStaticLoader {
 export function providers(): any[] {
 	'use strict';
 	return [
-		Storage,
 		{provide: APP_CONFIG, useValue: CONFIG},
 		{provide: ErrorHandler, useClass: IonicErrorHandler}
 	];
@@ -41,11 +41,11 @@ const translateSettings: any = {
 	deps: [Http]
 };
 
-
 @NgModule({
 	declarations: [MyApp],
 	imports: [
 		AuthModule,
+		BrowserModule,
 		BlendtecModule,
 		CommonModule,
 		CloudModule.forRoot(cloudSettings),
@@ -54,6 +54,7 @@ const translateSettings: any = {
 		ProductsModule,
 		ConnectionsModule,
 		IonicModule.forRoot(MyApp),
+		IonicStorageModule.forRoot(),
 		TranslateModule.forRoot(translateSettings),
 	],
 	bootstrap: [IonicApp],

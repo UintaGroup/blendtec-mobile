@@ -22,11 +22,11 @@ export class NetworkService {
 		}
 	}
 
-	public onConnect(): Observable<any> {
+	public onConnect(): any {
 		return Network.onConnect();
 	}
 
-	public onDisconnect(): Observable<any> {
+	public onDisconnect(): any {
 		return Network.onDisconnect();
 	}
 
@@ -34,7 +34,7 @@ export class NetworkService {
 		return Network.type;
 	}
 
-	public onChange(): Observable<any> {
+	public onChange(): any {
 		return Network.onchange();
 	}
 }

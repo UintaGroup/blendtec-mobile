@@ -14,11 +14,11 @@ export class BluetoothService {
 		});
 	}
 
-	public connect(macAddress: string): Observable<any> {
+	public connect(macAddress: string): any {
 		return BluetoothSerial.connect(macAddress);
 	}
 
-	public connectInsecure(macAddress: string): Observable<any> {
+	public connectInsecure(macAddress: string): any {
 		return BluetoothSerial.connectInsecure(macAddress);
 	}
 
