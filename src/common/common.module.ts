@@ -8,9 +8,9 @@ import { AuthModule }               from '../auth/auth.module';
 
 import { COMMON_DIRECTIVES }        from './directives/index';
 import { COMMON_PROVIDERS, SettingsService } from './providers';
-import { COMMON_PAGES }             from './pages/index';
-import { COMMON_PIPES }             from './pipes';
-import { BlendtecModule }           from '../blendtec/blendtec.module';
+import { COMMON_PAGES }     from './pages/index';
+import { COMMON_PIPES }     from './pipes';
+import { BlendtecModule }   from '../blendtec/blendtec.module';
 
 export function provideSettingsService(storage: Storage): SettingsService {
 	'use strict';

@@ -24,5 +24,5 @@ import { RECIPE_PAGES } from './pages';
 	entryComponents: [RECIPE_PAGES],
 	providers: RECIPE_PROVIDERS
 })
-export class RecipeServiceModule {
+export class RecipeModule {
 }

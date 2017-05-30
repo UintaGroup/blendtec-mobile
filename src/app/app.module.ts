@@ -1,20 +1,21 @@
-import { NgModule, ErrorHandler } from '@angular/core';
-import { Http } from '@angular/http';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { IonicStorageModule}  from '@ionic/storage';
-import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate/ng2-translate';
+import { NgModule, ErrorHandler }                                   from '@angular/core';
+import { Http }                                                     from '@angular/http';
+import { BrowserModule }                                            from '@angular/platform-browser';
+import { IonicApp, IonicModule, IonicErrorHandler }                 from 'ionic-angular';
+import { IonicStorageModule}                                        from '@ionic/storage';
+import { CloudModule, CloudSettings }                               from '@ionic/cloud-angular';
+import { TranslateModule, TranslateLoader, TranslateStaticLoader }  from 'ng2-translate/ng2-translate';
 
-import { MyApp } from './app.component';
-import { RecipeServiceModule } from '../recipes/recipes.module';
-import { ProductsModule } from '../products/products.module';
-import { CommonModule } from '../common/common.module';
-import { APP_CONFIG, CONFIG } from './app.config';
-import { ConnectionsModule } from '../connections/connections.module';
-import { AuthModule } from '../auth/auth.module';
-import { BlendtecModule } from '../blendtec/blendtec.module';
-import { FaqModule } from '../faqs/faq.module';
-import { CloudModule, CloudSettings } from '@ionic/cloud-angular';
-import { BrowserModule } from '@angular/platform-browser';
+import { MyApp }                                    from './app.component';
+import { APP_CONFIG, CONFIG }                       from './app.config';
+import { AuthModule }                               from '../auth';
+import { BlendtecModule }                           from '../blendtec';
+import { ConnectionsModule }                        from '../connections';
+import { CommonModule }                             from '../common';
+import { IDbConfig }                                from '../common/models';
+import { RecipeModule, TABLES as RECIPE_TABLES }    from '../recipes';
+import { ProductsModule }                           from '../products';
+import { FaqModule }                                from '../faqs';
 
 export function createTranslateLoader(http: Http): TranslateStaticLoader {
 	'use strict';
@@ -25,7 +26,12 @@ export function providers(): any[] {
 	'use strict';
 	return [
 		{provide: APP_CONFIG, useValue: CONFIG},
-		{provide: ErrorHandler, useClass: IonicErrorHandler}
+		{provide: ErrorHandler, useClass: IonicErrorHandler},
+		{
+			provide: IDbConfig,
+			useFactory: appDbConfig,
+			deps: []
+		},
 	];
 }
 
@@ -41,6 +47,15 @@ const translateSettings: any = {
 	deps: [Http]
 };
 
+export function appDbConfig(): IDbConfig {
+	'use strict';
+	return {
+		tables: [].concat.apply([], [
+			RECIPE_TABLES
+		])
+	};
+}
+
 @NgModule({
 	declarations: [MyApp],
 	imports: [
@@ -50,7 +65,7 @@ const translateSettings: any = {
 		CommonModule,
 		CloudModule.forRoot(cloudSettings),
 		FaqModule,
-		RecipeServiceModule,
+		RecipeModule,
 		ProductsModule,
 		ConnectionsModule,
 		IonicModule.forRoot(MyApp),

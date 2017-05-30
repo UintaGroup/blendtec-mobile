@@ -1,6 +1,5 @@
 import { Component }            from '@angular/core';
 import { BluetoothService }     from '../../providers';
-import { NetworkService } from '../../providers/network.service';
 
 @Component({
 	selector: 'device-list',
@@ -11,14 +10,12 @@ export class DeviceListPage {
 	public btItems: any[] = [];
 	public connectionType: any = '';
 	private btEnabled: boolean = false;
-	private _networkEnabled: boolean = false;
 
-	constructor(private _btSrvc: BluetoothService, private _networkSrvc: NetworkService) {
+	constructor(private _btSrvc: BluetoothService) {
 	}
 
 	ionViewDidEnter(): any {
 		this.loadBlueTooth();
-		this.loadNetwork();
 	}
 
 	public loadBlueTooth(): Promise<void> {
@@ -28,13 +25,6 @@ export class DeviceListPage {
 				return this._btSrvc.list().then(i => this.btItems = i);
 			}
 		});
-	}
-
-	public loadNetwork(): void {
-		if (this._networkSrvc.enabled()) {
-			this._networkEnabled = true;
-			this.connectionType = this._networkSrvc.connectionType();
-		}
 	}
 
 	public settings(): Promise<any> {

@@ -12,7 +12,6 @@ export {
 	BlendtecApi,
 	DropboxApi,
 	SettingsService,
-	DbConfig,
 	LocalDbService,
 	LoggerService,
 	ContactService
@@ -22,7 +21,6 @@ export const COMMON_PROVIDERS = [
 	Api,
 	BlendtecApi,
 	DropboxApi,
-	DbConfig,
 	LocalDbService,
 	LoggerService,
 	ContactService
