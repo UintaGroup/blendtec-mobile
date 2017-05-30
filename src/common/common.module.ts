@@ -11,6 +11,7 @@ import { COMMON_PROVIDERS, SettingsService } from './providers';
 import { COMMON_PAGES }             from './pages/index';
 import { COMMON_PIPES }             from './pipes';
 import { BlendtecModule }           from '../blendtec/blendtec.module';
+import { IDbTable } from './models/db-table';
 
 export function provideSettingsService(storage: Storage): SettingsService {
 	'use strict';
@@ -21,6 +22,8 @@ export function provideSettingsService(storage: Storage): SettingsService {
 		option4: 'Hello'
 	});
 }
+
+
 
 export function providers(): Provider[] {
 	'use strict';

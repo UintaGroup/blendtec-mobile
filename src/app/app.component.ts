@@ -79,7 +79,7 @@ export class MyApp {
 		this.openPage({title: '', page: RecipeListPage});
 	}
 
-	public onLogout(): void {
+	public onLogout(): Promise<void> {
 		return this.openPage({title: '', page: WelcomePage});
 	}
 
@@ -87,8 +87,8 @@ export class MyApp {
 		this._authService.logout();
 	}
 
-	public openPage(navItem: NavItem): void {
-		this.nav.setRoot(navItem.page);
+	public openPage(navItem: NavItem): Promise<void> {
+		return this.nav.setRoot(navItem.page);
 	}
 
 	private onLoadingStart(message: any): void {
@@ -102,7 +102,7 @@ export class MyApp {
 
 	private onLoadingEnd(): void {
 		if (this._loading !== undefined) {
-			this._loading.dismiss();
+			this._loading.dismissAll();
 		}
 	}
 }
