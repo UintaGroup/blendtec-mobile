@@ -1,24 +1,27 @@
-import { Component } from '@angular/core';
+import { Component }                from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-import { RecipeService } from '../../providers/recipe.service';
-import { Recipe } from '../../models/recipe.model';
-import { BaseRecipe } from '../../models/base-recipe.model';
+import { RecipeService }            from '../../providers';
+import { BaseRecipe, Recipe }       from '../../models';
 
 @Component({
 	selector: 'page-item-detail',
 	templateUrl: 'recipe-detail.page.html'
 })
 export class RecipeDetailPage {
+
 	public item: Recipe;
 
-	constructor(public navCtrl: NavController, navParams: NavParams, recipes: RecipeService) {
-		recipes.one(navParams.get('slug')).subscribe(r => this.item = r);
-
+	constructor(private _navCtrl: NavController,
+				navParams: NavParams,
+				recipeSrvc: RecipeService) {
+		let slug: string = navParams.get('slug');
+		recipeSrvc.one(slug)
+			.subscribe(r => this.item = r);
 	}
 
-	select(related: BaseRecipe): void {
-		this.navCtrl.push(RecipeDetailPage, {
+	select(related: BaseRecipe): Promise<void> {
+		return this._navCtrl.push(RecipeDetailPage, {
 			slug: related.slug
 		});
 	}

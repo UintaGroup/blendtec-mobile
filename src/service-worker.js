@@ -5,7 +5,7 @@ const CURRENT_CACHES = {
 };
 
 self.addEventListener('activate', (event) => {
-	// Delete all caches that aren't named in CURRENT_CACHES.
+	// Delete refresh caches that aren't named in CURRENT_CACHES.
 	// While there is only one cache in this example, the same logic will handle the case where
 	// there are multiple versioned caches.
 	const expectedCacheNames = Object.keys(CURRENT_CACHES).map((key) => {

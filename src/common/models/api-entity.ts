@@ -1,8 +1,9 @@
 export abstract class ApiEntity {
 
-	constructor(private fields: any) {
-		for (let f in fields)
-			this['_' + f] = fields[f];
+	constructor(private data: any) {
+		for (let f in data) {
+			this['_' + f] = data[f];
+		}
 	}
 
 	protected _id: number;

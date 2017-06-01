@@ -1,10 +1,10 @@
-import { Component }        from '@angular/core';
-import { NavController, NavParams, ToastController }    from 'ionic-angular';
-import { RecipeService }          from '../../providers/recipe.service';
-import { Recipe }           from '../../models/recipe.model';
+import { Component }                from '@angular/core';
+import { NavController, NavParams } from 'ionic-angular';
+
+import { LogService }       from '../../../common/providers';
+import { RecipeService }    from '../../providers';
+import { Recipe, Category } from '../../models';
 import { RecipeDetailPage } from '../recipe-detail/recipe-detail.page';
-import { Category } from '../../models/category.model';
-import { Subscription } from 'rxjs';
 
 @Component({
 	selector: 'page-list-recipe',
@@ -16,46 +16,38 @@ export class RecipeListPage {
 	public page: number = 1;
 	public category: Category;
 
-	constructor(public navCtrl: NavController,
-				public params: NavParams,
-				public toastCtrl: ToastController,
-				public recipes: RecipeService) {
+	constructor(params: NavParams,
+				private _navCtrl: NavController,
+				private _recipeSrvc: RecipeService,
+				private _logSrvc: LogService) {
 
 		this.category = params.get('category');
 
 		if (this.category) {
-			this.recipes
-				.category(this.category.slug)
+			this._recipeSrvc.category(this.category.slug)
 				.subscribe(
 					r => this.items = r,
-					(err) => {
-						let toast = this.toastCtrl.create({
-							message: err,
-							duration: 3000,
-							position: 'top'
-						});
-						toast.present();
-					}
+					err => this._logSrvc.error(err)
 				);
 		} else {
-			recipes.all().subscribe((r) => {
-				this.items = r;
-			});
+			this._recipeSrvc.all()
+				.subscribe(
+					r => this.items = r,
+					err => this._logSrvc.error(err)
+				);
 		}
 	}
 
-	public select(item: Recipe): void {
-		this.navCtrl.push(RecipeDetailPage, {
+	public select(item: Recipe): Promise<void> {
+		return this._navCtrl.push(RecipeDetailPage, {
 			slug: item.slug
 		});
 	}
 
-	public loadMore(infiniteScroll: any): Subscription {
-		return this.recipes.page(++this.page)
-			.subscribe((r) => {
-				this.items = this.items.concat(r);
-				infiniteScroll.complete();
-			});
+	public loadMore(): Promise<any> {
+		return this._recipeSrvc.page(++this.page)
+			.toPromise()
+			.then(r => this.items = this.items.concat(r));
 	}
 
 }

@@ -19,7 +19,7 @@ export class LoginPage {
 	private loginErrorString: string;
 
 	constructor(public navCtrl: NavController,
-				public userSrvc: AuthService,
+				public authSrvc: AuthService,
 				public toastCtrl: ToastController,
 				public translateSrvc: TranslateService) {
 
@@ -29,7 +29,7 @@ export class LoginPage {
 	}
 
 	public doLogin(): any {
-		this.userSrvc
+		this.authSrvc
 			.login(this.credentials)
 			.subscribe(
 				() => {

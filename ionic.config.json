@@ -1,7 +1,6 @@
 {
   "name": "blendtec",
   "app_id": "f86b7e7d",
-  "v2": true,
-  "typescript": true,
-  "defaultBrowser": "chrome"
+  "defaultBrowser": "chrome",
+  "type": "ionic-angular"
 }

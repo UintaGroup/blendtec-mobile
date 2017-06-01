@@ -1,73 +1,72 @@
-import { Injectable }					 from '@angular/core';
-import { Events }		from 'ionic-angular';
+import { Injectable }                     from '@angular/core';
+import { Events }        from 'ionic-angular';
 
 import { Session, Credentials, Account } from '../models';
 import { BlendtecApi } from '../../common/providers/blendtec-api';
-import { LocalDbService } from '../../common/providers/local-db.service';
+import { DbService } from '../../common/providers/local-db.service';
 import { AuthEvents } from '../models/auth-events';
 import { Observable } from 'rxjs';
+
+const sessionKey: string = 'session';
+// const resourceKey: string = 'login';
 
 @Injectable()
 export class AuthService {
 
-	private _session: Session;
-	// private RESOURCE: string = 'login';
-
-	constructor(private _api: BlendtecApi,
-				protected _events: Events,
-				private _db: LocalDbService) {
-	}
+	constructor(private _api: BlendtecApi, protected _events: Events, private _db: DbService) {}
 
 	public initializeSession(): Promise<void> {
-		return this._db.get('session')
-			.then(s => this.doLogin(s));
+		return this._db.get(sessionKey)
+			.then(s => this.onLogin(s));
 	}
 
 	public login(credentials: Credentials): Observable<Session> {
-		// return this._api.post(this.RESOURCE, JSON.stringify(credentials)
-		// ).toPromise().then((response) => {
+		// return this._api.post(resourceKey, JSON.stringify(credentials)
+		// ).map(response => {
 		// 		let session = JSON.parse(response.headers.get('Authorization'));
-		// 		return this.doLogin(session, {sync: true});
+		// 		return this.onLogin(session, {sync: true});
 		// 	});
 		let session: Session = <Session> {
 			token: 'abcdefg',
 			expiration: new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toDateString(),
 			userName: credentials.username
 		};
-		return this.doLogin(session);
+		return Observable.fromPromise(this.onLogin(session));
 
 	}
 
 	public register(account: Account): Observable<Session> {
-		//TODO
 		return this.login({
 			username: account.username,
 			password: account.password
 		});
-
 	}
 
 	public logout(): Observable<void> {
-		this._events.publish(AuthEvents.LOGOUT);
-		return Observable.fromPromise(this._db.set('session', null));
+		let promise = this.getSession().then(session => {
+			this._events.publish(AuthEvents.LOGOUT, session);
+			return this._db.clear();
+			// return this._db.remove(sessionKey);
+		});
+
+		return Observable.fromPromise(promise);
 	}
 
-	private doLogin(session: Session): Observable<any> {
+	private onLogin(session: Session): Promise<any> {
 		if (session && Object.keys(session).length > 0) {
-			this._session = session;
-			this._events.publish(AuthEvents.AUTHENTICATED);
-			return Observable
-				.fromPromise(this._db.set('session', session)
-					.then(() => {
-						return session;
-					}));
+			this._events.publish(AuthEvents.AUTHENTICATED, session);
+			return this.setSession(session);
 		} else {
 			this._events.publish(AuthEvents.LOGOUT);
-			return this.logout();
+			return this.logout().toPromise();
 		}
 	}
 
-	public get session(): Session {
-		return this._session;
+	public setSession(session: Session): Promise<void> {
+		return this._db.set(sessionKey, session);
+	}
+
+	public getSession(): Promise<Session> {
+		return this._db.get(sessionKey);
 	}
 }

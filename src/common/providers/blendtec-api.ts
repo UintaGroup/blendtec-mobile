@@ -41,6 +41,6 @@ export class BlendtecApi {
 
 	public handleError(message: string): Observable<any> {
 		this._events.publish(LoadingEvents.END);
-		return Observable.throw('No recipes found.');
+		return Observable.throw('No _recipeSrvc found.');
 	}
 }
