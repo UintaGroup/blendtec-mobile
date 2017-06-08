@@ -1,4 +1,6 @@
 /* tslint:disable */
+import { Observable } from 'rxjs/Observable';
+import { Pipe, PipeTransform } from '@angular/core';
 export class ConfigMock {
 
 	public get(): any {
@@ -12,37 +14,12 @@ export class ConfigMock {
 	public getNumber(): number {
 		return 1;
 	}
+
+	public setTransition(any?: any): any {}
 }
 
 export class FormMock {
 	public register(): any {
-		return true;
-	}
-}
-
-export class NavMock {
-
-	public pop(): any {
-		return new Promise(function(resolve: Function): void {
-			resolve();
-		});
-	}
-
-	public push(): any {
-		return new Promise(function(resolve: Function): void {
-			resolve();
-		});
-	}
-
-	public getActive(): any {
-		return {
-			'instance': {
-				'model': 'something',
-			},
-		};
-	}
-
-	public setRoot(): any {
 		return true;
 	}
 }
@@ -102,7 +79,53 @@ export class PlatformMock {
 	public cancelTimeout(id: any) {
 		// do nothing
 	}
+
+	public getActiveElement(): any {
+		return document['activeElement'];
+	}
 }
+
+export class TranslateServiceMock {
+	public get(key: string): Observable<any> {
+		return Observable.of({});
+	}
+}
+
+@Pipe({name:'translate'})
+export class TranslatePipeMock implements PipeTransform {
+	public transform(): string{
+		return '';
+	}
+}
+
+export class NavMock {
+
+	public pop(): any {
+		return new Promise(function(resolve: Function): void {
+			resolve();
+		});
+	}
+
+	public push(): any {
+		return new Promise(function(resolve: Function): void {
+			resolve();
+		});
+	}
+
+	public getActive(): any {
+		return {
+			'instance': {
+				'model': 'something',
+			},
+		};
+	}
+
+	public setRoot(): any {
+		return true;
+	}
+}
+
+
 
 export class MenuMock {
 	public close(): any {

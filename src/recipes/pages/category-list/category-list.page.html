@@ -9,7 +9,7 @@
 
 <ion-content class="page-list-recipe">
     <ion-list>
-        <ion-item *ngFor="let item of items" (click)="select(item)">
+        <ion-item *ngFor="let item of items | async" (click)="select(item)">
             <ion-icon name='{{item.icon}}' item-left color="blendtec"></ion-icon>
             {{item.name}}
         </ion-item>

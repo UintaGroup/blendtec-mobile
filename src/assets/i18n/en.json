@@ -79,6 +79,7 @@
     },
     "MENU": {
       "RECIPE_LIST": "Recipes",
+      "RECIPE_CATEGORIES": "Categories",
       "PRODUCT_HEADER": "Products",
       "BLENDERS": "Blenders",
       "JARS": "Jars",

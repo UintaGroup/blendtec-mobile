@@ -3,7 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { LogService }       from '../../../common/providers';
 import { RecipeService }    from '../../providers';
-import { Recipe, Category } from '../../models';
+import { Recipe, RecipeCategory } from '../../models';
 import { RecipeDetailPage } from '../recipe-detail/recipe-detail.page';
 
 @Component({
@@ -14,7 +14,7 @@ export class RecipeListPage {
 
 	public items: Recipe[];
 	public page: number = 1;
-	public category: Category;
+	public category: RecipeCategory;
 
 	constructor(params: NavParams,
 				private _navCtrl: NavController,
@@ -24,16 +24,23 @@ export class RecipeListPage {
 		this.category = params.get('category');
 
 		if (this.category) {
+			console.log('RECIPE LIST', this._recipeSrvc);
 			this._recipeSrvc.category(this.category.slug)
 				.subscribe(
-					r => this.items = r,
-					err => this._logSrvc.error(err)
+					r => {
+						this.items = r;
+						console.log('ITEMS', this.items);
+					},
+					err => console.warn(err)
 				);
 		} else {
 			this._recipeSrvc.all()
 				.subscribe(
-					r => this.items = r,
-					err => this._logSrvc.error(err)
+					r => {
+						this.items = r;
+						console.log('ITEMS', this.items);
+					},
+					err => console.warn(err)
 				);
 		}
 	}

@@ -1,5 +1,3 @@
-// This file is required by karma.conf.js and loads recursively all the .spec and framework files
-
 import './polyfills.ts';
 
 import 'zone.js/dist/long-stack-trace-zone';
@@ -21,33 +19,35 @@ import {
 	DomController,
 	MenuController,
 	NavController,
-	Platform
+	Platform, GestureController
 } from 'ionic-angular';
-import { ConfigMock, PlatformMock } from './mocks';
-import { MockBackend } from '@angular/http/testing';
-import { XHRBackend, HttpModule } from '@angular/http';
-import { DropboxApi } from './common/providers/dropbox-api.service';
-import { CONFIG, APP_CONFIG } from './app/app.config';
+import { ConfigMock, TranslatePipeMock, TranslateServiceMock }               from './mocks';
+import { MockBackend }              from '@angular/http/testing';
+import { XHRBackend, HttpModule }   from '@angular/http';
+import { DropboxApi }               from './common/providers/dropbox-api.service';
+import { CONFIG, APP_CONFIG }       from './app/app.config';
+import { TranslateModule, TranslatePipe, TranslateService }          from 'ng2-translate';
+import { NavControllerMock }        from 'ionic-mocks';
+import { PlatformMock }             from './mocks';
+import { RecipeCategoryService }    from './recipes/providers/recipe-category.service';
+import { RecipeCategoryServiceMock } from './recipes/providers/recipe-category.service.mock';
 
-// Unfortunately there's no typing for the `__karma__` variable. Just declare it as any.
-declare var __karma__: any;
-declare var require: any;
+declare let __karma__: any;
+declare let require: any;
 
-// Prevent Karma from running prematurely.
 __karma__.loaded = function (): void {
-	// noop
+	//Empty
 };
 
-// First, initialize the Angular testing environment.
 getTestBed().initTestEnvironment(
 	BrowserDynamicTestingModule,
 	platformBrowserDynamicTesting(),
 );
-// Then we find refresh the tests.
+
 const context: any = require.context('./', true, /\.spec\.ts$/);
-// And load the modules.
+
 context.keys().map(context);
-// Finally, start Karma to run the tests.
+
 __karma__.start();
 
 export class TestUtils {
@@ -67,21 +67,26 @@ export class TestUtils {
 		return TestBed.configureTestingModule({
 			declarations: [
 				...components,
+				TranslatePipeMock
 			],
 			providers: [
 				MockBackend,
-				App, Form, Keyboard, DomController, MenuController, NavController,
+				App, Form, Keyboard, DomController, MenuController, NavController, GestureController,
 				{provide: Platform, useClass: PlatformMock},
+				{provide: NavController, useClass: NavControllerMock.instance},
 				{provide: Config, useClass: ConfigMock},
+				{provide: TranslateService, useClass: TranslateServiceMock},
 				DropboxApi,
 				{provide: XHRBackend, useClass: MockBackend},
 				{provide: APP_CONFIG, useValue: CONFIG},
+				{provide: RecipeCategoryService, useValue: RecipeCategoryServiceMock.instance()}
 			],
 			imports: [
 				HttpModule,
 				FormsModule,
 				IonicModule,
-				ReactiveFormsModule
+				TranslateModule,
+				ReactiveFormsModule,
 			],
 		});
 	}

@@ -1,15 +1,15 @@
-import { CategoryService }  from './recipe-category.service';
-import { RecipeService }    from './recipe.service';
-import { MyRecipeService }  from './my-recipe.service';
+import { RecipeCategoryService }    from './recipe-category.service';
+import { RecipeService }            from './recipe.service';
+import { MyRecipeService }          from './my-recipe.service';
 
 export {
-	CategoryService,
+	RecipeCategoryService,
 	RecipeService,
 	MyRecipeService
 }
 
 export const RECIPE_PROVIDERS = [
-	CategoryService,
+	RecipeCategoryService,
 	RecipeService,
 	MyRecipeService
 ];

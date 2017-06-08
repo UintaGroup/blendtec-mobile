@@ -2,6 +2,7 @@ import { Component, Output, EventEmitter }  from '@angular/core';
 import { TranslateService }                 from 'ng2-translate';
 import { NavItem }                          from '../../common/models';
 import { RecipeListPage }                   from '../pages';
+import { CategoryListPage } from '../pages/category-list/category-list.page';
 
 @Component({
 	selector: 'recipe-menu',
@@ -28,6 +29,15 @@ export class MainMenu {
 				{
 					title: value,
 					page: RecipeListPage
+				}
+			);
+		});
+
+		this._translate.get('MENU.RECIPE_CATEGORIES').subscribe(value => {
+			this.menuItems.push(
+				{
+					title: value,
+					page: CategoryListPage
 				}
 			);
 		});

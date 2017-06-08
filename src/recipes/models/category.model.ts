@@ -1,4 +1,4 @@
-export class Category {
+export class RecipeCategory {
 
 	constructor(name: string, slug: string, icon: string) {
 		this._name = name;
