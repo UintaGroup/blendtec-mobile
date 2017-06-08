@@ -1,17 +1,16 @@
 import { FormBuilder }             from '@angular/forms';
 import { ComponentFixture, async } from '@angular/core/testing';
 import { TestUtils } from '../../../test';
-import { CategoryListPage }             from './category-list.page';
+import { RecipeCategoryListPage }             from './recipe-category-list.page';
 import { RecipeCategoryService } from '../../providers/recipe-category.service';
-import { RecipeCategoryServiceMock } from '../../providers/recipe-category.service.mock';
 
-let fixture: ComponentFixture<CategoryListPage> = null;
+let fixture: ComponentFixture<RecipeCategoryListPage> = null;
 let instance: any = null;
 
-describe('CategoryListPage', () => {
+describe('RecipeCategoryListPage', () => {
 	// let categorySrvc: RecipeCategoryService = RecipeCategoryServiceMock.instance();
 
-	beforeEach(async(() => TestUtils.beforeEachCompiler([CategoryListPage]).then(compiled => {
+	beforeEach(async(() => TestUtils.beforeEachCompiler([RecipeCategoryListPage]).then(compiled => {
 		fixture = compiled.fixture;
 		instance = compiled.instance;
 
@@ -28,6 +27,8 @@ describe('CategoryListPage', () => {
 	});
 
 	it('passes new clicker through to service', () => {
+		//TODO
+		expect(true).toBeTruthy();
 		//instance['']
 		// let clickerName: string = 'dave';
 		// instance.form = new FormBuilder().group({clickerNameInput: [clickerName]});

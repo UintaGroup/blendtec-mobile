@@ -38,7 +38,7 @@ export class RecipeService {
 			.map((r: Response) => {
 				let body = r.json();
 				let data = new Recipe(body.Recipe, body.RelatedRecipe, body.RecipeIngredientsRecipe);
-				//TODO - api should return slug on recipe detail
+				//TODO - api should return slug on recipe detail from API
 				data.slug = slug;
 				this._events.publish(LoadingEvents.END);
 				return data;
@@ -51,23 +51,19 @@ export class RecipeService {
 		return this._api
 			.get(this._resource + '/categories/' + categorySlug)
 			.map((r: Response) => {
-				let data = r.json()._recipeSrvc.map(x => {
+				let data = r.json().recipes.map(x => {
 					return new Recipe(x.Recipe);
 				});
 				this._events.publish(LoadingEvents.END);
 				return data;
 			})
-			.catch(() => this._api.handleError('No _recipeSrvc found.'));
+			.catch(() => this._api.handleError('No Recipes found.'));
 	}
 
 	public page(page: number): Observable<Recipe[]> {
 		return this._api
 			.get(this._resource + '/index/page:' + page)
-			.map((r: Response) => {
-				return r.json()._recipeSrvc.map(x => {
-					return new Recipe(x.Recipe);
-				});
-			})
-			.catch(() => this._api.handleError('No _recipeSrvc found.'));
+			.map(r => r.json().recipes.map(x => new Recipe(x.Recipe)))
+			.catch(() => this._api.handleError('No Recipes found.'));
 	}
 }

@@ -1,18 +1,24 @@
 import {Injectable} from '@angular/core';
-import { Toast, ToastController } from 'ionic-angular';
+import { Alert, AlertController, Toast, ToastController } from 'ionic-angular';
 
 @Injectable()
 export class LogService {
 
-	constructor(private _toastCtrl: ToastController) {
+	constructor(private _toastCtrl: ToastController, private _alertCtrl: AlertController) {
 	}
 
 	public log(...args: any[]): void {
 		console.log(args);
 	}
 
-	public error(message: string, data?: any): void {
+	public error(message: string, data?: any): Promise<void> {
 		console.error(message, data);
+		let alert: Alert = this._alertCtrl.create({
+			title: 'Error',
+			subTitle: message,
+			buttons: ['Dismiss']
+		});
+		return alert.present();
 	}
 
 	public success(message: string, duration?: number, position?: string): Promise<void> {

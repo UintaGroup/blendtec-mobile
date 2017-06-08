@@ -26,11 +26,10 @@ import { MockBackend }              from '@angular/http/testing';
 import { XHRBackend, HttpModule }   from '@angular/http';
 import { DropboxApi }               from './common/providers/dropbox-api.service';
 import { CONFIG, APP_CONFIG }       from './app/app.config';
-import { TranslateModule, TranslatePipe, TranslateService }          from 'ng2-translate';
 import { NavControllerMock }        from 'ionic-mocks';
-import { PlatformMock }             from './mocks';
 import { RecipeCategoryService }    from './recipes/providers/recipe-category.service';
-import { RecipeCategoryServiceMock } from './recipes/providers/recipe-category.service.mock';
+import { TranslateModule, TranslateService }        from 'ng2-translate';
+import { PlatformMock, RecipeCategoryServiceMock }  from './mocks';
 
 declare let __karma__: any;
 declare let require: any;

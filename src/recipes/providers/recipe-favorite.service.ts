@@ -4,7 +4,7 @@ import { DbService }  from '../../common/providers';
 export const recipeFavorites: string = 'recipe-favorites';
 
 @Injectable()
-export class MyRecipeService {
+export class RecipeFavoriteService {
 	private _favorites: string[] = [];
 
 	constructor(private _db: DbService) {

@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { MyRecipeService } from '../providers/my-recipe.service';
+import { Component, Input }         from '@angular/core';
+import { RecipeFavoriteService }    from '../providers/recipe-favorite.service';
 
 @Component({
 	selector: 'recipe-favorite',
@@ -20,7 +20,7 @@ export class RecipeFavorite {
 	@Input()
 	slug: string;
 
-	public constructor(private _myRecipeService: MyRecipeService) {
+	public constructor(private _myRecipeService: RecipeFavoriteService) {
 	}
 
 	public toggleFav(): Promise<any> {

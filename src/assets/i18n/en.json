@@ -79,8 +79,11 @@
     },
     "MENU": {
       "RECIPE_LIST": "Recipes",
+      "RECIPES_ALL": "All Recipes",
+      "PRODUCTS_ALL": "All Products",
       "RECIPE_CATEGORIES": "Categories",
       "PRODUCT_HEADER": "Products",
+      "RECIPE_HEADER": "Recipes",
       "BLENDERS": "Blenders",
       "JARS": "Jars",
       "FAQS": "FAQs",
@@ -88,6 +91,9 @@
       "MY_BLENDTEC": "My Blendtec",
       "DEVICES": "Connected Blenders",
       "CONTACT_US": "Contact",
+      "SMOOTHIES": "Smoothies",
+      "SOUP": "Soups",
+      "BEVERAGES": "Beverages",
       "HELP_SUPPORT": "Help & Support"
     }
 }

@@ -8,9 +8,9 @@ import { RecipeListPage }           from '../recipe-list/recipe-list.page';
 
 @Component({
 	selector: 'recipe-category-list',
-	templateUrl: 'category-list.page.html'
+	templateUrl: './recipe-category-list.page.html'
 })
-export class CategoryListPage {
+export class RecipeCategoryListPage {
 
 	public items: Observable<RecipeCategory[]>;
 
@@ -20,7 +20,7 @@ export class CategoryListPage {
 
 	public select(item: RecipeCategory): void {
 		this.navCtrl.push(RecipeListPage, {
-			category: item
+			slug: item.slug
 		});
 	}
 }

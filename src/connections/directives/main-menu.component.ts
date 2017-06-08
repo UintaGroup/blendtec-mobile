@@ -5,11 +5,12 @@ import { DeviceListPage }                     from '../pages';
 
 @Component({
 	selector: 'connections-menu',
-	template: `<div>
-					<button menuClose ion-item *ngFor="let item of menuItems" (click)="openPage(item)">
-						{{item.title }}
-					</button>
-				</div>`,
+	template: `
+		<div>
+			<button menuClose ion-item *ngFor="let item of menuItems" (click)="openPage(item)">
+				{{item.title }}
+			</button>
+		</div>`,
 })
 export class MainMenu {
 
@@ -23,14 +24,8 @@ export class MainMenu {
 	}
 
 	private initTranslations(): void {
-		this._translate.get('MENU.DEVICES').subscribe(value => {
-			this.menuItems.push(
-				{
-					title: value,
-					page: DeviceListPage
-				}
-			);
-		});
+		this._translate.get('MENU.DEVICES')
+			.subscribe(value => this.menuItems.push(new NavItem(value, DeviceListPage)));
 	}
 
 	public openPage(item: NavItem): void {

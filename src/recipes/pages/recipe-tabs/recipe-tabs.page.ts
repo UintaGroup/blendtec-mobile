@@ -11,6 +11,7 @@ import { Tab3Root }         from '../index';
 	templateUrl: 'recipe-tabs.page.html'
 })
 export class RecipeTabsPage {
+
 	public tab1Root: any = Tab1Root;
 	public tab2Root: any = Tab2Root;
 	public tab3Root: any = Tab3Root;

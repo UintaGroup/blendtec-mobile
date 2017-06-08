@@ -11,5 +11,5 @@ export {
 	NavItem,
 	IDbTable,
 	IDbColumn,
-	Contact,
+	Contact
 }

@@ -20,8 +20,8 @@ import { AuthService }                                          from '../auth/pr
 	</ion-header>
 	<ion-content>
 		<ion-list>	
-			<product-menu (nav)="openPage($event)"></product-menu>
 			<recipe-menu (nav)="openPage($event)"></recipe-menu>
+			<product-menu (nav)="openPage($event)"></product-menu>
 			<button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
 				{{p.title}}
 			</button>
@@ -69,26 +69,26 @@ export class MyApp {
 	}
 
 	public eventRegistration(): void {
-		this._events.subscribe(LoadingEvents.START, (user) => this.onLoadingStart(user));
+		this._events.subscribe(LoadingEvents.START, user => this.onLoadingStart(user));
 		this._events.subscribe(LoadingEvents.END, () => this.onLoadingEnd());
 		this._events.subscribe(AuthEvents.AUTHENTICATED,() => this.onAuthorization());
 		this._events.subscribe(AuthEvents.LOGOUT, () => this.onLogout());
 	}
 
 	public onAuthorization(): void {
-		this.openPage({title: '', page: RecipeListPage});
+		this.openPage(new NavItem('', RecipeListPage));
 	}
 
-	public onLogout(): Promise<void> {
-		return this.openPage({title: '', page: WelcomePage});
+	public onLogout(): void {
+		this.openPage(new NavItem('', WelcomePage));
 	}
 
 	public logout(): void {
 		this._authService.logout();
 	}
 
-	public openPage(navItem: NavItem): Promise<void> {
-		return this.nav.setRoot(navItem.page);
+	public openPage(navItem: NavItem): void {
+		this.nav.setRoot(navItem.page, navItem.params);
 	}
 
 	private onLoadingStart(message: any): void {

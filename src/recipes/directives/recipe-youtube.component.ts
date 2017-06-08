@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { MyRecipeService } from '../providers/my-recipe.service';
 
 @Component({
 	selector: 'recipe-youtube',

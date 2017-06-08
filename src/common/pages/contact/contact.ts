@@ -1,9 +1,10 @@
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Observable } from 'rxjs';
 
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { Contact } from '../../models';
 import { ContactService } from '../../providers/contact.service';
+import { APP_CONFIG, AppConfig } from '../../../app/app.config';
 
 declare var window;
 
@@ -14,8 +15,10 @@ declare var window;
 export class ContactPage {
 
 	public contact: FormGroup;
+	public phone: string;
 
-	constructor(formBldr: FormBuilder, private _contactSrvc: ContactService) {
+	constructor(formBldr: FormBuilder, private _contactSrvc: ContactService, @Inject(APP_CONFIG) config: AppConfig) {
+		this.phone = config.customerSupportPhone;
 		this.contact = formBldr.group({
 			firstName: ['', [Validators.required, Validators.minLength(1)]],
 			lastName: ['', Validators.required],
@@ -27,13 +30,12 @@ export class ContactPage {
 	}
 
 	public call(phoneNumber: string): void {
-		window.location = phoneNumber;
+		let num = encodeURIComponent(phoneNumber);
+		window.location = `tel:${num}`;
 	}
 
-	public onSubmit({value, valid}: {value: Contact, valid: boolean}): Observable<any> {
-		console.log('SUBMIT', value);
-		console.log('VALID', valid);
-		if(!valid) return;
+	public onSubmit({value, valid}: { value: Contact, valid: boolean }): Observable<any> {
+		if (!valid) return;
 		return this._contactSrvc.post(value);
 	}
 }

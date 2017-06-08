@@ -1,16 +1,19 @@
 import { Component, Output, EventEmitter }  from '@angular/core';
 import { TranslateService }                 from 'ng2-translate';
 import { NavItem }                          from '../../common/models';
-import { RecipeListPage }                   from '../pages';
-import { CategoryListPage } from '../pages/category-list/category-list.page';
+import { RecipeListPage, RecipeCategoryListPage } from '../pages';
 
 @Component({
 	selector: 'recipe-menu',
-	template: `<div>
-					<button menuClose ion-item *ngFor="let item of menuItems" (click)="openPage(item)">
-						{{item.title }}
-					</button>
-				</div>`,
+	template: `
+		<div>
+			<ion-item-divider menuClose color="light" (click)="openRoot()">
+				{{'MENU.RECIPE_HEADER' | translate}}
+			</ion-item-divider>
+			<button menuClose ion-item *ngFor="let item of menuItems" (click)="openPage(item)">
+				{{item.title }}
+			</button>
+		</div>`,
 })
 export class MainMenu {
 
@@ -24,26 +27,24 @@ export class MainMenu {
 	}
 
 	private initTranslations(): void {
-		this._translate.get('MENU.RECIPE_LIST').subscribe(value => {
-			this.menuItems.push(
-				{
-					title: value,
-					page: RecipeListPage
-				}
-			);
-		});
+		this._translate.get('MENU.SMOOTHIES')
+			.subscribe(value => this.menuItems.push(new NavItem(value, RecipeListPage, {slug: 'smoothies'})));
 
-		this._translate.get('MENU.RECIPE_CATEGORIES').subscribe(value => {
-			this.menuItems.push(
-				{
-					title: value,
-					page: CategoryListPage
-				}
-			);
-		});
+		this._translate.get('MENU.BEVERAGES')
+			.subscribe(value => this.menuItems.push(new NavItem(value, RecipeListPage, {slug: 'beverages'})));
+
+		this._translate.get('MENU.SOUP')
+			.subscribe(value => this.menuItems.push(new NavItem(value, RecipeListPage, {slug: 'soups'})));
+
+		this._translate.get('MENU.RECIPES_ALL')
+			.subscribe(value => this.menuItems.push(new NavItem(value, RecipeCategoryListPage)));
 	}
 
 	public openPage(item: NavItem): void {
 		this.nav.emit(item);
+	}
+
+	public openRoot(): void {
+		this.nav.emit(new NavItem('', RecipeListPage));
 	}
 }

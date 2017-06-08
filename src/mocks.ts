@@ -1,6 +1,8 @@
 /* tslint:disable */
 import { Observable } from 'rxjs/Observable';
 import { Pipe, PipeTransform } from '@angular/core';
+import {} from 'jasmine';
+
 export class ConfigMock {
 
 	public get(): any {
@@ -98,41 +100,12 @@ export class TranslatePipeMock implements PipeTransform {
 	}
 }
 
-export class NavMock {
+export class RecipeCategoryServiceMock {
+	public static instance(): any {
+		let instance = jasmine.createSpyObj('RecipeCategoryService', ['all']);
+		instance.all.and.returnValue(Observable.of([]));
 
-	public pop(): any {
-		return new Promise(function(resolve: Function): void {
-			resolve();
-		});
-	}
-
-	public push(): any {
-		return new Promise(function(resolve: Function): void {
-			resolve();
-		});
-	}
-
-	public getActive(): any {
-		return {
-			'instance': {
-				'model': 'something',
-			},
-		};
-	}
-
-	public setRoot(): any {
-		return true;
+		return instance;
 	}
 }
-
-
-
-export class MenuMock {
-	public close(): any {
-		return new Promise((resolve: Function) => {
-			resolve();
-		});
-	}
-}
-
 /* tslint:enable */

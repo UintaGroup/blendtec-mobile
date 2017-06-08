@@ -5,11 +5,12 @@ import { ContactPage }                      from '../pages';
 
 @Component({
 	selector: 'contact-menu',
-	template: `<div>
-					<button menuClose ion-item *ngFor="let item of menuItems" (click)="openPage(item)">
-						{{item.title }}
-					</button>
-				</div>`,
+	template: `
+		<div>
+			<button menuClose ion-item *ngFor="let item of menuItems" (click)="openPage(item)">
+				{{item.title }}
+			</button>
+		</div>`,
 })
 export class MainMenu {
 
@@ -23,14 +24,8 @@ export class MainMenu {
 	}
 
 	private initTranslations(): void {
-		this._translate.get('MENU.CONTACT_US').subscribe(value => {
-			this.menuItems.push(
-				{
-					title: value,
-					page: ContactPage,
-				}
-			);
-		});
+		this._translate.get('MENU.CONTACT_US')
+			.subscribe(value => this.menuItems.push(new NavItem(value, ContactPage)));
 	}
 
 	public openPage(item: NavItem): void {
