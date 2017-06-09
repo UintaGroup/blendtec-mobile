@@ -1,9 +1,10 @@
-import { Component, Inject }                from '@angular/core';
+import { Component, Inject }        from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { InAppBrowser }             from '@ionic-native/in-app-browser';
 
+import { APP_CONFIG, AppConfig }    from '../../../app/app.config';
 import { ProductService }           from '../../providers';
 import { Product, IProductColor }   from '../../models';
-import { APP_CONFIG, AppConfig } from '../../../app/app.config';
 
 @Component({
 	selector: 'page-product-detail',
@@ -18,7 +19,12 @@ export class ProductDetailPage {
 	private _categoryName: string;
 	private _slug: string;
 
-	constructor(public navCtrl: NavController, navParams: NavParams, productSrvc: ProductService, @Inject(APP_CONFIG) config: AppConfig) {
+	constructor(public navCtrl: NavController,
+				public browser: InAppBrowser,
+				navParams: NavParams,
+				productSrvc: ProductService,
+				@Inject(APP_CONFIG) config: AppConfig) {
+
 		this._categoryName = navParams.get('category');
 		this._slug = navParams.get('slug');
 
@@ -27,12 +33,11 @@ export class ProductDetailPage {
 				this.item = r;
 				this.selectColor(r.colors[0]);
 				this.pageUrl = `${config.blendtecUrl}${this._categoryName}/${this._slug}`;
-				console.log('PAGE URL', this.pageUrl);
 			});
 	}
 
 	public buyNow(): void {
-		console.log('REDIRECTING TO', this.pageUrl);
+		this.browser.create(this.pageUrl);
 	}
 
 	public selectColor(color: IProductColor): void {
