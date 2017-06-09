@@ -30,7 +30,7 @@ export class CategoryDetailPage {
 
 	select(item: Product): void {
 		this.navCtrl.push(ProductDetailPage, {
-			category: this.category,
+			category: this.category.slug,
 			slug: item.slug
 		});
 	}

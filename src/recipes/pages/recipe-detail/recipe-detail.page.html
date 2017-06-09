@@ -106,6 +106,6 @@
             <ion-col col-4>
                 <recipe-favorite [slug]="item?.slug"></recipe-favorite>
             </ion-col>
-            <share [recipe]="item"></share>
+            <share [body]="item?.description" [title]="item?.title" [imageUrl]="item?.indexImageUrl" [url]="pageUrl"></share>
         </ion-row>
 </ion-footer>

@@ -15,8 +15,8 @@ describe('BlendtecApi', () => {
 		beforeEach(() => {
 			_jsonP = jasmine.createSpyObj('jsonP', ['get']);
 			_events = jasmine.createSpyObj('events', ['publish']);
-			_appConfig = jasmine.createSpyObj('appConfig', ['blendtecApiUrl', 'jsonPConverterUrl']);
-			_appConfig['blendtecApiUrl'] = 'bar';
+			_appConfig = jasmine.createSpyObj('appConfig', ['blendtecUrl', 'jsonPConverterUrl']);
+			_appConfig['blendtecUrl'] = 'bar';
 			_appConfig['jsonPConverterUrl'] = 'foo';
 			_classUnderTest = new BlendtecApi(_jsonP, _events, _appConfig);
 		});

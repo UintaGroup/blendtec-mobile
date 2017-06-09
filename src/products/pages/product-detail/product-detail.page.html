@@ -42,4 +42,6 @@
         <ion-card-header color="blendtec">Package Includes</ion-card-header>
         <ion-card-content><span [innerHTML]="item?.packageIncludes | dbMarkup:'<strong>Package includes:</strong>'"></span></ion-card-content>
     </ion-card>
+    <share [body]="item?.caption" [title]="item?.name" [imageUrl]="activeColor?.primaryImage | btImg" [url]="pageUrl"></share>
 </ion-content>
+

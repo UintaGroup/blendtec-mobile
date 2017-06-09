@@ -20,7 +20,7 @@ export class RecipeService {
 		this._events.publish(LoadingEvents.START);
 		return this._api
 			.get(this._resource, params)
-			.map((r: Response) => {
+			.map(r => {
 				let data = r.json().recipes.map(x => new Recipe(x.Recipe));
 				this._events.publish(LoadingEvents.END);
 				return data;
@@ -35,7 +35,7 @@ export class RecipeService {
 		this._events.publish(LoadingEvents.START);
 		return this._api
 			.get(this._resource + '/' + slug)
-			.map((r: Response) => {
+			.map(r => {
 				let body = r.json();
 				let data = new Recipe(body.Recipe, body.RelatedRecipe, body.RecipeIngredientsRecipe);
 				//TODO - api should return slug on recipe detail from API
@@ -50,10 +50,8 @@ export class RecipeService {
 		this._events.publish(LoadingEvents.START);
 		return this._api
 			.get(this._resource + '/categories/' + categorySlug)
-			.map((r: Response) => {
-				let data = r.json().recipes.map(x => {
-					return new Recipe(x.Recipe);
-				});
+			.map(r => {
+				let data = r.json().recipes.map(x => new Recipe(x.Recipe));
 				this._events.publish(LoadingEvents.END);
 				return data;
 			})

@@ -12,7 +12,7 @@ export class BlendtecApi {
 	private _url: string;
 
 	constructor(private _jsonp: Jsonp, private _events: Events, @Inject(APP_CONFIG) config: AppConfig) {
-		this._apiUrl = config.blendtecApiUrl;
+		this._apiUrl = config.blendtecUrl;
 		this._url = config.jsonPConverterUrl;
 	}
 
@@ -41,6 +41,6 @@ export class BlendtecApi {
 
 	public handleError(message: string): Observable<any> {
 		this._events.publish(LoadingEvents.END);
-		return Observable.throw('No _recipeSrvc found.');
+		return Observable.throw('Unable to load items.');
 	}
 }

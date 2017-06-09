@@ -3,7 +3,6 @@ import { ModalController }                      from 'ionic-angular';
 import { SocialSharing }                        from '@ionic-native/social-sharing';
 import { ShareModal }                           from '../../common/pages';
 import { DeviceService }                        from '../../common/providers';
-import { Recipe }                               from '../models';
 
 @Component({
 	selector: 'share',
@@ -37,7 +36,7 @@ import { Recipe }                               from '../models';
 			</ion-fab-list>
 		</ion-fab>`
 })
-export class RecipeShare implements OnChanges {
+export class ShareComponent implements OnChanges {
 
 	public facebook: boolean = false;
 	public twitter: boolean = false;
@@ -56,16 +55,25 @@ export class RecipeShare implements OnChanges {
 	];
 
 	@Input()
-	recipe: Recipe;
+	body: string;
+
+	@Input()
+	title: string;
+
+	@Input()
+	imageUrl: string;
+
+	@Input()
+	url: string;
 
 	public constructor(private _social: SocialSharing, private _modalCtrl: ModalController, private _deviceSrvc: DeviceService) {
 		this._platformName = this._deviceSrvc.platformName();
 	}
 
 	ngOnChanges(): void {
-		if (!this._queried && this.recipe) {
+		if (!this._queried && this.title) {
 			this.checkEmail();
-			this.checkSocial(this.recipe, this._deviceSrvc.socialPackages());
+			this.checkSocial(this.body, this.title, this.imageUrl, this.url, this._deviceSrvc.socialPackages());
 		}
 	}
 
@@ -76,24 +84,20 @@ export class RecipeShare implements OnChanges {
 	public share(network: string): void {
 		let modal = this._modalCtrl.create(ShareModal, {
 			network: network,
-			subject: this.recipe.title,
-			message: this.recipe.description,
-			imageUrl: this.recipe.sideBarImageUrl,
-			url: `http://www.blendtec.com/recipes/${this.recipe.slug}`
-		});
-		modal.onDidDismiss(shareData => {
-			console.log('sharing', shareData);
+			subject: this.title,
+			message: this.body,
+			imageUrl:this.imageUrl,
+			url: this.url
 		});
 		modal.present();
 	}
 
-	private checkSocial(recipe: Recipe, apps: any[]): void {
+	private checkSocial(body: string, title: string, imageUrl: string, url: string, apps: any[]): void {
 		if (this._deviceSrvc.isCordova()) {
 			apps.forEach(app => {
-				this._social.canShareVia(app.name, recipe.description, recipe.title, recipe.indexImageUrl, `http://www.blendtec.com/recipes/${recipe.slug}`)
+				this._social.canShareVia(app.name, body, title, imageUrl, url)
 					.then(result => {
 						this[app.target] = result === 'OK';
-						console.log('THIS', this);
 					});
 			});
 		} else {
