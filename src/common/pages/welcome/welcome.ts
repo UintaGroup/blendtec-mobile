@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Events, NavController } from 'ionic-angular';
 
 import { LoginPage, SignupPage } from '../../../auth/pages';
+import { CommonEvents } from '../../models/common-events';
 
 @Component({
 	selector: 'page-welcome',
@@ -9,7 +10,11 @@ import { LoginPage, SignupPage } from '../../../auth/pages';
 })
 export class WelcomePage {
 
-	constructor(public navCtrl: NavController) {
+	constructor(public navCtrl: NavController, private _events: Events) {
+	}
+
+	public ionViewDidEnter(): any {
+		this._events.publish(CommonEvents.pageView, 'Welcome');
 	}
 
 	public login(): void {

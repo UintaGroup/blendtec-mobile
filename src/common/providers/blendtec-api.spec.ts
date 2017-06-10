@@ -1,37 +1,42 @@
 import { BlendtecApi } from './blendtec-api';
 import { Jsonp } from '@angular/http';
 import { Events } from 'ionic-angular';
+import { EventsMock } from 'ionic-mocks';
 import { AppConfig } from '../../app/app.config';
+import { FirebaseService } from './firebase.service';
 
 describe('BlendtecApi', () => {
 
-	let _jsonP: Jsonp;
-	let _events: Events;
-	let _appConfig: AppConfig;
-	let _classUnderTest: BlendtecApi;
+	let jsonp: Jsonp;
+	let events: Events;
+	let firebaseSrvc: FirebaseService;
+	let appConfig: AppConfig;
+
+	let classUnderTest: BlendtecApi;
 
 	describe('buildUrl', () => {
 
 		beforeEach(() => {
-			_jsonP = jasmine.createSpyObj('jsonP', ['get']);
-			_events = jasmine.createSpyObj('events', ['publish']);
-			_appConfig = jasmine.createSpyObj('appConfig', ['blendtecUrl', 'jsonPConverterUrl']);
-			_appConfig['blendtecUrl'] = 'bar';
-			_appConfig['jsonPConverterUrl'] = 'foo';
-			_classUnderTest = new BlendtecApi(_jsonP, _events, _appConfig);
+			jsonp = jasmine.createSpyObj('jsonP', ['get']);
+			events = EventsMock.instance();
+			firebaseSrvc = jasmine.createSpyObj('FireBaseService', ['logError']);
+			appConfig = jasmine.createSpyObj('appConfig', ['blendtecUrl', 'jsonPConverterUrl']);
+			appConfig['blendtecUrl'] = 'bar';
+			appConfig['jsonPConverterUrl'] = 'foo';
+			classUnderTest = new BlendtecApi(jsonp, events, firebaseSrvc, appConfig);
 		});
 
 		it('should set blendtec api url', () => {
-			expect(_classUnderTest['_apiUrl']).toEqual('bar');
+			expect(classUnderTest['_apiUrl']).toEqual('bar');
 		});
 
 		it('should set jsonPConverter url', () => {
-			expect(_classUnderTest['_url']).toEqual('foo');
+			expect(classUnderTest['_url']).toEqual('foo');
 		});
 
 		it('should return url with endpoint', () => {
 			let endpoint = 'abc';
-			let actual = _classUnderTest.buildUrl(endpoint);
+			let actual = classUnderTest.buildUrl(endpoint);
 
 			expect(actual).toEqual('foo?url=barabc.json');
 

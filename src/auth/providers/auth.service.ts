@@ -1,11 +1,10 @@
-import { Injectable }                     from '@angular/core';
-import { Events }        from 'ionic-angular';
-
-import { Session, Credentials, Account } from '../models';
-import { BlendtecApi } from '../../common/providers/blendtec-api';
-import { DbService } from '../../common/providers/local-db.service';
-import { AuthEvents } from '../models/auth-events';
+import { Injectable } from '@angular/core';
+import { Events }     from 'ionic-angular';
 import { Observable } from 'rxjs';
+
+import { FirebaseEvents }                               from '../../common/models';
+import { DbService, BlendtecApi, FirebaseService }      from '../../common/providers';
+import { Session, Credentials, Account, AuthEvents }    from '../models';
 
 const sessionKey: string = 'session';
 // const resourceKey: string = 'login';
@@ -13,7 +12,11 @@ const sessionKey: string = 'session';
 @Injectable()
 export class AuthService {
 
-	constructor(private _api: BlendtecApi, protected _events: Events, private _db: DbService) {}
+	constructor(private _api: BlendtecApi,
+				private _events: Events,
+				private _db: DbService,
+				private _fireBaseSrvc: FirebaseService) {
+	}
 
 	public initializeSession(): Promise<void> {
 		return this._db.get(sessionKey)
@@ -36,6 +39,7 @@ export class AuthService {
 	}
 
 	public register(account: Account): Observable<Session> {
+		this._fireBaseSrvc.logEvent(FirebaseEvents.register);
 		return this.login({
 			username: account.username,
 			password: account.password
@@ -45,8 +49,7 @@ export class AuthService {
 	public logout(): Observable<void> {
 		let promise = this.getSession().then(session => {
 			this._events.publish(AuthEvents.LOGOUT, session);
-			return this._db.clear();
-			// return this._db.remove(sessionKey);
+			return this._db.remove(sessionKey);
 		});
 
 		return Observable.fromPromise(promise);

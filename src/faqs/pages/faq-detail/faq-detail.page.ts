@@ -1,7 +1,8 @@
 import { Component }    from '@angular/core';
-import { NavParams }    from 'ionic-angular';
+import { Events, NavParams }    from 'ionic-angular';
 import { Observable }   from 'rxjs';
 
+import { CommonEvents } from '../../../common/models';
 import { FaqService }   from '../../providers';
 import { Faq }          from '../../models';
 
@@ -12,8 +13,12 @@ import { Faq }          from '../../models';
 export class FaqDetailPage {
 	public item: Observable<Faq>;
 
-	constructor(navParams: NavParams, faqSrvc: FaqService) {
+	constructor(navParams: NavParams, faqSrvc: FaqService, private _events: Events) {
 		this.item = faqSrvc.one(navParams.get('id'));
+	}
+
+	public ionViewDidEnter(): any {
+		this._events.publish(CommonEvents.pageView, 'FAQ Detail');
 	}
 
 }

@@ -1,9 +1,9 @@
 import { ContactService } from './contact.service';
 import { Api } from './api.service';
 import { Events } from 'ionic-angular';
+import { EventsMock } from 'ionic-mocks';
 import { AppConfig } from '../../app/app.config';
 import { Contact } from '../models/contact.model';
-import { LoadingEvents } from '../models/loading-events';
 
 describe('ContactService', () => {
 
@@ -18,7 +18,7 @@ describe('ContactService', () => {
 		_custSupportNum = '123456';
 
 		_api = jasmine.createSpyObj('api', ['post']);
-		_events = jasmine.createSpyObj('events', ['publish']);
+		_events = EventsMock;
 		_config = jasmine.createSpyObj('config', ['customerSupportPhone']);
 		_config['customerSupportPhone'] = _custSupportNum;
 		_classUnderTest = new ContactService(_api, _events, _config);

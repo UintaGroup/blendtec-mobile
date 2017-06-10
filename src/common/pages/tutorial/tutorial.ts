@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { MenuController, NavController } from 'ionic-angular';
-import { WelcomePage } from '../welcome/welcome';
+import { Events, MenuController, NavController } from 'ionic-angular';
 import { TranslateService } from 'ng2-translate/ng2-translate';
+import { CommonEvents } from '../../models';
+import { WelcomePage } from '../welcome/welcome';
 
 export interface Slide {
 	title: string;
@@ -11,13 +12,13 @@ export interface Slide {
 
 @Component({
 	selector: 'page-tutorial',
-	templateUrl: 'tutorial.html'
+	templateUrl: './tutorial.html'
 })
 export class TutorialPage {
 	slides: Slide[];
 	showSkip: boolean = true;
 
-	constructor(public navCtrl: NavController, public menu: MenuController, translate: TranslateService) {
+	constructor(public navCtrl: NavController, public menu: MenuController, translate: TranslateService, private _events: Events) {
 		translate.get(['TUTORIAL_SLIDE1_TITLE',
 			'TUTORIAL_SLIDE1_DESCRIPTION',
 			'TUTORIAL_SLIDE2_TITLE',
@@ -56,11 +57,12 @@ export class TutorialPage {
 		this.showSkip = !slider.isEnd;
 	}
 
-	ionViewDidEnter(): void {
+	public ionViewDidEnter(): void {
 		this.menu.enable(false);
+		this._events.publish(CommonEvents.pageView, 'Tutorial');
 	}
 
-	ionViewWillLeave(): void {
+	public ionViewWillLeave(): void {
 		this.menu.enable(true);
 	}
 

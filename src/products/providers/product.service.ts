@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Events } from 'ionic-angular';
 
-import { DropboxApi } from '../../common/providers';
-import { Product } from '../models';
-import { LoadingEvents } from '../../common/models/loading-events';
+import { DropboxApi}        from '../../common/providers';
+import { LoadingEvents }    from '../../common/models';
+import { Product }          from '../models';
 
 @Injectable()
 export class ProductService {
@@ -21,16 +21,13 @@ export class ProductService {
 				this._events.publish(LoadingEvents.END);
 				return data;
 			})
-			.catch(err => {
-				this._events.publish(LoadingEvents.END);
-				return Observable.throw('No Products found.');
-			});
+			.catch(() => this._api.handleError('No Products found.'));
 	}
 
 	//TODO - remove category when on real API
 	public one(category: string, slug: string): Observable<Product> {
 		return this.all(category)
-			.map(products => products.find(p => p.slug === slug));
+			.map(products => products.find(p => p.slug === slug))
+			.catch(() => this._api.handleError('No Products found.'));
 	}
-
 }

@@ -4,6 +4,8 @@ import { inject, async } from '@angular/core/testing';
 import { MockBackend } from '@angular/http/testing';
 import { TestUtils } from '../../test';
 import { APP_CONFIG, CONFIG } from '../../app/app.config';
+import { FirebaseService } from './firebase.service';
+import { Events } from 'ionic-angular';
 
 describe('DropboxApi', () => {
 
@@ -18,7 +20,7 @@ describe('DropboxApi', () => {
 		});
 
 		it('should return an Observable<Response>',
-			inject([DropboxApi, MockBackend, APP_CONFIG], (api: DropboxApi, mockBackend) => {
+			inject([DropboxApi, MockBackend, FirebaseService, Events, APP_CONFIG], (api: DropboxApi, mockBackend) => {
 
 				mockBackend.connections.subscribe((connection) => {
 					connection.mockRespond(new Response(new ResponseOptions({

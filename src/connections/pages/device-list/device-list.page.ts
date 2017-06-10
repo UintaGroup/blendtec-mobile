@@ -1,5 +1,7 @@
-import { Component }            from '@angular/core';
-import { BluetoothService }     from '../../providers';
+import { Component }        from '@angular/core';
+import { Events }           from 'ionic-angular';
+import { BluetoothService } from '../../providers';
+import { CommonEvents }     from '../../../common/models';
 
 @Component({
 	selector: 'device-list',
@@ -11,11 +13,12 @@ export class DeviceListPage {
 	public connectionType: any = '';
 	private btEnabled: boolean = false;
 
-	constructor(private _btSrvc: BluetoothService) {
+	constructor(private _btSrvc: BluetoothService, private _events: Events) {
 	}
 
-	ionViewDidEnter(): any {
+	public ionViewDidEnter(): any {
 		this.loadBlueTooth();
+		this._events.publish(CommonEvents.pageView, 'DeviceList');
 	}
 
 	public loadBlueTooth(): Promise<void> {

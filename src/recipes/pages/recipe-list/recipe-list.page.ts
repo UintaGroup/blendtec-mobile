@@ -1,15 +1,16 @@
-import { Component }                from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { Component }                            from '@angular/core';
+import { Events, NavController, NavParams }     from 'ionic-angular';
 
-import { LogService }       from '../../../common/providers';
-import { RecipeService }    from '../../providers';
-import { Recipe, RecipeCategory } from '../../models';
-import { RecipeDetailPage } from '../recipe-detail/recipe-detail.page';
-import { RecipeCategoryService } from '../../providers/recipe-category.service';
+import { LogService }                           from '../../../common/providers';
+import { CommonEvents }                         from '../../../common/models';
+import { RecipeService, RecipeCategoryService } from '../../providers';
+import { Recipe, RecipeCategory }               from '../../models';
+
+import { RecipeDetailPage }                     from '../recipe-detail/recipe-detail.page';
 
 @Component({
 	selector: 'page-list-recipe',
-	templateUrl: 'recipe-list.page.html'
+	templateUrl: './recipe-list.page.html'
 })
 export class RecipeListPage {
 
@@ -19,13 +20,13 @@ export class RecipeListPage {
 	public category: RecipeCategory;
 
 	constructor(params: NavParams,
+				private _events: Events,
 				private _navCtrl: NavController,
 				private _recipeSrvc: RecipeService,
 				private _categorySrvc: RecipeCategoryService,
 				private _logSrvc: LogService) {
 
 		this.slug = params.get('slug');
-
 
 		if (this.slug) {
 			this._recipeSrvc.category(this.slug)
@@ -43,6 +44,10 @@ export class RecipeListPage {
 					err => _logSrvc.error(err)
 				);
 		}
+	}
+
+	public ionViewDidEnter(): any {
+		this._events.publish(CommonEvents.pageView, 'RecipeList');
 	}
 
 	public select(item: Recipe): Promise<void> {

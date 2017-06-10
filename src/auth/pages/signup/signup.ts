@@ -1,15 +1,16 @@
-import { Component }						from '@angular/core';
-import { NavController, ToastController }   from 'ionic-angular';
-import { TranslateService }				 from 'ng2-translate/ng2-translate';
-import { AuthService } from '../../providers/auth.service';
-import { Account } from '../../models/account';
+import { Component }                from '@angular/core';
+import { Events, ToastController }  from 'ionic-angular';
+import { TranslateService }         from 'ng2-translate/ng2-translate';
+import { AuthService }              from '../../providers';
+import { CommonEvents }             from '../../../common/models/common-events';
+
+import { Account }                  from '../../models/account';
 
 @Component({
 	selector: 'page-signup',
-	templateUrl: 'signup.html'
+	templateUrl: './signup.html'
 })
 export class SignupPage {
-
 
 	public account: Account = {
 		username: 'TDickson',
@@ -20,23 +21,27 @@ export class SignupPage {
 
 	private _signupErrorMsg: string;
 
-	constructor(public navCtrl: NavController,
-				public authSrvc: AuthService,
-				public toastCtrl: ToastController,
-				public translateService: TranslateService) {
+	constructor(private _authSrvc: AuthService,
+				private _toastCtrl: ToastController,
+				private _events: Events,
+				translateService: TranslateService) {
 
-		this.translateService
+		translateService
 			.get('SIGNUP_ERROR')
 			.subscribe(value => this._signupErrorMsg = value);
 	}
 
+	public ionViewDidEnter(): any {
+		this._events.publish(CommonEvents.pageView, 'Signup');
+	}
+
 	public doSignup(): void {
-		this.authSrvc
+		this._authSrvc
 			.register(this.account)
 			.subscribe(
 				() => {},
 				() => {
-					let toast = this.toastCtrl.create({
+					let toast = this._toastCtrl.create({
 						message: this._signupErrorMsg,
 						duration: 3000,
 						position: 'top'

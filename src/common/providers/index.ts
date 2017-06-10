@@ -6,6 +6,7 @@ import { DbService }        from './local-db.service';
 import { LogService }       from './log.service';
 import { SettingsService }  from './settings.service';
 import { DeviceService }    from './device.service';
+import { FirebaseService }  from './firebase.service';
 
 export {
 	Api,
@@ -15,7 +16,8 @@ export {
 	DbService,
 	LogService,
 	ContactService,
-	DeviceService
+	DeviceService,
+	FirebaseService
 };
 
 export const COMMON_PROVIDERS = [
@@ -25,5 +27,6 @@ export const COMMON_PROVIDERS = [
 	DbService,
 	LogService,
 	ContactService,
-	DeviceService
+	DeviceService,
+	FirebaseService
 ];

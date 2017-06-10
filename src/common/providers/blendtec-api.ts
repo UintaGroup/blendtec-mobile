@@ -1,17 +1,22 @@
-import { Injectable, Inject }                               from '@angular/core';
+import { Injectable, Inject }                       from '@angular/core';
 import { Jsonp, RequestOptions, URLSearchParams }   from '@angular/http';
-import { Observable } from 'rxjs';
+import { Observable }                               from 'rxjs';
+import { FirebaseService }                          from './firebase.service';
 import 'rxjs/add/operator/map';
-import { Events } from 'ionic-angular';
-import { LoadingEvents } from '../models/loading-events';
-import { AppConfig, APP_CONFIG } from '../../app/app.config';
+
+import { Events }                   from 'ionic-angular';
+import { LoadingEvents }            from '../models';
+import { AppConfig, APP_CONFIG }    from '../../app/app.config';
 
 @Injectable()
 export class BlendtecApi {
 	private _apiUrl: string;
 	private _url: string;
 
-	constructor(private _jsonp: Jsonp, private _events: Events, @Inject(APP_CONFIG) config: AppConfig) {
+	constructor(private _jsonp: Jsonp,
+				private _events: Events,
+				private _firebaseSrvc: FirebaseService,
+				@Inject(APP_CONFIG) config: AppConfig) {
 		this._apiUrl = config.blendtecUrl;
 		this._url = config.jsonPConverterUrl;
 	}
@@ -19,8 +24,8 @@ export class BlendtecApi {
 	//TODO simplfy when json2jsonp isn't necessary
 	public buildUrl(endpoint: string, params?: string): string {
 		let tmpUrl = this._url + '?url=' + encodeURIComponent(this._apiUrl + endpoint + '.json');
-		if(params) {
-			tmpUrl = tmpUrl + '?' +  params;
+		if (params) {
+			tmpUrl = tmpUrl + '?' + params;
 		}
 		return tmpUrl;
 	}
@@ -40,7 +45,8 @@ export class BlendtecApi {
 	}
 
 	public handleError(message: string): Observable<any> {
+		this._firebaseSrvc.logError(message);
 		this._events.publish(LoadingEvents.END);
-		return Observable.throw('Unable to load items.');
+		return Observable.throw(message);
 	}
 }

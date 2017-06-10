@@ -1,10 +1,13 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Alert, AlertController, Toast, ToastController } from 'ionic-angular';
+import { FirebaseService } from './firebase.service';
 
 @Injectable()
 export class LogService {
 
-	constructor(private _toastCtrl: ToastController, private _alertCtrl: AlertController) {
+	constructor(private _toastCtrl: ToastController,
+				private _alertCtrl: AlertController,
+				private _firebaseSrvc: FirebaseService) {
 	}
 
 	public log(...args: any[]): void {
@@ -12,6 +15,7 @@ export class LogService {
 	}
 
 	public error(message: string, data?: any): Promise<void> {
+		this._firebaseSrvc.logError(message);
 		console.error(message, data);
 		let alert: Alert = this._alertCtrl.create({
 			title: 'Error',

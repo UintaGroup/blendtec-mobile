@@ -19,9 +19,9 @@ import {
 	DomController,
 	MenuController,
 	NavController,
-	Platform, GestureController
+	Platform, GestureController, Events
 } from 'ionic-angular';
-import { ConfigMock, TranslatePipeMock, TranslateServiceMock }               from './mocks';
+import { ConfigMock, FirebaseServiceMock, TranslatePipeMock, TranslateServiceMock }               from './mocks';
 import { MockBackend }              from '@angular/http/testing';
 import { XHRBackend, HttpModule }   from '@angular/http';
 import { DropboxApi }               from './common/providers/dropbox-api.service';
@@ -30,6 +30,8 @@ import { NavControllerMock }        from 'ionic-mocks';
 import { RecipeCategoryService }    from './recipes/providers/recipe-category.service';
 import { TranslateModule, TranslateService }        from 'ng2-translate';
 import { PlatformMock, RecipeCategoryServiceMock }  from './mocks';
+import { FirebaseService } from './common/providers/firebase.service';
+import { EventsMock } from 'ionic-mocks/dist';
 
 declare let __karma__: any;
 declare let require: any;
@@ -78,7 +80,9 @@ export class TestUtils {
 				DropboxApi,
 				{provide: XHRBackend, useClass: MockBackend},
 				{provide: APP_CONFIG, useValue: CONFIG},
-				{provide: RecipeCategoryService, useValue: RecipeCategoryServiceMock.instance()}
+				{provide: Events, useValue: EventsMock.instance()},
+				{provide: RecipeCategoryService, useValue: RecipeCategoryServiceMock.instance()},
+				{provide: FirebaseService, useValue: FirebaseServiceMock.instance()}
 			],
 			imports: [
 				HttpModule,

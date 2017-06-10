@@ -1,6 +1,7 @@
 import { Component }                from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { Events, NavController, NavParams } from 'ionic-angular';
 
+import { CommonEvents }             from '../../../common/models';
 import { RecipeService }            from '../../providers';
 import { BaseRecipe, Recipe }       from '../../models';
 
@@ -14,6 +15,7 @@ export class RecipeDetailPage {
 	public pageUrl: string;
 
 	constructor(private _navCtrl: NavController,
+				private _events: Events,
 				navParams: NavParams,
 				recipeSrvc: RecipeService) {
 
@@ -25,7 +27,11 @@ export class RecipeDetailPage {
 			});
 	}
 
-	select(related: BaseRecipe): Promise<void> {
+	public ionViewDidEnter(): any {
+		this._events.publish(CommonEvents.pageView, 'RecipeDetail');
+	}
+
+	public select(related: BaseRecipe): Promise<void> {
 		return this._navCtrl.push(RecipeDetailPage, {
 			slug: related.slug
 		});

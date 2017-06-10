@@ -1,10 +1,10 @@
 import { Component }				from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { Events, NavController, NavParams } from 'ionic-angular';
 
-import { Category, Product }		from '../../models';
-import { ProductService }		   from '../../providers';
-import { ProductDetailPage }		from '../product-detail/product-detail.page';
-import { CategoryService } from '../../providers/category.service';
+import { CommonEvents }                     from '../../../common/models';
+import { Category, Product }                from '../../models';
+import { ProductService, CategoryService }  from '../../providers';
+import { ProductDetailPage }                from '../product-detail/product-detail.page';
 
 @Component({
 	selector: 'page-item-detail',
@@ -15,7 +15,8 @@ export class CategoryDetailPage {
 	public category: Category;
 	public products: Product[];
 
-	constructor(public navCtrl: NavController,
+	constructor(private _navCtrl: NavController,
+				private _events: Events,
 				navParams: NavParams,
 				productsSrvc: ProductService,
 				categorySrvc: CategoryService) {
@@ -28,8 +29,12 @@ export class CategoryDetailPage {
 			.then(c => this.category = c);
 	}
 
+	public ionViewDidEnter(): any {
+		this._events.publish(CommonEvents.pageView, 'ProductCategoryDetail');
+	}
+
 	select(item: Product): void {
-		this.navCtrl.push(ProductDetailPage, {
+		this._navCtrl.push(ProductDetailPage, {
 			category: this.category.slug,
 			slug: item.slug
 		});

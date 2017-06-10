@@ -8,6 +8,10 @@ import { RecipeListPage }                                       from '../recipes
 import { LoadingEvents, NavItem }                               from '../common/models';
 import { AuthEvents }                                           from '../auth/models';
 import { AuthService }                                          from '../auth/providers';
+import { FirebaseService } from '../common/providers/firebase.service';
+import { Session } from '../auth/models/session';
+import { CommonEvents } from '../common/models/common-events';
+import { FirebaseEvents } from '../common/models/firebase-events';
 
 @Component({
 	template: `<ion-menu [content]="content">
@@ -51,6 +55,7 @@ export class MyApp {
 
 	constructor(translate: TranslateService,
 				platform: Platform,
+				private _firebaseSrvc: FirebaseService,
 				private _events: Events,
 				private _loadingCtrl: LoadingController,
 				private _authService: AuthService) {
@@ -63,6 +68,7 @@ export class MyApp {
 		platform.ready()
 			.then(() => this._authService.initializeSession())
 			.then(() => {
+			_firebaseSrvc.logEvent(FirebaseEvents.appStart);
 			StatusBar.styleDefault();
 			Splashscreen.hide();
 		});
@@ -71,16 +77,24 @@ export class MyApp {
 	public eventRegistration(): void {
 		this._events.subscribe(LoadingEvents.START, user => this.onLoadingStart(user));
 		this._events.subscribe(LoadingEvents.END, () => this.onLoadingEnd());
-		this._events.subscribe(AuthEvents.AUTHENTICATED,() => this.onAuthorization());
+		this._events.subscribe(AuthEvents.AUTHENTICATED,session => this.onAuthorization(session));
 		this._events.subscribe(AuthEvents.LOGOUT, () => this.onLogout());
+		this._events.subscribe(CommonEvents.pageView, screenName => this.onPageView(screenName));
 	}
 
-	public onAuthorization(): void {
+	public onAuthorization(session: Session): void {
+		this._firebaseSrvc.setUserId(session.userName);
+		this._firebaseSrvc.logEvent('Authenticated');
 		this.openPage(new NavItem('', RecipeListPage));
 	}
 
 	public onLogout(): void {
+		this._firebaseSrvc.logEvent(FirebaseEvents.logout);
 		this.openPage(new NavItem('', WelcomePage));
+	}
+
+	public onPageView(screenName: string): void {
+		this._firebaseSrvc.setScreenName(screenName);
 	}
 
 	public logout(): void {

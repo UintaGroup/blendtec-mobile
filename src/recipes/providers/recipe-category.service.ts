@@ -25,5 +25,4 @@ export class RecipeCategoryService {
 	public getBySlug(slug: string): Observable<RecipeCategory> {
 		return Observable.of(this._categories.find(cat => cat.slug === slug));
 	}
-
 }

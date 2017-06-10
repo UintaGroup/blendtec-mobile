@@ -1,30 +1,34 @@
 import { Component }        from '@angular/core';
-import { NavController }    from 'ionic-angular';
+import { Events, NavController }    from 'ionic-angular';
+import { Observable }       from 'rxjs';
 
+import { CommonEvents }     from '../../../common/models';
 import { FaqService }       from '../../providers';
 import { Faq }              from '../../models';
-import { Observable }       from 'rxjs';
 import { FaqDetailPage }    from '../faq-detail/faq-detail.page';
 
 @Component({
 	selector: 'page-faq-list',
-	templateUrl: 'faq-list.page.html'
+	templateUrl: './faq-list.page.html'
 })
 export class FaqListPage {
 
 	public items: Observable<Faq[]>;
 	public query: string = '';
 
-	constructor(public navCtrl: NavController, public faqService: FaqService) {
+	constructor(private _navCtrl: NavController,  private _events: Events, faqService: FaqService) {
 		this.items = faqService.all();
 	}
 
+	public ionViewDidEnter(): any {
+		this._events.publish(CommonEvents.pageView, 'FaqList');
+	}
 	public clearSearch(): void {
 		this.query = '';
 	}
 
 	public select(item: Faq): void {
-		this.navCtrl.push(FaqDetailPage, {
+		this._navCtrl.push(FaqDetailPage, {
 			id:item.id
 		});
 	}

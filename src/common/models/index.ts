@@ -4,6 +4,8 @@ import { NavItem }          from './nav-item';
 import { IDbTable }         from './db-table';
 import { IDbColumn }        from './db-column';
 import { Contact }          from './contact.model';
+import { FirebaseEvents }   from './firebase-events';
+import { CommonEvents }     from './common-events';
 
 export {
 	ApiEntity,
@@ -11,5 +13,7 @@ export {
 	NavItem,
 	IDbTable,
 	IDbColumn,
-	Contact
+	Contact,
+	FirebaseEvents,
+	CommonEvents
 }

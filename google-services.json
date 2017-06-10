@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1094973057194",
+    "firebase_url": "https://blendtec-mobile.firebaseio.com",
+    "project_id": "blendtec-mobile",
+    "storage_bucket": "blendtec-mobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1094973057194:android:7c7393a77b693e4b",
+        "android_client_info": {
+          "package_name": "com.blendtec.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1094973057194-sbj7mnud7100ti6f6p01mele5lq1s871.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxKmJeJ7rTfupCJTzuRPD88pGvbn68mKM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

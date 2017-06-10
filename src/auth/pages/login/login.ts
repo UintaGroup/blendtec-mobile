@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, ToastController } from 'ionic-angular';
+import { Events, NavController, ToastController } from 'ionic-angular';
 import { TranslateService } from 'ng2-translate/ng2-translate';
 
 import { Credentials } from '../../models';
 import { AuthService } from '../../providers';
+import { CommonEvents } from '../../../common/models/common-events';
 
 @Component({
 	selector: 'page-login',
@@ -18,25 +19,29 @@ export class LoginPage {
 
 	private loginErrorString: string;
 
-	constructor(public navCtrl: NavController,
-				public authSrvc: AuthService,
-				public toastCtrl: ToastController,
-				public translateSrvc: TranslateService) {
+	constructor(private _navCtrl: NavController,
+				private _authSrvc: AuthService,
+				private _toastCtrl: ToastController,
+				private _events: Events,
+				translateSrvc: TranslateService) {
 
-		this.translateSrvc
-			.get('LOGIN_ERROR')
+		translateSrvc.get('LOGIN_ERROR')
 			.subscribe(value => this.loginErrorString = value);
 	}
 
+	public ionViewDidEnter(): any {
+		this._events.publish(CommonEvents.pageView, 'Login');
+	}
+
 	public doLogin(): any {
-		this.authSrvc
+		this._authSrvc
 			.login(this.credentials)
 			.subscribe(
 				() => {
 					console.log();
 				},
 				(err) => {
-					let toast = this.toastCtrl.create({
+					let toast = this._toastCtrl.create({
 						message: this.loginErrorString,
 						duration: 3000,
 						position: 'top'

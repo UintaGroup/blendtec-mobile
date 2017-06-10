@@ -1,7 +1,8 @@
 import { Component, Inject }        from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { Events, NavParams }        from 'ionic-angular';
 import { InAppBrowser }             from '@ionic-native/in-app-browser';
 
+import { CommonEvents }             from '../../../common/models';
 import { APP_CONFIG, AppConfig }    from '../../../app/app.config';
 import { ProductService }           from '../../providers';
 import { Product, IProductColor }   from '../../models';
@@ -19,8 +20,8 @@ export class ProductDetailPage {
 	private _categoryName: string;
 	private _slug: string;
 
-	constructor(public navCtrl: NavController,
-				public browser: InAppBrowser,
+	constructor(private _browser: InAppBrowser,
+				private _events: Events,
 				navParams: NavParams,
 				productSrvc: ProductService,
 				@Inject(APP_CONFIG) config: AppConfig) {
@@ -36,8 +37,12 @@ export class ProductDetailPage {
 			});
 	}
 
+	public ionViewDidEnter(): any {
+		this._events.publish(CommonEvents.pageView, 'ProductDetail');
+	}
+
 	public buyNow(): void {
-		this.browser.create(this.pageUrl);
+		this._browser.create(this.pageUrl);
 	}
 
 	public selectColor(color: IProductColor): void {
