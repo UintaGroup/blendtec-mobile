@@ -10,6 +10,7 @@
         "coverage": "ng test --code-coverage",
         "tdd": "ng test",
         "e2e": "ionic-app-scripts build && protractor",
+        "ci": "npm run test && npm run e2e",
         "clean": "ionic-app-scripts clean",
         "lint": "ionic-app-scripts lint",
         "build": "ionic-app-scripts build",
