@@ -6,7 +6,10 @@ describe('BlendtecApp', () => {
 		browser.get('');
 	});
 
-	it('should set title', () => {
-		expect(browser.getTitle()).toEqual('Blendtec Mobile');
+	it('should set title', done => {
+		browser.getTitle().then((title) => {
+			expect(title).toEqual('Blendtec Mobile');
+			done();
+		});
 	});
 });
