@@ -27,7 +27,6 @@ describe('ContactPage', () => {
 		config = jasmine.createSpyObj('AppConfig', ['']);
 		config['customerSupportPhone'] = _phone;
 
-
 		classUnderTest = new ContactPage(contactSrvc, events, formBuilder, config);
 	});
 

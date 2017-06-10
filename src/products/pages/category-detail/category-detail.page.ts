@@ -1,4 +1,4 @@
-import { Component }				from '@angular/core';
+import { Component }                        from '@angular/core';
 import { Events, NavController, NavParams } from 'ionic-angular';
 
 import { CommonEvents }                     from '../../../common/models';
@@ -40,4 +40,3 @@ export class CategoryDetailPage {
 		});
 	}
 }
-

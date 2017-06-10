@@ -1,5 +1,4 @@
 import { Injectable }       from '@angular/core';
-import { Response }         from '@angular/http';
 import { Events }           from 'ionic-angular';
 import { Observable }       from 'rxjs';
 import 'rxjs/add/operator/map';

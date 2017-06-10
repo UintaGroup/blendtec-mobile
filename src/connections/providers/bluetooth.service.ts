@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
 import { BluetoothSerial } from 'ionic-native';
-import { Observable } from 'rxjs';
 import { Platform } from 'ionic-angular';
 
 @Injectable()
 export class BluetoothService {
 
-	private _cordovaAvailable: boolean = false;
+	private _isCordova: boolean = false;
 
 	constructor(platform: Platform) {
 		platform.ready().then(() => {
-			this._cordovaAvailable = platform.is('cordova');
+			this._isCordova = platform.is('cordova');
 		});
 	}
 
@@ -27,7 +26,7 @@ export class BluetoothService {
 	}
 
 	public isEnabled(): Promise<any> {
-		if(this._cordovaAvailable === true) {
+		if(this._isCordova === true) {
 			return BluetoothSerial.isEnabled();
 		} else {
 			return Promise.resolve(false);

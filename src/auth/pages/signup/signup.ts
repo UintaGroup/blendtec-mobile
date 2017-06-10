@@ -5,6 +5,7 @@ import { AuthService }              from '../../providers';
 import { CommonEvents }             from '../../../common/models/common-events';
 
 import { Account }                  from '../../models/account';
+import { LogService } from '../../../common/providers/log.service';
 
 @Component({
 	selector: 'page-signup',
@@ -24,6 +25,7 @@ export class SignupPage {
 	constructor(private _authSrvc: AuthService,
 				private _toastCtrl: ToastController,
 				private _events: Events,
+				private _logSrvc: LogService,
 				translateService: TranslateService) {
 
 		translateService
@@ -36,17 +38,7 @@ export class SignupPage {
 	}
 
 	public doSignup(): void {
-		this._authSrvc
-			.register(this.account)
-			.subscribe(
-				() => {},
-				() => {
-					let toast = this._toastCtrl.create({
-						message: this._signupErrorMsg,
-						duration: 3000,
-						position: 'top'
-					});
-					toast.present();
-				});
+		this._authSrvc.register(this.account)
+			.catch(err => this._logSrvc.error(this._signupErrorMsg));
 	}
 }

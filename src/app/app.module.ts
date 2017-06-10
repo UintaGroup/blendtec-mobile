@@ -2,8 +2,9 @@ import { NgModule, ErrorHandler }                                   from '@angul
 import { Http }                                                     from '@angular/http';
 import { BrowserModule }                                            from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler }                 from 'ionic-angular';
-import { IonicStorageModule }                                        from '@ionic/storage';
+import { IonicStorageModule }                                       from '@ionic/storage';
 import { CloudModule, CloudSettings }                               from '@ionic/cloud-angular';
+import { SocialSharing }                                            from '@ionic-native/social-sharing';
 import { TranslateModule, TranslateLoader, TranslateStaticLoader }  from 'ng2-translate/ng2-translate';
 
 import { MyApp }                 from './app.component';
@@ -15,8 +16,6 @@ import { CommonModule }          from '../common';
 import { RecipeModule}           from '../recipes';
 import { ProductsModule }        from '../products';
 import { FaqModule }             from '../faqs';
-import { SocialSharing } from '@ionic-native/social-sharing';
-import { ReactiveFormsModule } from '@angular/forms';
 
 export function createTranslateLoader(http: Http): TranslateStaticLoader {
 	'use strict';

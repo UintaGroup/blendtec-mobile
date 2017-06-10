@@ -3,15 +3,12 @@ import { Platform, Nav, Loading, LoadingController, Events }	from 'ionic-angular
 import { StatusBar, Splashscreen }                              from 'ionic-native';
 import { TranslateService }                                     from 'ng2-translate/ng2-translate';
 
+import { AuthEvents, Session }                                  from '../auth/models';
+import { AuthService }                                          from '../auth/providers';
+import { LoadingEvents, NavItem, CommonEvents, FirebaseEvents } from '../common/models';
+import { FirebaseService }                                      from '../common/providers';
 import { FirstRunPage, WelcomePage }                            from '../common/pages';
 import { RecipeListPage }                                       from '../recipes/pages';
-import { LoadingEvents, NavItem }                               from '../common/models';
-import { AuthEvents }                                           from '../auth/models';
-import { AuthService }                                          from '../auth/providers';
-import { FirebaseService } from '../common/providers/firebase.service';
-import { Session } from '../auth/models/session';
-import { CommonEvents } from '../common/models/common-events';
-import { FirebaseEvents } from '../common/models/firebase-events';
 
 @Component({
 	template: `<ion-menu [content]="content">
@@ -49,9 +46,11 @@ import { FirebaseEvents } from '../common/models/firebase-events';
 	<ion-nav #content [root]="rootPage"></ion-nav>`
 })
 export class MyApp {
-	private _loading: Loading;
+
 	rootPage: any = FirstRunPage;
 	@ViewChild(Nav) nav: Nav;
+
+	private _loading: Loading;
 
 	constructor(translate: TranslateService,
 				platform: Platform,
@@ -66,11 +65,11 @@ export class MyApp {
 		this.eventRegistration();
 
 		platform.ready()
-			.then(() => this._authService.initializeSession())
+			.then(() => _firebaseSrvc.logEvent(FirebaseEvents.appStart))
+			.then(() => _authService.initializeSession())
 			.then(() => {
-			_firebaseSrvc.logEvent(FirebaseEvents.appStart);
-			StatusBar.styleDefault();
-			Splashscreen.hide();
+				StatusBar.styleDefault();
+				Splashscreen.hide();
 		});
 	}
 

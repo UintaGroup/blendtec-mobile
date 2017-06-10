@@ -1,12 +1,11 @@
-import { Injectable, Inject } from '@angular/core';
-import { Events } from 'ionic-angular';
-import { Observable } from 'rxjs';
+import { Injectable, Inject }       from '@angular/core';
+import { Events }                   from 'ionic-angular';
+import { Observable }               from 'rxjs';
 
-import { APP_CONFIG, AppConfig } from '../../app/app.config';
-import { Api } from './api.service';
-import { Contact } from '../models/contact.model';
-// import { LoadingEvents } from '../models/loading-events';
-
+import { APP_CONFIG, AppConfig }    from '../../app/app.config';
+import { Api }                      from './api.service';
+import { Contact }                  from '../models/contact.model';
+// import { LoadingEvents }             from '../models/loading-events';
 
 @Injectable()
 export class ContactService {
@@ -21,9 +20,7 @@ export class ContactService {
 	public post(contact: Contact): Observable<any> {
 		// this._events.publish(LoadingEvents.START);
 		// return this._api.post(this._resource, JSON.stringify(contact))
-		// 	.map(() => {
-		// 		this._events.publish(LoadingEvents.END);
-		// 	});
+		// 	.map(() =>  this._events.publish(LoadingEvents.END));
 		return new Observable();
 	}
 

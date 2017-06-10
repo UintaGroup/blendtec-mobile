@@ -2,7 +2,7 @@ import { NgModule, Provider }       from '@angular/core';
 import { ReactiveFormsModule }      from '@angular/forms';
 import { HttpModule, JsonpModule }  from '@angular/http';
 import { IonicModule }              from 'ionic-angular';
-import { IonicStorageModule, Storage }                  from '@ionic/storage';
+import { IonicStorageModule, Storage } from '@ionic/storage';
 import { TranslateModule }          from 'ng2-translate/ng2-translate';
 import { AuthModule }               from '../auth/auth.module';
 
@@ -21,8 +21,6 @@ export function provideSettingsService(storage: Storage): SettingsService {
 		option4: 'Hello'
 	});
 }
-
-
 
 export function providers(): Provider[] {
 	'use strict';
