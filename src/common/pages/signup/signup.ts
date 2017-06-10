@@ -1,11 +1,11 @@
-import { Component }                from '@angular/core';
-import { Events, ToastController }  from 'ionic-angular';
-import { TranslateService }         from 'ng2-translate/ng2-translate';
-import { AuthService }              from '../../providers';
-import { CommonEvents }             from '../../../common/models/common-events';
+import { Component }        from '@angular/core';
+import { Events }           from 'ionic-angular';
+import { TranslateService } from 'ng2-translate/ng2-translate';
+import { Account }          from '../../../auth/models';
+import { AuthService }      from '../../../auth/providers';
 
-import { Account }                  from '../../models/account';
-import { LogService } from '../../../common/providers/log.service';
+import { CommonEvents }     from '../../models';
+import { LogService }       from '../../providers';
 
 @Component({
 	selector: 'page-signup',
@@ -23,7 +23,6 @@ export class SignupPage {
 	private _signupErrorMsg: string;
 
 	constructor(private _authSrvc: AuthService,
-				private _toastCtrl: ToastController,
 				private _events: Events,
 				private _logSrvc: LogService,
 				translateService: TranslateService) {

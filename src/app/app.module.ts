@@ -10,7 +10,6 @@ import { TranslateModule, TranslateLoader, TranslateStaticLoader }  from 'ng2-tr
 import { MyApp }                 from './app.component';
 import { APP_CONFIG, CONFIG }    from './app.config';
 import { AuthModule }            from '../auth';
-import { BlendtecModule }        from '../blendtec';
 import { ConnectionsModule }     from '../connections';
 import { CommonModule }          from '../common';
 import { RecipeModule}           from '../recipes';
@@ -48,7 +47,6 @@ const translateSettings: any = {
 	imports: [
 		AuthModule,
 		BrowserModule,
-		BlendtecModule,
 		CommonModule,
 		CloudModule.forRoot(cloudSettings),
 		FaqModule,

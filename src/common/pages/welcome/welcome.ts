@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
 import { Events, NavController } from 'ionic-angular';
 
-import { LoginPage, SignupPage } from '../../../auth/pages';
-import { CommonEvents } from '../../models/common-events';
+import { LoginPage, SignupPage } from '../../pages';
+import { CommonEvents }          from '../../models';
 
 @Component({
 	selector: 'page-welcome',
-	templateUrl: 'welcome.html'
+	templateUrl: './welcome.html'
 })
 export class WelcomePage {
 
-	constructor(public navCtrl: NavController, private _events: Events) {
+	constructor(private _navCtrl: NavController, private _events: Events) {
 	}
 
 	public ionViewDidEnter(): any {
@@ -18,10 +18,10 @@ export class WelcomePage {
 	}
 
 	public login(): void {
-		this.navCtrl.push(LoginPage);
+		this._navCtrl.push(LoginPage);
 	}
 
 	public signup(): void {
-		this.navCtrl.push(SignupPage);
+		this._navCtrl.push(SignupPage);
 	}
 }

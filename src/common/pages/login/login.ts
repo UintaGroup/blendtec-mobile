@@ -2,13 +2,13 @@ import { Component } from '@angular/core';
 import { Events, NavController, ToastController } from 'ionic-angular';
 import { TranslateService } from 'ng2-translate/ng2-translate';
 
-import { Credentials } from '../../models';
-import { AuthService } from '../../providers';
-import { CommonEvents } from '../../../common/models/common-events';
+import { Credentials } from '../../../auth/models';
+import { AuthService } from '../../../auth/providers';
+import { CommonEvents } from '../../models/common-events';
 
 @Component({
 	selector: 'page-login',
-	templateUrl: 'login.html'
+	templateUrl: './login.html'
 })
 export class LoginPage {
 

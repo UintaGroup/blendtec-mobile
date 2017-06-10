@@ -1,7 +1,9 @@
 import { TutorialPage } from './tutorial/tutorial';
 import { WelcomePage }  from './welcome/welcome';
-import { ContactPage } from './contact/contact';
-import { ShareModal } from './share-modal/share.modal';
+import { ContactPage }  from './contact/contact';
+import { ShareModal }   from './share-modal/share.modal';
+import { LoginPage }    from './login/login';
+import { SignupPage }   from './signup/signup';
 
 /* tslint:disable */
 export const FirstRunPage = TutorialPage;
@@ -9,14 +11,18 @@ export const FirstRunPage = TutorialPage;
 
 export {
 	TutorialPage,
-	WelcomePage,
 	ContactPage,
-	ShareModal
+	ShareModal,
+	LoginPage,
+	WelcomePage,
+	SignupPage
 }
 
 export const COMMON_PAGES = [
 	TutorialPage,
-	WelcomePage,
 	ContactPage,
-	ShareModal
+	ShareModal,
+	LoginPage,
+	WelcomePage,
+	SignupPage
 ];

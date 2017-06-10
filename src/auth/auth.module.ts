@@ -1,16 +1,12 @@
-import { NgModule } from '@angular/core';
-import { IonicModule } from 'ionic-angular';
-import { TranslateModule } from 'ng2-translate';
-import { BlendtecModule } from '../blendtec/blendtec.module';
+import { NgModule }         from '@angular/core';
+import { IonicModule }      from 'ionic-angular';
+import { TranslateModule }  from 'ng2-translate';
+import { CommonModule }     from '../common/common.module';
 
-import { AUTH_PROVIDERS } from './providers';
-import { AUTH_PAGES } from './pages';
+import { AUTH_PROVIDERS }   from './providers';
 
 @NgModule({
-	imports: [IonicModule, TranslateModule, BlendtecModule],
-	exports: AUTH_PAGES,
-	declarations: AUTH_PAGES,
-	providers: [AUTH_PROVIDERS],
-	entryComponents: AUTH_PAGES
+	imports: [IonicModule, TranslateModule, CommonModule],
+	providers: [AUTH_PROVIDERS]
 })
 export class AuthModule {}
