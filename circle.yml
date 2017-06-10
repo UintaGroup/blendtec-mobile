@@ -7,3 +7,5 @@ machine:
 dependencies:
   pre:
     - npm install -g ionic cordova angular-cli
+  post:
+    - ionic state clear
