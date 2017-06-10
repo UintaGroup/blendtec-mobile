@@ -9,7 +9,3 @@ dependencies:
     - npm install -g ionic cordova angular-cli
   post:
     - ionic state clear
-
-test:
-  override:
-    - npm run ci
