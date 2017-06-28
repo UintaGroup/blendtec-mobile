@@ -30,12 +30,6 @@ export class MainMenu {
 		this._translate.get('MENU.SMOOTHIES')
 			.subscribe(value => this.menuItems.push(new NavItem(value, RecipeListPage, {slug: 'smoothies'})));
 
-		this._translate.get('MENU.BEVERAGES')
-			.subscribe(value => this.menuItems.push(new NavItem(value, RecipeListPage, {slug: 'beverages'})));
-
-		this._translate.get('MENU.SOUP')
-			.subscribe(value => this.menuItems.push(new NavItem(value, RecipeListPage, {slug: 'soups'})));
-
 		this._translate.get('MENU.RECIPES_ALL')
 			.subscribe(value => this.menuItems.push(new NavItem(value, RecipeCategoryListPage)));
 	}

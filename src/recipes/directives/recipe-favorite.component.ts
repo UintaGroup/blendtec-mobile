@@ -5,12 +5,12 @@ import { RecipeFavoriteService }    from '../providers/recipe-favorite.service';
 	selector: 'recipe-favorite',
 	template: `
 		<button *ngIf="favorite(); else elseBlock" ion-button icon-left clear (click)="toggleFav()" class="recipe-favorite" color="grey-med">
-			<ion-icon name="heart-outline" color="grey-med"></ion-icon>
+			<ion-icon name="heart" color="blendtec"></ion-icon>
 			Favorited
 		</button>
 		<template #elseBlock>
 			<button class="recipe-favorite" ion-button icon-left clear (click)="toggleFav()" color="grey-med">
-				<ion-icon name="heart" color="blendtec"></ion-icon>
+				<ion-icon name="heart-outline" color="grey-med"></ion-icon>
 				Favorite
 			</button>
 		</template>`

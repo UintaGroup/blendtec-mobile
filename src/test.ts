@@ -74,7 +74,7 @@ export class TestUtils {
 				MockBackend,
 				App, Form, Keyboard, DomController, MenuController, NavController, GestureController,
 				{provide: Platform, useClass: PlatformMock},
-				{provide: NavController, useClass: NavControllerMock.instance},
+				{provide: NavController, useClass: NavControllerMock.instance()},
 				{provide: Config, useClass: ConfigMock},
 				{provide: TranslateService, useClass: TranslateServiceMock},
 				DropboxApi,
