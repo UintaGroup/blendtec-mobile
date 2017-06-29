@@ -72,7 +72,7 @@ export class TestUtils {
 			],
 			providers: [
 				MockBackend,
-				App, Form, Keyboard, DomController, MenuController, NavController, GestureController,
+				App, Form, Keyboard, DomController, MenuController, GestureController,
 				{provide: Platform, useClass: PlatformMock},
 				{provide: NavController, useClass: NavControllerMock.instance()},
 				{provide: Config, useClass: ConfigMock},
